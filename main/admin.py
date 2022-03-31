@@ -1,5 +1,5 @@
 from django.contrib import admin
-from main.models.article import Article, Categorie, CouponCode, Tag, TypeDoc
+from main.models.article import Article, Categorie, Comment, CouponCode, Tag, TypeDoc
 from main.models.paiement import Payment
 from main.models.user_article import UserArticle
 from main.models.video import Video
@@ -75,3 +75,4 @@ admin.site.register(UserArticle, UserArticleAdminModel)
 admin.site.register(CouponCode)
 admin.site.register(Categorie)
 admin.site.register(TypeDoc)
+admin.site.register(Comment)

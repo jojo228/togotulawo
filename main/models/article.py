@@ -3,7 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from froala_editor.fields import FroalaField
 from main.helpers import *
-from account.models import Auteur
+from account.models import Auteur, Client
 from django.urls import reverse
 
 
@@ -86,8 +86,12 @@ class CouponCode(models.Model):
 
 
 
-class CommentRating(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+class Comment(models.Model):
+    user = models.ForeignKey(Client, on_delete=models.CASCADE)
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
     text = models.CharField(max_length=1000, null=True)
-    rate = models.IntegerField()
+    rate = models.IntegerField(default=0)
     date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.id)
