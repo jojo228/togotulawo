@@ -87,10 +87,10 @@ class CouponCode(models.Model):
 
 
 class Comment(models.Model):
-    user = models.ForeignKey(Client, on_delete=models.CASCADE)
+    client = models.ForeignKey(Client, on_delete=models.CASCADE)
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
     text = models.CharField(max_length=1000, null=True)
-    rate = models.IntegerField(default=0)
+    rate = models.FloatField()
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

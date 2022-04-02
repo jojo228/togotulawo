@@ -33,6 +33,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{% static 'main/assets/css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'main/assets/css/rating.css' %}" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: FlexStart - v1.9.0
@@ -48,9 +49,9 @@
   <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="{% url 'accueil' %}" class="logo d-flex align-items-center">
         <img src="{% static 'main/assets/img/logo.png' %}" alt="">
-        <span>TogoTulawo</span>
+        <span>Togotulawo</span>
       </a>
 
       <nav id="navbar" class="navbar">
@@ -62,7 +63,21 @@
           <li><a class="nav-link scrollto" href="#team">Equipe</a></li>
           <li><a class="active" href="blog.html">Blog</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="#about">Connexion</a></li>
+          {% if request.user.is_authenticated %}
+
+          {% if user.client %}
+          <li><a class="getstarted scrollto" href="">Ma Bibliothèque</a></li>
+          
+          {%else%}
+         
+          <li><a class="getstarted scrollto" href="">Tableau de bord</a></li>
+          
+          {% endif %}
+
+          {%else%}
+          <li><a class="getstarted scrollto" href="">Connexion</a></li>
+          {% endif %}
+          
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -79,11 +94,10 @@
       <div class="container">
 
         <ol>
-          <li><a href="index.html">Home</a></li>
-          <li>Blog</li>
+          <li><a href="{% url 'accueil' %}">Accueil</a></li>
+          
         </ol>
-        <h2>Blog</h2>
-
+        
       </div>
     </section><!-- End Breadcrumbs -->
 
@@ -104,7 +118,7 @@
               </div>
 
               <h2 class="entry-title">
-                <a href="blog-single.html">{{a.title}}</a>
+                <a href="/article/{{a.slug}}">{{a.title}}</a>
               </h2>
 
               <div class="entry-meta">
@@ -277,7 +291,7 @@
 
             <div class="sidebar">
 
-              <h3 class="sidebar-title">Search</h3>
+              <h3 class="sidebar-title">Rechercher</h3>
               <div class="sidebar-item search-form">
                 <form action="">
                   <input type="text">
@@ -285,15 +299,25 @@
                 </form>
               </div><!-- End sidebar search formn-->
 
-              <h3 class="sidebar-title">Categories</h3>
+              <h3 class="sidebar-title">Catégories</h3>
               <div class="sidebar-item categories">
                 <ul>
-                  <li><a href="#">General <span>(25)</span></a></li>
-                  <li><a href="#">Lifestyle <span>(12)</span></a></li>
-                  <li><a href="#">Travel <span>(5)</span></a></li>
-                  <li><a href="#">Design <span>(22)</span></a></li>
-                  <li><a href="#">Creative <span>(8)</span></a></li>
-                  <li><a href="#">Educaion <span>(14)</span></a></li>
+                  <li><a href="#">Agronomie <span>(25)</span></a></li>
+                  <li><a href="#">Biologie <span>(12)</span></a></li>
+                  <li><a href="#">Business <span>(5)</span></a></li>
+                  <li><a href="#">Chimie <span>(22)</span></a></li>
+                  <li><a href="#">Comptabilité <span>(8)</span></a></li>
+                  <li><a href="#">Droit <span>(14)</span></a></li>
+                  <li><a href="#">Economie <span>(14)</span></a></li>
+                  <li><a href="#">Finance <span>(14)</span></a></li>
+                  <li><a href="#">GRH <span>(14)</span></a></li>
+                  <li><a href="#">Geographie <span>(14)</span></a></li>
+                  <li><a href="#">Informatique <span>(14)</span></a></li>
+                  <li><a href="#">Langues <span>(14)</span></a></li>
+                  <li><a href="#">Maths <span>(14)</span></a></li>
+                  <li><a href="#">Médecine <span>(14)</span></a></li>
+                  <li><a href="#">Physique <span>(14)</span></a></li>
+                  <li><a href="#">Statistique <span>(14)</span></a></li>
                 </ul>
               </div><!-- End sidebar categories-->
 
@@ -317,18 +341,7 @@
                   <time datetime="2020-01-01">Jan 1, 2020</time>
                 </div>
 
-                <div class="post-item clearfix">
-                  <img src="assets/img/blog/blog-recent-4.jpg" alt="">
-                  <h4><a href="blog-single.html">Laborum corporis quo dara net para</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/blog/blog-recent-5.jpg" alt="">
-                  <h4><a href="blog-single.html">Et dolores corrupti quae illo quod dolor</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-
+                
               </div><!-- End sidebar recent posts-->
 
               <h3 class="sidebar-title">Tags</h3>
@@ -386,7 +399,7 @@
           <div class="col-lg-5 col-md-12 footer-info">
             <a href="index.html" class="logo d-flex align-items-center">
               <img src="assets/img/logo.png" alt="">
-              <span>FlexStart</span>
+              <span>Togotulawo</span>
             </a>
             <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
             <div class="social-links mt-3">
@@ -437,14 +450,14 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>FlexStart</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>BCA Group</span></strong>. Tout droit réservés
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designé par <a href="https://bootstrapmade.com/">BCA Group</a>
       </div>
     </div>
   </footer><!-- End Footer -->

@@ -1,13 +1,14 @@
 from multiprocessing import context
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from main.models.article import Article
+from main.models.article import Article, Comment
+from main.forms.comment import CommentForm
 from main.models.video import Video
 from main.models.user_article import UserArticle
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
 from django.utils.decorators import method_decorator
-
+from django.contrib import messages
 
 
 @method_decorator(login_required(login_url='login') , name='dispatch')
@@ -51,7 +52,21 @@ def articlePage(request, slug):
         'videos':videos
     }
  
-
-    
-    
     return render(request, template_name="pageArticle.html", context=context)
+
+
+def comment(request, id):
+    url = request.META.get('HTTP_REFERER')
+    
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+
+        if form.is_valid():
+                data = Comment()
+                data.text = form.cleaned_data['text']
+                data.rate = form.cleaned_data['rate']
+                data.article_id = id
+                data.client_id = request.user.client.id
+                data.save()
+                messages.success(request, 'Thank you! Your review has been submitted.')
+                return redirect(url)

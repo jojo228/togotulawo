@@ -7,6 +7,11 @@
   .checked {
     color: orange;
   }
+
+  .my-btn {
+    background-color: inherit !important;
+    border: 0 !important;
+}
   </style>
 
 
@@ -16,9 +21,9 @@
 
       <ol>
           <li><a href="{% url 'accueil' %}">Accueil</a></li>
-          <li>Détails du document</li>
+          <li>Détails sur document</li>
       </ol>
-      <h2>Détails du document</h2>
+      <h2>{{article.title}}</h2>
 
   </div>
 </section><!-- End Breadcrumbs -->
@@ -91,7 +96,12 @@
               <div class="d-flex">
                 <div class="comment-img"><img src="assets/img/blog/comments-1.jpg" alt=""></div>
                 <div>
-                  <h5><a href="">{{comment.user.user.get_full_name}}</a> <a href="#" class="reply"><span class="fa fa-star checked"></span>
+                  <h5><a href="">{{comment.client.user.get_full_name}}</a> <a href="#" class="reply">
+                    <span class="fa fa-star {% if comment.rate > 0 %} checked {% endif %}"></span>
+                    <span class="fa fa-star {% if comment.rate > 1 %} checked {% endif %}"></span>
+                    <span class="fa fa-star {% if comment.rate > 2 %} checked {% endif %}"></span>
+                    <span class="fa fa-star {% if comment.rate > 3 %} checked {% endif %}"></span>
+                    <span class="fa fa-star {% if comment.rate > 4 %} checked {% endif %}"></span>
                   </a></h5>
                   <time datetime="2020-01-01">{{comment.date}}</time>
                   <p>
@@ -99,32 +109,44 @@
                   </p>
                 </div>
               </div>
-              {% endfor %}
+              
             </div><!-- End comment #1 -->
+            {% endfor %}
 
-            <div class="reply-form">
+             <div class="reply-form">
               <h4>Laisser un commentaire</h4>
-              <p>Your email address will not be published. Required fields are marked * </p>
-              <form action="">
+              <p>Donnez une note</p>
+
+              <form action="{% url 'submit_review' article.id %}" method="POST">
+                {% csrf_token %}
                 <div class="row">
-                  <div class="col-md-6 form-group">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
+                  <div class="rate" >
+                    
+                    <input type="radio" name="rate" id="rating10" value="5" required /><label for="rating10" title="5"></label>
+                    <input type="radio" name="rate" id="rating9" value="4.5" required /><label for="rating9" title="4.5" class="half"></label>
+                    <input type="radio" name="rate" id="rating8" value="4" required /><label for="rating8" title="4"></label>
+                    <input type="radio" name="rate" id="rating7" value="3.5" required /><label for="rating7" title="3.5" class="half"></label>
+                    <input type="radio" name="rate" id="rating6" value="3" required /><label for="rating6" title="3"></label>
+                    <input type="radio" name="rate" id="rating5" value="2.5" required /><label for="rating5" title="2.5" class="half"></label>
+                    <input type="radio" name="rate" id="rating4" value="2" required /><label for="rating4" title="2"></label>
+                    <input type="radio" name="rate" id="rating3" value="1.5" required /><label for="rating3" title="1.5" class="half"></label>
+                    <input type="radio" name="rate" id="rating2" value="1" required /><label for="rating2" title="1"></label>
+                    <input type="radio" name="rate" id="rating1" value="0.5" required /><label for="rating1" title="0.5" class="half"></label>
+                   
+                      
                   </div>
                   
                 </div>
                 
                 <div class="row">
                   <div class="col form-group">
-                    <textarea name="comment" class="form-control" placeholder="Votre Commentaire*"></textarea>
+                    <textarea name="text" class="form-control" placeholder="Votre Commentaire*"></textarea>
                   </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Poster</button>
 
               </form>
+              
 
             </div>
 
@@ -194,6 +216,29 @@
     </div>
   </section><!-- End Blog Single Section -->
 
+<script>
 
+
+    $.ajax({
+        type: 'POST',
+        url: '/rate/',
+        data: {
+            'csrfmiddlewaretoken': csrf[0].value,
+            
+            
+        },
+        success: function(response){
+            console.log(response)
+            confirmBox.innerHTML = `<h1>Successfully rated with ${response.rate}</h1>`
+        },
+        error: function(error){
+            console.log(error)
+            confirmBox.innerHTML = '<h1>Ups... something went wrong</h1>'
+        }
+    })
+
+  
+
+</script>
 
 {% endblock %}
