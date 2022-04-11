@@ -12,10 +12,14 @@ def generate_random_string(N):
 
 def generate_slug(text):
     new_slug = slugify(text)
-    from main.models.article import Article
+    from main.models.article import Article, Categorie
     
     if Article.objects.filter(slug = new_slug).first():
         return generate_slug(text + generate_random_string(5))
+
+    if Categorie.objects.filter(slug = new_slug).first():
+        return generate_slug(text + generate_random_string(5))
+        
     return new_slug
     
     

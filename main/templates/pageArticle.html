@@ -48,7 +48,7 @@
             <div class="entry-meta">
               <ul>
                 <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">{{article.publish_date}}</time></a></li>
-                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li>
+                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">{{comment}} Commentaires</a></li>
               </ul>
             </div>
 
@@ -90,7 +90,7 @@
 
           <div class="blog-comments">
 
-            <h4 class="comments-count">8 Comments</h4>
+            <h4 class="comments-count">{{comment}} Commentaires</h4>
             {% for comment in article.comment_set.all %}
             <div id="comment-1" class="comment">
               <div class="d-flex">
@@ -120,7 +120,7 @@
               <form action="{% url 'submit_review' article.id %}" method="POST">
                 {% csrf_token %}
                 <div class="row">
-                  <div class="rate" >
+                  <div class="rate col-md-6 form-group" >
                     
                     <input type="radio" name="rate" id="rating10" value="5" required /><label for="rating10" title="5"></label>
                     <input type="radio" name="rate" id="rating9" value="4.5" required /><label for="rating9" title="4.5" class="half"></label>

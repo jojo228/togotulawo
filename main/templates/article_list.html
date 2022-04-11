@@ -1,0 +1,40 @@
+{% extends 'main_base.html' %}
+{% load article_custom_tags %}
+
+{% block content %}
+
+<!-- ======= Recent Blog Posts Section ======= -->
+<section id="recent-blog-posts" class="recent-blog-posts">
+
+    <div class="container" data-aos="fade-up">
+
+      <header class="section-header">
+        <div class="card-body">
+            <b>Sort By : - </b>
+            <a href="{% url 'category' %}?filter={{ filter }}&orderby=id">ID</a>  | 
+            <a href="{% url 'category' %}?filter={{ filter }}&orderby=title">Title</a> |  
+            <a href="{% url 'category' %}?filter={{ filter }}&orderby=description">Description</a> 
+        </div>
+      </header>
+
+      <div class="row">
+        {% for article in object_list %}
+        <div class="col-lg-4">
+          <div class="post-box">
+            <div class="post-img"><img src="{{article.couverture.url}}" class="img-fluid" alt=""></div>
+            <span class="post-date">{{article.price|cfa}}</span>
+            <span class="post-date">{{article.publish_date}}</span>
+            <h3 class="post-title">{{article.title}}</h3>
+            <a href="/article/{{article.slug}}" class="readmore stretched-link mt-auto"><span>Lire Plus</span><i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      
+    </div>
+
+  </section><!-- End Recent Blog Posts Section -->
+
+
+
+{% endblock %}

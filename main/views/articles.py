@@ -9,20 +9,41 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
 from django.utils.decorators import method_decorator
 from django.contrib import messages
+from django.db.models import Q
 
 
-@method_decorator(login_required(login_url='login') , name='dispatch')
-class MyArticleList(ListView):
-    template_name = 'courses/my_courses.html'
-    context_object_name = 'user_article'
+
+# @method_decorator(login_required(login_url='login') , name='dispatch')
+class ArticleList(ListView):
+    model = Article
+    template_name = 'article_list.html'
+    paginate_by = 12
+
     def get_queryset(self):
-        return UserArticle.objects.filter(user = self.request.user)
+        filter_val=self.request.GET.get("filter","")
+        order_by=self.request.GET.get("orderby","id")
+        if filter_val!="":
+            article=Article.objects.filter(Q(title__contains=filter_val) | Q(contenu__contains=filter_val)).order_by(order_by)
+        else:
+            article=Article.objects.all().order_by(order_by)
+
+        return article
+
+    def get_context_data(self,**kwargs):
+        context=super(ArticleList,self).get_context_data(**kwargs)
+        context["filter"]=self.request.GET.get("filter","")
+        context["orderby"]=self.request.GET.get("orderby","id")
+        context["all_table_fields"]=Article._meta.get_fields()
+        return context
 
 
 
 def articlePage(request, slug):
 
     article = Article.objects.get(slug=slug)
+
+    comment = article.comment_set.all().count()
+    
     serial_number  = request.GET.get('lecture')
     videos = article.video_set.all().order_by("serial_number")
 
@@ -44,12 +65,11 @@ def articlePage(request, slug):
                 return redirect("checkout" , slug=article.slug)
 
 
-        
-        
     context = {
         "article" : article , 
         "video" : video , 
-        'videos':videos
+        'videos':videos,
+        'comment':comment,
     }
  
     return render(request, template_name="pageArticle.html", context=context)

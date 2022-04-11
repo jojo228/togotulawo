@@ -20,10 +20,16 @@ class VideoAdmin(admin.TabularInline):
 
 
 
+class CategorieAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("name",)}
+
+
+
 class ArticleAdmin(admin.ModelAdmin):
     inlines = [TagAdmin,  VideoAdmin]
     list_display = ["title", 'get_price', 'get_discount', 'active']
     list_filter = ("discount", 'active')
+    prepopulated_fields = {"slug": ("title",)}
 
     def get_discount(self, article):
         return f'{article.discount} %'
@@ -73,6 +79,6 @@ admin.site.register(Video)
 admin.site.register(Payment, PaymentAdmin)
 admin.site.register(UserArticle, UserArticleAdminModel)
 admin.site.register(CouponCode)
-admin.site.register(Categorie)
+admin.site.register(Categorie, CategorieAdmin)
 admin.site.register(TypeDoc)
 admin.site.register(Comment)

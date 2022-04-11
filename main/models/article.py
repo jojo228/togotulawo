@@ -10,12 +10,18 @@ from django.urls import reverse
 
 class Categorie(models.Model):
     name = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=300, unique=True)
+
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
         return reverse('accueil')
+
+    def save(self , *args, **kwargs): 
+        self.slug = generate_slug(self.name)
+        super(Categorie, self).save(*args, **kwargs)
 
 
 class TypeDoc(models.Model):
@@ -31,6 +37,15 @@ class TypeDoc(models.Model):
 
 class Article(models.Model):
 
+    option =(
+        ('Thèse', 'Thèse'),
+        ('Mémoire', 'Mémoire'),
+        ('Rapport de stage', 'Rapport de stage'),
+        ('Document de synthèse', 'Document de synthèse'),
+        ('Article', 'Article'),
+        ('Livre', 'Livre'),
+    )
+
     class Meta:
         ordering = ["-publish_date"]
         get_latest_by = "publish_date"
@@ -42,6 +57,7 @@ class Article(models.Model):
     couverture = models.ImageField(upload_to='files/couverture')
     auteur = models.ForeignKey(Auteur, null=True , on_delete=models.CASCADE)
     domaine = models.CharField(max_length=50)
+    type = models.CharField(max_length=100, choices=option, null=True)
     resource = models.FileField(upload_to="files/resource")
 
     discount = models.IntegerField(null=False, default=0)
