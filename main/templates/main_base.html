@@ -56,10 +56,17 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto " href="#hero">Accueil</a></li>
+          <li><a class="nav-link scrollto " href="{% url 'accueil' %}">Accueil</a></li>
           <li><a class="nav-link scrollto" href="#about">A propos</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a>
+            <div class="sidebar-item search-form">
+            <form action="">
+              <input type="text">
+              <button type="submit"><i class="bi bi-search"></i></button>
+            </form>
+          </div></a></li>
           
           {% if request.user.is_authenticated %}
 
@@ -76,13 +83,7 @@
           <li><a class="getstarted scrollto" href="">Connexion</a></li>
           {% endif %}
 
-          <li><a>
-            <div class="sidebar-item search-form">
-            <form action="">
-              <input type="text">
-              <button type="submit"><i class="bi bi-search"></i></button>
-            </form>
-          </div></a></li>
+         
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -128,7 +129,7 @@
 
               <div class="entry-meta">
                 <ul>
-                  <li class="d-flex align-items-center"><a href="blog-single.html">Type: Mémoire</a></li>
+                  <li class="d-flex align-items-center"><a href="blog-single.html">Type: {{a.type}}</a></li>
                   <li class="d-flex align-items-center"><a href="blog-single.html">Domaine: {{a.domaine}}</a></li>
                   <li class="d-flex align-items-center"> <a href="blog-single.html">Prix: {{a.price|cfa}}</a></li>
                   
@@ -321,6 +322,11 @@
 
   <!-- Template Main JS File -->
   <script src="{% static 'main/assets/js/main.js' %}"></script>
+
+
+  <!--  ViewerJS File -->
+  <script src="{% static 'ViewerJS/pdf.js' %}"></script>
+  <script src="{% static 'ViewerJS/pdf.worker.js' %}"></script>
 
 </body>
 
