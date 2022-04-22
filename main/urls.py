@@ -17,7 +17,7 @@ urlpatterns = [
     path('article/<str:slug>', articlePage, name='article'),
     path('checkout/<str:slug>', checkout , name = 'checkout'),
     path('verify_payment', verifyPayment , name = 'verify_payment'),
-    path('categorie/', ArticleList.as_view() , name = 'category'),
+    path('categorie/', ArticleList.as_view() , name = 'categorie'),
     path('submit_review/<int:id>', comment, name='submit_review'),
 
 ]

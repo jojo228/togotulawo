@@ -24,16 +24,6 @@ class Categorie(models.Model):
         super(Categorie, self).save(*args, **kwargs)
 
 
-class TypeDoc(models.Model):
-    name = models.CharField(max_length=255, null=True)
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse('accueil')
-
-
 
 class Article(models.Model):
 
@@ -55,9 +45,9 @@ class Article(models.Model):
     slug = models.SlugField(max_length=300, unique=True)
     contenu = FroalaField()
     couverture = models.ImageField(upload_to='files/couverture')
-    auteur = models.ForeignKey(Auteur, null=True , on_delete=models.CASCADE)
-    domaine = models.CharField(max_length=50)
-    type = models.CharField(max_length=100, choices=option, null=True)
+    auteur = models.ForeignKey(Auteur, null=False, on_delete=models.CASCADE)
+    domaine = models.ForeignKey(Categorie, null=False, on_delete=models.CASCADE)
+    type = models.CharField(max_length=100, choices=option)
     resource = models.FileField(upload_to="files/resource")
 
     discount = models.IntegerField(null=False, default=0)
@@ -72,7 +62,7 @@ class Article(models.Model):
 
 
     def __str__(self):
-        return self.title
+        return self.title + ' | ' + str(self.auteur)
 
     def save(self , *args, **kwargs): 
         self.slug = generate_slug(self.title)

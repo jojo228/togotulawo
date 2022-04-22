@@ -1,6 +1,6 @@
 {% load static %}
 {% load article_custom_tags %}
-
+{% load humanize %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,7 +75,7 @@
           
           {%else%}
          
-          <li><a class="getstarted scrollto" href="">Tableau de bord</a></li>
+          <li><a class="getstarted scrollto" href="{% url 'accueil' %}">Tableau de bord</a></li>
           
           {% endif %}
 
@@ -131,7 +131,7 @@
                 <ul>
                   <li class="d-flex align-items-center"><a href="blog-single.html">Type: {{a.type}}</a></li>
                   <li class="d-flex align-items-center"><a href="blog-single.html">Domaine: {{a.domaine}}</a></li>
-                  <li class="d-flex align-items-center"> <a href="blog-single.html">Prix: {{a.price|cfa}}</a></li>
+                  <li class="d-flex align-items-center"> <a href="blog-single.html">Prix: {{a.price|intcomma|cfa}}</a></li>
                   
                 </ul>
               </div>
@@ -145,7 +145,7 @@
 
               <div class="entry-content">
                 <p>
-                  {{a.contenu}}
+                  {{a.contenu|safe}}
                 </p>
                 <div class="read-more">
                   <a href="/article/{{a.slug}}">Plus de détails</a>
@@ -179,11 +179,11 @@
                 </form>
               </div><!-- End sidebar search formn-->
 
-              <h3 class="sidebar-title">Catégories</h3>
+              <h3 class="sidebar-title">Domaines</h3>
               <div class="sidebar-item categories">
                 <ul>
                   {% for cat in category  %}
-                  <li><a href="/categorie/{{cat.slug}}">{{cat.name}}<span>(25)</span></a></li>
+                  <li><a href="{{cat.slug}}/{{cat.article_set.all}}">{{cat.name}}<span>({{cat.article_set.all.count}})</span></a></li>
                   {% endfor %}
                   
                 </ul>

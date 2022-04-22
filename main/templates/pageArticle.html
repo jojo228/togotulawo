@@ -1,6 +1,6 @@
 {% extends 'main_base.html' %}
 {% load article_custom_tags %}
-
+{% load humanize %}
 {% block content %}
 
 <style>
@@ -53,7 +53,7 @@
             </div>
 
             <div class="entry-content">
-              <p>{{article.contenu}}</p>
+              <p>{{article.contenu|safe}}</p>
             </div>
 
             <div class="entry-footer">
@@ -177,9 +177,9 @@
                   <div class="box">
                     <div class="price">
           
-                      <sup><del>{{article.price}}f</del>&nbsp;</sup>
+                      <sup><del>{{article.price|intcomma}}f</del>&nbsp;</sup>
           
-                      {% cal_sellprice article.price article.discount as value %}{{value|cfa}}
+                      {% cal_sellprice article.price article.discount as value %}{{value|intcomma|cfa}}
           
                     </div>
                     <!-- <img src="assets/img/pricing-free.png" class="img-fluid" alt=""> -->

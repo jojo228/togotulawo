@@ -1,5 +1,5 @@
 from django.contrib import admin
-from main.models.article import Article, Categorie, Comment, CouponCode, Tag, TypeDoc
+from main.models.article import Article, Categorie, Comment, CouponCode, Tag
 from main.models.paiement import Payment
 from main.models.user_article import UserArticle
 from main.models.video import Video
@@ -9,10 +9,6 @@ from django.utils.html import format_html
 
 class TagAdmin(admin.TabularInline):
     model = Tag
-
-
-class TypeDocAdmin(admin.TabularInline):
-    model = TypeDoc
 
 
 class VideoAdmin(admin.TabularInline):
@@ -80,5 +76,4 @@ admin.site.register(Payment, PaymentAdmin)
 admin.site.register(UserArticle, UserArticleAdminModel)
 admin.site.register(CouponCode)
 admin.site.register(Categorie, CategorieAdmin)
-admin.site.register(TypeDoc)
 admin.site.register(Comment)

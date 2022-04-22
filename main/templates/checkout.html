@@ -1,6 +1,6 @@
 {% extends 'main_base.html' %}
 {% load article_custom_tags %}
-
+{% load humanize %}
 {% block content %}
 
 <!-- ======= Breadcrumbs ======= -->
@@ -41,9 +41,9 @@
                     <ul>
                         <li><strong>Titre</strong>: {{article.title}}</li>
                         <li><strong>Type</strong>: Mémoire</li>
-                        <li><strong>Prix</strong>: <del>{{article.price|cfa}}</del>&nbsp; </li>
+                        <li><strong>Prix</strong>: <del>{{article.price|intcomma|cfa}}</del>&nbsp; </li>
                         <li><strong>Prix Promo</strong>: remise {{article.discount}}%
-                            <span>{% cal_sellprice article.price article.discount as value %} {{value|cfa}}</span>
+                            <span>{% cal_sellprice article.price article.discount as value %} {{value|intcomma|cfa}}</span>
 
                         </li>
                         <br>
@@ -57,14 +57,14 @@
                             </p>
                             <br>
                             <p class="display-5">Montant : <b>{% cal_sellprice article.price coupon.discount as value %}
-                                    {{value|cfa}}</b></p>
+                                    {{value|intcomma|cfa}}</b></p>
             
                             <a class="btn btn-light border" href="?action=create_payment&couponcode={{coupon.code}}">Payer
                                 </a>
             
                             {%else%}
                             <p class="display-7">Montant : <b>{% cal_sellprice article.price article.discount as value %}
-                                    {{value|cfa}}</b></p>
+                                    {{value|intcomma|cfa}}</b></p>
             
                             <a class="btn btn-light border" href="https://paygateglobal.com/v1/page?token=2a2b0731-8259-40e3-8df0-26df05801e0e&amount={{value}}&description=Achat du cours {{article.name}}&identifier={{identifier}}&{{url}}">Payer</a>
             
