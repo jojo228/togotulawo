@@ -1,7 +1,6 @@
-from multiprocessing import context
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from main.models.article import Article, Comment
+from main.models.article import Article, Comment, Categorie
 from main.forms.comment import CommentForm
 from main.models.video import Video
 from main.models.user_article import UserArticle
@@ -10,8 +9,6 @@ from django.views.generic import ListView
 from django.utils.decorators import method_decorator
 from django.contrib import messages
 from django.db.models import Q
-from django.http import FileResponse
-import os
 
 
 
@@ -24,10 +21,9 @@ class ArticleList(ListView):
     def get_queryset(self):
         filter_val=self.request.GET.get("filter","")
         order_by=self.request.GET.get("orderby","id")
-        if filter_val!="":
-            article=Article.objects.filter(Q(title__contains=filter_val) | Q(contenu__contains=filter_val)).order_by(order_by)
-        else:
-            article=Article.objects.all().order_by(order_by)
+        article = Article.objects.all()
+        if filter_val:
+            article = article.filter(Q(title__icontains=filter_val) | Q(contenu__icontains=filter_val) | Q(price__icontains=filter_val)).order_by(order_by)
 
         return article
 
@@ -90,5 +86,32 @@ def comment(request, id):
                 data.article_id = id
                 data.client_id = request.user.client.id
                 data.save()
-                messages.success(request, 'Thank you! Your review has been submitted.')
+                messages.success(request, 'Merci! Commentaire ajouté.')
                 return redirect(url)
+
+
+def CategorieArticles(request, slug):
+
+    categorie = Categorie.objects.get(slug=slug)
+    article = Article.objects.filter(domaine=categorie)
+
+    context = {
+        "article" : article, 
+        "categorie" : categorie, 
+    }
+
+    return render(request, template_name="categorie_article.html", context=context)
+
+
+
+def recherche(request,):
+
+    query = request.GET.get("filter")
+    order_by= request.GET.get("orderby","id")
+    article = Article.objects.filter(Q(title__icontains=query) | Q(contenu__icontains=query) | Q(price__icontains=query) | Q(auteur__user__first_name__icontains=query) | Q(auteur__user__last_name__icontains=query)).order_by(order_by)
+
+    context = {
+        "article" : article, 
+    }
+
+    return render(request, template_name="search.html", context=context)

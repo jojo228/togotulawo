@@ -9,6 +9,7 @@ def HomePage(request):
 
     category = Categorie.objects.all()
 
+
     context = {'article':article, 'category':category}
 
     return render(request, template_name = "main_base.html", context=context)

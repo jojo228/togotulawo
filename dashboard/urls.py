@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     #HomePage urls
-    path('', HomePage, name='accueil'),
+    path('', HomePage, name='tableau'),
 
 
 ]
