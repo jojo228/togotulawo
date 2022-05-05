@@ -1,10 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+option =(
+        ('License', 'License'),
+        ('Maîtrise', 'Maîtrise'),
+        ('Master', 'Master'),
+        ('Doctorat', 'Doctorat'),
+        ('DEA', 'DEA'),
+        ('Professorat', 'Professorat'),
+    )
+
+
 
 class Auteur(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    niveau_etude = models.CharField(max_length=50)
+    niveau_etude = models.CharField(max_length=50, choices=option)
     faculte = models.CharField(max_length=50)
     annee_graduation = models.DateField()
     tel = models.CharField(max_length=8)

@@ -108,7 +108,8 @@ def recherche(request,):
 
     query = request.GET.get("filter")
     order_by= request.GET.get("orderby","id")
-    article = Article.objects.filter(Q(title__icontains=query) | Q(contenu__icontains=query) | Q(price__icontains=query) | Q(auteur__user__first_name__icontains=query) | Q(auteur__user__last_name__icontains=query)).order_by(order_by)
+    article = Article.objects.filter(Q(title__icontains=query) | Q(contenu__icontains=query) | Q(price__icontains=query) 
+    | Q(auteur__user__first_name__icontains=query) | Q(auteur__user__last_name__icontains=query)).order_by(order_by)
 
     context = {
         "article" : article, 

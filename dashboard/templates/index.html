@@ -72,17 +72,17 @@
 									class="feather icon-folder"></i></span><span class="pcoded-mtext">Gestion des
 								Publications</span></a>
 						<ul class="pcoded-submenu">
-							<li class=""><a href="" class="">Publier</a></li>
-							<li class=""><a href="" class="">Mes Publications</a></li>
+							<li class=""><a href="{% url 'publier' %}" class="">Publier</a></li>
+							<li class=""><a href="{% url 'liste_article' %}" class="">Mes Publications</a></li>
 						</ul>
 					</li>
 					
 					
-					<li class="nav-item"><a href="" class="nav-link"><span class="pcoded-micon"><i
+					<li class="nav-item"><a href="{% url 'brouillon' %}" class="nav-link"><span class="pcoded-micon"><i
 						class="feather icon-trash-2"></i></span><span class="pcoded-mtext">Mes Brouillons</span></a>
 					</li>
 
-					<li class="nav-item"><a href="" class="nav-link"><span class="pcoded-micon"><i
+					<li class="nav-item"><a href="{% url 'profil' %}" class="nav-link"><span class="pcoded-micon"><i
 						class="feather icon-user"></i></span><span class="pcoded-mtext">Mon Profil</span></a>
 					</li>
 					
@@ -110,7 +110,7 @@
 			<a href="#!" class="mob-toggler"></a>
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
-					<!--<div class="main-search open">
+					<div class="main-search open">
 						<div class="input-group">
 							<input type="text" id="m-search" class="form-control" placeholder="Search . . .">
 							<a href="#!" class="input-group-append search-close">
@@ -120,7 +120,7 @@
 								<i class="feather icon-search input-group-text"></i>
 							</span>
 						</div>
-					</div>-->
+					</div>
 				</li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
@@ -129,7 +129,7 @@
 				<div class="dropdown drp-user">
 					<div class="pro-head">
 						<i class="icon feather icon-user"></i>
-						<span style="font: bold;">{{request.user.agence}}</span>
+						<span style="font: bold;">{{request.user.get_full_name}}</span>
 						
 					</div>
 				</div>
@@ -202,30 +202,7 @@
 									</div>
 								</div>
 							</li>
-							<li class="notification">
-								<div class="media">
-									<img class="img-radius"
-									src="{% static '/assets/images/user/avatar-3.jpg' %}"
-										alt="Generic placeholder image">
-									<div class="media-body">
-										<p><strong>Sara Soudein</strong><span class="n-time text-muted"><i
-													class="icon feather icon-clock m-r-10"></i>1 hour</span></p>
-										<p>currently login</p>
-									</div>
-								</div>
-							</li>
-							<li class="notification">
-								<div class="media">
-									<img class="img-radius"
-									src="{% static '/assets/images/user/avatar-1.jpg' %}"
-										alt="Generic placeholder image">
-									<div class="media-body">
-										<p><strong>Joseph William</strong><span class="n-time text-muted"><i
-													class="icon feather icon-clock m-r-10"></i>2 hour</span></p>
-										<p>Prchace New Theme and make payment</p>
-									</div>
-								</div>
-							</li>
+							
 						</ul>
 						<div class="noti-footer">
 							<a href="#!">show all</a>
