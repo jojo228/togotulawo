@@ -7,6 +7,20 @@ def HomePage(request):
     return render(request, template_name = "index.html")
 
 
+def vente(request):
+    context = {}
+    
+    try:
+        article = Article.objects.filter(auteur=request.user.auteur, is_draft=False)
+        context['article'] =  article
+    except Exception as e: 
+        print(e)
+    
+    print(context)
+    return render(request , 'ventes.html' ,context)
+
+
+
 def Profil(request):
 
    user = request.user.auteur

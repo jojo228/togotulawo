@@ -11,11 +11,13 @@ urlpatterns = [
     path('article-detail/<slug>', article_detail , name="article_detail"),
     path('liste-article/' , see_article , name="liste_article"),
     path('brouillon/' , Brouillon , name="brouillon"),
-
-    path('profil/' , Profil , name="profil"),
-
     path('delete-article/<id>' , article_delete , name="article_delete"),
     path('update-article/<slug>/' , article_update , name="article_update"),
+
+    path('profil/' , Profil , name="profil"),
+    path('ventes/' , vente , name="ventes"),
+
+    
 
 
 ]
