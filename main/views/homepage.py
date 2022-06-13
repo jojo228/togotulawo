@@ -4,7 +4,7 @@ from main.models.article import Article, Categorie
 from django.views.generic import ListView
 from django.utils import timezone
 
-def HomePage(request):
+def home_page(request):
     article = Article.objects.filter(active=True, is_draft=False,)
 
     category = Categorie.objects.all()

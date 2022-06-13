@@ -43,7 +43,7 @@ class ArticleForm(forms.ModelForm):
             "contenu": "Resumé ou sommaire",
             "resource": "Ressource (le fichier PDF de votre publication)",
             "is_draft": "Enregistré comme brouillon",
-            "active": "Visible aux utilisateurs",
+            "active": "Rendre visible aux utilisateurs",
             "couverture": "Photo de couverture",
         }
 

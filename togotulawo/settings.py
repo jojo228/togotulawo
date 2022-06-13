@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,8 +41,54 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'account',
     'main',
-    'dashboard'
+    'dashboard',
+    'froala_editor',
+
 ]
+
+
+JAZZMIN_SETTINGS = {
+    # title of the window (Will default to current_admin_site.site_title if absent or None)
+    "site_title": "Togotulawo",
+
+    # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_header": "Togotulawo",
+    "site_brand": "Togotulawo",
+    "copyright": "Togotulawo Sarl U",
+    # The model admin to search from the search bar, search bar omitted if excluded
+    "search_model": "auth.User",
+    # Additional links to include in the user menu on the top right ("app" url type is not allowed)
+    "usermenu_links": [
+        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
+        {"model": "auth.user"}
+    ],
+    # Add a language dropdown into the admin
+    "show_ui_builder": True,
+    "custom_links": {
+        "account": [{
+            "name": "Make Messages", 
+            "url": "make_messages", 
+            "icon": "fas fa-comments",
+            "permissions": ["books.view_book"]
+        }]
+    },
+
+
+    "topmenu_links": [
+
+        # Url that gets reversed (Permissions can be added)
+        {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
+
+        # external url that opens in a new window (Permissions can be added)
+        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
+
+        # model admin to link to (Permissions checked against model)
+        {"model": "auth.User"},
+
+        # App with dropdown menu to all its models pages (Permissions checked against models)
+        {"app": "account",},
+    ],
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

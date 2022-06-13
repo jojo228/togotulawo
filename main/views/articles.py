@@ -36,7 +36,7 @@ class ArticleList(ListView):
 
 
 
-def articlePage(request, slug):
+def article_page(request, slug):
 
     article = Article.objects.get(slug=slug)
 
@@ -90,7 +90,7 @@ def comment(request, id):
                 return redirect(url)
 
 
-def CategorieArticles(request, slug):
+def categorie_articles(request, slug):
 
     categorie = Categorie.objects.get(slug=slug)
     article = Article.objects.filter(domaine=categorie)
