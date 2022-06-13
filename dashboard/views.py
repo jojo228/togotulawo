@@ -1,6 +1,8 @@
 from django.shortcuts import redirect, render
 from main.models.article import Article, Categorie
 from dashboard.forms import *
+from main.models.paiement import Payment
+from main.models.user_article import UserArticle
 
 def HomePage(request):
 
@@ -11,7 +13,7 @@ def vente(request):
     context = {}
     
     try:
-        article = Article.objects.filter(auteur=request.user.auteur, is_draft=False)
+        article = Payment.objects.filter(user=request.user.auteur).all()
         context['article'] =  article
     except Exception as e: 
         print(e)

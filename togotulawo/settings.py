@@ -10,7 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
+from typing import Any, Dict
 from pathlib import Path
+import dj_database_url
+from django.conf.global_settings import LANGUAGES as DJANGO_LANGUAGES
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -47,7 +50,7 @@ INSTALLED_APPS = [
 ]
 
 
-JAZZMIN_SETTINGS = {
+JAZZMIN_SETTINGS: Dict[str, Any] = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
     "site_title": "Togotulawo",
 
@@ -55,6 +58,7 @@ JAZZMIN_SETTINGS = {
     "site_header": "Togotulawo",
     "site_brand": "Togotulawo",
     "copyright": "Togotulawo Sarl U",
+    "welcome_sign": "Bienvenu sur Togotulawo",
     # The model admin to search from the search bar, search bar omitted if excluded
     "search_model": "auth.User",
     # Additional links to include in the user menu on the top right ("app" url type is not allowed)
@@ -62,14 +66,13 @@ JAZZMIN_SETTINGS = {
         {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
         {"model": "auth.user"}
     ],
-    # Add a language dropdown into the admin
-    "show_ui_builder": True,
+    
     "custom_links": {
         "account": [{
             "name": "Make Messages", 
             "url": "make_messages", 
             "icon": "fas fa-comments",
-            "permissions": ["books.view_book"]
+            "permissions": ["account.view_account"]
         }]
     },
 
@@ -88,13 +91,68 @@ JAZZMIN_SETTINGS = {
         # App with dropdown menu to all its models pages (Permissions checked against models)
         {"app": "account",},
     ],
+
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+        "admin.LogEntry": "fas fa-file",
+        "account.Auteur": "fas fa-user-tie",
+        "account.Client": "fas fa-users",
+        "main.Article": "fas fa-book",
+        "main.Payment": "fas fa-dollar-sign",
+        "main.Video": "fas fa-photo-video",
+        "main.UserArticle": "fas fa-book-open",
+        "main.Comment": "fas fa-comment",
+        "main.CouponCode": "fas fa-tag",
+        "main.Categorie": "fas fa-filter",
+    },
+
+    "language_chooser": True,
+    "show_ui_builder": True,
+}
+
+
+
+JAZZMIN_UI_TWEAKS = {
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "brand_colour": False,
+    "accent": "accent-primary",
+    "navbar": "navbar-white navbar-light",
+    "no_navbar_border": False,
+    "navbar_fixed": False,
+    "layout_boxed": False,
+    "footer_fixed": False,
+    "sidebar_fixed": False,
+    "sidebar": "sidebar-dark-primary",
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": False,
+    "sidebar_nav_compact_style": False,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": False,
+    "theme": "default",
+    "dark_mode_theme": "",
+    "button_classes": {
+        "primary": "btn-outline-primary",
+        "secondary": "btn-outline-secondary",
+        "info": "btn-outline-info",
+        "warning": "btn-outline-warning",
+        "danger": "btn-outline-danger",
+        "success": "btn-outline-success",
+    },
 }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "django.middleware.locale.LocaleMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    "django.contrib.admindocs.middleware.XViewMiddleware",
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -154,15 +212,20 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'GMT'
 
 USE_I18N = True
 
 USE_L10N = True
 
 USE_TZ = True
+
+LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)
+
+
+LANGUAGES = DJANGO_LANGUAGES
 
 
 # Static files (CSS, JavaScript, Images)
