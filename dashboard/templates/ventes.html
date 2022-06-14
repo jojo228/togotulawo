@@ -4,6 +4,8 @@
 
 {% block content %}
 
+
+
 <h3 class="text-center">Mes Ventes </h3> <br/>
 
  <!--Graphs-->
@@ -17,9 +19,9 @@
                     var myChart1 = new Chart(ctx, {
                         type: 'pie',
                         data: {
-                            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                            labels: [{% for i in art %} '{{i.title}}', {% endfor %}],
                             datasets: [{
-                                label: 'Products',
+                                label: 'Article',
                                 data: [12, 19, 3, 5, 2, 3],
                                 backgroundColor: [
                                     'rgba(255, 99, 132, 1)',
@@ -61,9 +63,9 @@
                     var myChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                            labels: [{% for i in art %} '{{i.title}}', {% endfor %}],
                             datasets: [{
-                                label: 'Products',
+                                label: 'Documents les plus vendus',
                                 data: [12, 19, 3, 5, 2, 3],
                                 backgroundColor: [
                                     'rgba(255, 99, 132, 1)',
@@ -124,23 +126,24 @@
 			<th scope="col">#</th>
 			<th scope="col">Order ID</th>
 			<th scope="col">Payment ID</th>
-			<th scope="col">Documents</th>
+			<th scope="col">Document title</th>
+			<th scope="col">Client</th>
 			<th scope="col">Statut</th>
 			<th scope="col">Action</th>
 			
 		</tr>
 	</thead>
 	<tbody>
-		{% for i in article %}
+		{% for i in order %}
 		<tr>
 			<th scope="row">{{forloop.counter}}</th>
 			<td>{{i.order_id}}</td>
 			<td>{{i.payment_id}}</td>
-			<td>{{i.article}}</td>
+			<td>{{i.article.title}}</td>
+			<td>{{i.user.get_full_name}}</td>
 			<td>{{i.status}}</td>
             <td>
-				<a class="btn btn-sm btn-info" href="{% url 'article_update' i.slug %}">Modifier</a>
-				<a class="btn btn-sm btn-danger" href="{% url 'article_delete' i.id %}">Supprimer</a>
+				<a class="btn btn-sm btn-info" href="">Afficher</a>
 			</td>			
 		</tr>
 		{% endfor %}
@@ -154,5 +157,6 @@
 </div>
 </div>
 <!-- [ Main Content ] end -->
+
 
 {% endblock %}

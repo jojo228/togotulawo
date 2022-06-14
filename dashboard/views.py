@@ -10,16 +10,11 @@ def HomePage(request):
 
 
 def vente(request):
-    context = {}
     
-    try:
-        article = Payment.objects.filter(user=request.user.auteur).all()
-        context['article'] =  article
-    except Exception as e: 
-        print(e)
+    order = Payment.objects.filter(article__auteur = request.user.auteur, )
+    art = Article.objects.filter(auteur = request.user.auteur)
     
-    print(context)
-    return render(request , 'ventes.html' ,context)
+    return render(request , 'ventes.html', locals())
 
 
 

@@ -36,6 +36,9 @@
 	<!-- vendor css -->
 	<link rel="stylesheet" type="text/css" href="{% static '/dashboard/assets/css/style.css' %}">
 	<link rel="stylesheet" href="{% static '/dashboard/assets/css/dash.css' %}">
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+
 </head>
 
 <body class="">
@@ -78,6 +81,9 @@
 					</li>
 					
 					
+					<li class="nav-item"><a href="{% url 'brouillon' %}" class="nav-link"><span class="pcoded-micon"><i
+						class="feather icon-book"></i></span><span class="pcoded-mtext">Ma Bibliothèque</span></a>
+					</li>
 					<li class="nav-item"><a href="{% url 'brouillon' %}" class="nav-link"><span class="pcoded-micon"><i
 						class="feather icon-trash-2"></i></span><span class="pcoded-mtext">Mes Brouillons</span></a>
 					</li>
@@ -264,8 +270,7 @@
 		<!-- <script type="text/javascript" src=" https://maps.googleapis.com/maps/api/js."></script> -->
 		<script src="{% static '/dashboard/assets/plugins/google-maps/js/gmaps.js' %}"></script>
 		<script src="{% static '/dashboard/assets/js/pages/google-maps.js' %}"></script>
-		<!--Chartjs CDN-->
-		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+		 
 		
 
 		

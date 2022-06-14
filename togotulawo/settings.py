@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'main',
     'dashboard',
     'froala_editor',
+    'chartjs',
 
 ]
 
