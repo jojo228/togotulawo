@@ -1,15 +1,15 @@
 from django.shortcuts import redirect, render
-from main.models.article import Article, Categorie
-from dashboard.forms import *
+from main.models.article import Article
+from dashboard.forms import ProfilForm, ArticleForm
 from main.models.paiement import Payment
 from main.models.user_article import UserArticle
 
-def HomePage(request):
+def home_page(request):
 
     return render(request, template_name = "index.html")
 
 
-def vente(request):
+def sale(request):
     
     order = Payment.objects.filter(article__auteur = request.user.auteur, )
     art = Article.objects.filter(auteur = request.user.auteur)
@@ -18,7 +18,7 @@ def vente(request):
 
 
 
-def Profil(request):
+def author_profil(request):
 
    user = request.user.auteur
    form = ProfilForm(instance=user)
@@ -34,7 +34,7 @@ def Profil(request):
 
 
 
-def article_detail(request , slug):
+def article_read(request , slug):
     context = {}
     try:
         article_obj = Article.objects.filter(slug = slug).first()
@@ -44,7 +44,7 @@ def article_detail(request , slug):
     return render(request , 'article_detail.html' , context)
 
 
-def see_article(request):
+def article_list(request):
     context = {}
     
     try:
@@ -57,36 +57,18 @@ def see_article(request):
     return render(request , 'publications.html' ,context)
 
 
-def publier(request):
+def article_create(request):
     
     context = {'form' : ArticleForm}
     try:
         if request.method == 'POST':
-            form = ArticleForm(request.POST)
-            print(request.FILES)
-            couverture = request.FILES['couverture']
-            ressource = request.FILES['resource']
-            title = request.POST.get('title')
-            price = request.POST.get('price')
-            discount = request.POST.get('discount')
-            publish_date = request.POST.get('publish_date')
-            type = request.POST.get('type')
-            domaine = request.POST.get('domaine')
-            active = request.POST.get('active')
-            draft = request.POST.get('is_draft')
-            user = request.user
+            form = ArticleForm(request.POST, request.FILES)
             
             if form.is_valid():
-                contenu = form.cleaned_data['contenu']
-            
-            article = Article.objects.create(
-                user = user , title = title, domaine = domaine,
-                ressource = ressource, publish_date = publish_date,
-                contenu = contenu, couverture = couverture, price = price,
-                discount = discount, type = type, active = active, draft =draft
-            )
-            print(article)
-            return redirect('/see-article/')
+                article = form.save(commit=False)
+                article.auteur = request.user.auteur
+                article.save()
+            return redirect('/dashboard/liste-article/')
     
     except Exception as e :
         print(e)
@@ -94,7 +76,7 @@ def publier(request):
     return render(request , 'publier.html' , context)
 
 
-def Brouillon(request):
+def article_draft(request):
 
     context = {}
     
@@ -145,6 +127,7 @@ def article_update(request , slug):
         print(e)
 
     return render(request , 'article_update.html' , context)
+
 
 def article_delete(request , id):
     try:

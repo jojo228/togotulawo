@@ -1,3 +1,6 @@
 from django.contrib import admin
+from entreprise.models import Problematique, Postuler
 
-# Register your models here.
+
+admin.site.register(Problematique)
+admin.site.register(Postuler)

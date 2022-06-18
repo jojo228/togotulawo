@@ -1,0 +1,41 @@
+{% extends 'main_base.html' %}
+{% load article_custom_tags %}
+{% load humanize %}
+
+{% block content %}
+
+<!-- ======= Recent Blog Posts Section ======= -->
+<section id="recent-blog-posts" class="recent-blog-posts">
+
+    <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+            <div class="card-body">
+                <b>Filtrer Par : - </b>
+
+            </div>
+        </header>
+
+        <div class="row">
+            {% for a in prob %}
+            <div class="col-lg-4">
+                <div class="post-box">
+                    <div class="post-img"><img src="{% if a.couverture %} {{a.couverture.url}} {% endif %}"
+                            class="img-fluid" alt=""></div>
+                    <span class="post-date">{{a.entreprise.raison_social}}</span>
+                    <span class="post-date">{{a.publish_date}}</span>
+                    <h3 class="post-title">{{a.domaine}}</h3>
+                    <a href="/offer_detail/{{a.slug}}" class="readmore stretched-link mt-auto"><span>Lire Plus</span><i
+                            class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</section><!-- End Recent Blog Posts Section -->
+
+
+
+{% endblock %}

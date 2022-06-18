@@ -44,11 +44,12 @@ class Article(models.Model):
     subtitle = models.CharField(max_length=255, blank=True)
     slug = models.SlugField(max_length=300, unique=True)
     contenu = FroalaField()
-    couverture = models.ImageField(upload_to='files/couverture')
+    couverture = models.ImageField(upload_to='files/couverture', null=True, blank=True)
     auteur = models.ForeignKey(Auteur, null=False, on_delete=models.CASCADE)
     domaine = models.ForeignKey(Categorie, null=False, on_delete=models.CASCADE)
     type = models.CharField(max_length=100, choices=option)
-    resource = models.FileField(upload_to="files/resource")
+    resource = models.FileField(
+        upload_to="files/resource", null=True, blank=True)
 
     discount = models.IntegerField(null=False, default=0)
     price = models.IntegerField(null=False)

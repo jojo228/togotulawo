@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'account',
     'main',
     'dashboard',
+    'entreprise',
     'froala_editor',
     'chartjs',
 
@@ -100,6 +101,7 @@ JAZZMIN_SETTINGS: Dict[str, Any] = {
         "admin.LogEntry": "fas fa-file",
         "account.Auteur": "fas fa-user-tie",
         "account.Client": "fas fa-users",
+        "account.Entreprise": "fas fa-building",
         "main.Article": "fas fa-book",
         "main.Payment": "fas fa-dollar-sign",
         "main.Video": "fas fa-photo-video",
@@ -112,7 +114,6 @@ JAZZMIN_SETTINGS: Dict[str, Any] = {
     "language_chooser": True,
     "show_ui_builder": True,
 }
-
 
 
 JAZZMIN_UI_TWEAKS = {

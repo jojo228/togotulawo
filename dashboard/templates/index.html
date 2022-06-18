@@ -66,7 +66,7 @@
 				<ul class="nav pcoded-inner-navbar">
 
 					
-					<li class="nav-item"><a href="{% url 'ventes' %}" class="nav-link"><span class="pcoded-micon"><i
+					<li class="nav-item"><a href="{% url 'dashboard:ventes' %}" class="nav-link"><span class="pcoded-micon"><i
 						class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">Mes Ventes</span></a>
 					</li>
 
@@ -75,20 +75,20 @@
 									class="feather icon-folder"></i></span><span class="pcoded-mtext">Gestion des
 								Publications</span></a>
 						<ul class="pcoded-submenu">
-							<li class=""><a href="{% url 'publier' %}" class="">Publier</a></li>
-							<li class=""><a href="{% url 'liste_article' %}" class="">Mes Publications</a></li>
+							<li class=""><a href="{% url 'dashboard:publier' %}" class="">Publier</a></li>
+							<li class=""><a href="{% url 'dashboard:liste_article' %}" class="">Mes Publications</a></li>
 						</ul>
 					</li>
 					
 					
-					<li class="nav-item"><a href="{% url 'brouillon' %}" class="nav-link"><span class="pcoded-micon"><i
+					<li class="nav-item"><a href="{% url 'dashboard:brouillon' %}" class="nav-link"><span class="pcoded-micon"><i
 						class="feather icon-book"></i></span><span class="pcoded-mtext">Ma Bibliothèque</span></a>
 					</li>
-					<li class="nav-item"><a href="{% url 'brouillon' %}" class="nav-link"><span class="pcoded-micon"><i
+					<li class="nav-item"><a href="{% url 'dashboard:brouillon' %}" class="nav-link"><span class="pcoded-micon"><i
 						class="feather icon-trash-2"></i></span><span class="pcoded-mtext">Mes Brouillons</span></a>
 					</li>
 
-					<li class="nav-item"><a href="{% url 'profil' %}" class="nav-link"><span class="pcoded-micon"><i
+					<li class="nav-item"><a href="{% url 'dashboard:profil' %}" class="nav-link"><span class="pcoded-micon"><i
 						class="feather icon-user"></i></span><span class="pcoded-mtext">Mon Profil</span></a>
 					</li>
 					

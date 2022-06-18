@@ -11,239 +11,255 @@
   .my-btn {
     background-color: inherit !important;
     border: 0 !important;
-}
-  </style>
+  }
+</style>
 
 
 <!-- ======= Breadcrumbs ======= -->
 <section class="breadcrumbs">
   <div class="container">
 
-      <ol>
-          <li><a href="{% url 'accueil' %}">Accueil</a></li>
-          <li>Détails sur document</li>
-      </ol>
-      <h2>{{article.title}}</h2>
+    <ol>
+      <li><a href="{% url 'main:accueil' %}">Accueil</a></li>
+      <li>Détails sur document</li>
+    </ol>
+    <h2>{{article.title}}</h2>
 
   </div>
 </section><!-- End Breadcrumbs -->
 
 <section id="blog" class="blog">
-    <div class="container" data-aos="fade-up">
+  <div class="container" data-aos="fade-up">
 
-      <div class="row">
+    <div class="row">
 
-        <div class="col-lg-8 entries">
+      <div class="col-lg-8 entries">
 
-          <article class="entry entry-single">
+        <article class="entry entry-single">
 
-            <div class="entry-img">
-              <img src="{{article.couverture.url}}" alt="" class="img-fluid">
+          <div class="entry-img">
+            <img src="{% if article.couverture %} {{article.couverture.url}} {% endif %}" alt="" class="img-fluid">
+          </div>
+
+          <h2 class="entry-title">
+            <a href="">{{article.title}}</a>
+          </h2>
+
+          <div class="entry-meta">
+            <ul>
+              <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time
+                    datetime="2020-01-01">{{article.publish_date}}</time></a></li>
+              <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
+                  href="blog-single.html">{{comment}} Commentaires</a></li>
+            </ul>
+          </div>
+
+          <div class="entry-content">
+            <p>{{article.contenu|safe}}</p>
+          </div>
+
+          <div class="entry-footer">
+            <i class="bi bi-folder"></i>
+            <ul class="cats">
+              <li><a href="#">{{article.domaine}}</a></li>
+            </ul>
+
+            <i class="bi bi-tags"></i>
+            <ul class="tags">
+              {% for a in article.tag_set.all %}
+              <li><a href="#">{{a.description}}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+
+        </article><!-- End blog entry -->
+
+        {% if article.resource %}
+        <div class="reply-form">
+          <embed src="../static/{{article.resource}}" type="application/pdf" width='700' height='600' allowfullscreen
+            webkitallowfullscreen>
+
+        </div>
+        {% endif %}
+
+        <div class="blog-author d-flex align-items-center">
+          <img src="{{article.auteur.image.url}}" class="rounded-circle float-left" alt="">
+          <div>
+            <h4>{{article.auteur}}</h4>
+            <div class="social-links">
+              <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
+              <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
+              <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
+              <a href="https://instagram.com/#"><i class="biu bi-linkedin"></i></a>
             </div>
+            <p>
+              {{article.auteur.bio}}
+            </p>
+          </div>
+        </div><!-- End blog author bio -->
 
-            <h2 class="entry-title">
-              <a href="">{{article.title}}</a>
-            </h2>
+        <div class="blog-comments">
 
-            <div class="entry-meta">
-              <ul>
-                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">{{article.publish_date}}</time></a></li>
-                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">{{comment}} Commentaires</a></li>
-              </ul>
-            </div>
-
-            <div class="entry-content">
-              <p>{{article.contenu|safe}}</p>
-            </div>
-
-            <div class="entry-footer">
-              <i class="bi bi-folder"></i>
-              <ul class="cats">
-                <li><a href="#">{{article.domaine}}</a></li>
-              </ul>
-
-              <i class="bi bi-tags"></i>
-              <ul class="tags">
-                {% for a in article.tag_set.all %}
-                <li><a href="#">{{a.description}}</a></li>
-                {% endfor %}
-              </ul>
-            </div>
-
-          </article><!-- End blog entry -->
-
-          
-        <!-- <iframe src = "{{article.resource}}" width='400' height='300' allowfullscreen webkitallowfullscreen></iframe> -->
-<div class="container">
-        <embed src="../static/{{article.resource}}" type="application/pdf" width='500' height='600' allowfullscreen webkitallowfullscreen>
-
-</div>
-          
-          <div class="blog-author d-flex align-items-center">
-            <img src="{{article.auteur.image.url}}" class="rounded-circle float-left" alt="">
-            <div>
-              <h4>{{article.auteur}}</h4>
-              <div class="social-links">
-                <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
-                <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
-                <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
-                <a href="https://instagram.com/#"><i class="biu bi-linkedin"></i></a>
-              </div>
-              <p>
-                {{article.auteur.bio}}
-              </p>
-            </div>
-          </div><!-- End blog author bio -->
-
-          <div class="blog-comments">
-
-            <h4 class="comments-count">{{comment}} Commentaires</h4>
-            {% for comment in article.comment_set.all %}
-            <div id="comment-1" class="comment">
-              <div class="d-flex">
-                <div class="comment-img"><img src="assets/img/blog/comments-1.jpg" alt=""></div>
-                <div>
-                  <h5><a href="">{{comment.client.user.get_full_name}}</a> <a href="#" class="reply">
+          <h4 class="comments-count">{{comment}} Commentaires</h4>
+          {% for comment in article.comment_set.all %}
+          <div id="comment-1" class="comment">
+            <div class="d-flex">
+              <div class="comment-img"><img src="assets/img/blog/comments-1.jpg" alt=""></div>
+              <div>
+                <h5><a href="">{{comment.client.user.get_full_name}}</a> <a href="#" class="reply">
                     <span class="fa fa-star {% if comment.rate > 0 %} checked {% endif %}"></span>
                     <span class="fa fa-star {% if comment.rate > 1 %} checked {% endif %}"></span>
                     <span class="fa fa-star {% if comment.rate > 2 %} checked {% endif %}"></span>
                     <span class="fa fa-star {% if comment.rate > 3 %} checked {% endif %}"></span>
                     <span class="fa fa-star {% if comment.rate > 4 %} checked {% endif %}"></span>
                   </a></h5>
-                  <time datetime="2020-01-01">{{comment.date}}</time>
-                  <p>
-                    {{comment.text}}
-                  </p>
-                </div>  
+                <time datetime="2020-01-01">{{comment.date}}</time>
+                <p>
+                  {{comment.text}}
+                </p>
               </div>
-              
-            </div><!-- End comment #1 -->
-            {% endfor %}
-
-             <div class="reply-form">
-              <h4>Laisser un commentaire</h4>
-              <p>Donnez une note</p>
-
-              <form action="{% url 'submit_review' article.id %}" method="POST">
-                {% csrf_token %}
-                <div class="row">
-                  <div class="rate col-md-6 form-group" >
-                    
-                    <input type="radio" name="rate" id="rating10" value="5" required /><label for="rating10" title="5"></label>
-                    <input type="radio" name="rate" id="rating9" value="4.5" required /><label for="rating9" title="4.5" class="half"></label>
-                    <input type="radio" name="rate" id="rating8" value="4" required /><label for="rating8" title="4"></label>
-                    <input type="radio" name="rate" id="rating7" value="3.5" required /><label for="rating7" title="3.5" class="half"></label>
-                    <input type="radio" name="rate" id="rating6" value="3" required /><label for="rating6" title="3"></label>
-                    <input type="radio" name="rate" id="rating5" value="2.5" required /><label for="rating5" title="2.5" class="half"></label>
-                    <input type="radio" name="rate" id="rating4" value="2" required /><label for="rating4" title="2"></label>
-                    <input type="radio" name="rate" id="rating3" value="1.5" required /><label for="rating3" title="1.5" class="half"></label>
-                    <input type="radio" name="rate" id="rating2" value="1" required /><label for="rating2" title="1"></label>
-                    <input type="radio" name="rate" id="rating1" value="0.5" required /><label for="rating1" title="0.5" class="half"></label>
-                   
-                      
-                  </div>
-                  
-                </div>
-                
-                <div class="row">
-                  <div class="col form-group">
-                    <textarea name="text" class="form-control" placeholder="Votre Commentaire*"></textarea>
-                  </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Poster</button>
-
-              </form>
-              
-
             </div>
 
-            
+          </div><!-- End comment #1 -->
+          {% endfor %}
 
-          </div><!-- End blog comments -->
+          <div class="reply-form">
+            <h4>Laisser un commentaire</h4>
+            <p>Donnez une note</p>
 
-        </div><!-- End blog entries list -->
+            <form action="{% url 'main:submit_review' article.id %}" method="POST">
+              {% csrf_token %}
+              <div class="row">
+                <div class="rate col-md-6 form-group">
 
-        <div class="col-lg-4">
-          
+                  <input type="radio" name="rate" id="rating10" value="5" required /><label for="rating10"
+                    title="5"></label>
+                  <input type="radio" name="rate" id="rating9" value="4.5" required /><label for="rating9" title="4.5"
+                    class="half"></label>
+                  <input type="radio" name="rate" id="rating8" value="4" required /><label for="rating8"
+                    title="4"></label>
+                  <input type="radio" name="rate" id="rating7" value="3.5" required /><label for="rating7" title="3.5"
+                    class="half"></label>
+                  <input type="radio" name="rate" id="rating6" value="3" required /><label for="rating6"
+                    title="3"></label>
+                  <input type="radio" name="rate" id="rating5" value="2.5" required /><label for="rating5" title="2.5"
+                    class="half"></label>
+                  <input type="radio" name="rate" id="rating4" value="2" required /><label for="rating4"
+                    title="2"></label>
+                  <input type="radio" name="rate" id="rating3" value="1.5" required /><label for="rating3" title="1.5"
+                    class="half"></label>
+                  <input type="radio" name="rate" id="rating2" value="1" required /><label for="rating2"
+                    title="1"></label>
+                  <input type="radio" name="rate" id="rating1" value="0.5" required /><label for="rating1" title="0.5"
+                    class="half"></label>
+
+
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col form-group">
+                  <textarea name="text" class="form-control" placeholder="Votre Commentaire*"></textarea>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Poster</button>
+
+            </form>
+
+
+          </div>
+
+
+
+        </div><!-- End blog comments -->
+
+      </div><!-- End blog entries list -->
+
+      <div class="col-lg-4">
+        <div class="sidebar">
 
           <!-- ======= Pricing Section ======= -->
+          <h3 class="sidebar-title">Détails</h3>
+
           <section id="pricing" class="pricing">
-          
+
             <div class="container" data-aos="fade-up">
-          
+
               <div class="row gy-4" data-aos="fade-left">
-          
+
                 <div class="col" data-aos="zoom-in" data-aos-delay="100">
                   <div class="box">
                     <div class="price">
-          
+
                       <sup><del>{{article.price|intcomma}}f</del>&nbsp;</sup>
-          
+
                       {% cal_sellprice article.price article.discount as value %}{{value|intcomma|cfa}}
-          
+
                     </div>
                     <!-- <img src="assets/img/pricing-free.png" class="img-fluid" alt=""> -->
                     <ul>
                       <li>Type: {{article.type}}</li>
                       <li>Domaine: {{article.domaine}}</li>
                       <li>Ratings: *****</li>
-                      <li>Ressource: <a href="{{article.resource.url}}" download="{{article.resource}}">Télécharger</a></li>
-                      
+                      <li>Ressource: <a href="{% if article.resource %} {{article.resource.url}} {% endif %}"
+                          download="{{article.resource}}">Télécharger</a></li>
+
                     </ul>
                     <a href="/checkout/{{article.slug}}" class="btn-buy">Acheter</a>
                   </div>
                 </div>
-          
-          
+
+
               </div>
-          
+
             </div>
-          
+
           </section><!-- End Pricing Section -->
 
-          
 
-          <div class="sidebar">
 
-            <h3 class="sidebar-title">Vidéo de présentation</h3>
-            <iframe id='player' class="mx-auto" width="100%" height="315"
-                            src="https://www.youtube.com/embed/{{video.video_id}}" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-            </iframe>
-                        
 
-          </div><!-- End sidebar -->
 
-        </div><!-- End blog sidebar -->
+          <h3 class="sidebar-title">Vidéo de présentation</h3>
+          <iframe id='player' class="mx-auto" width="100%" height="315"
+            src="https://www.youtube.com/embed/{{video.video_id}}" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
 
-      </div>
+
+        </div><!-- End sidebar -->
+
+      </div><!-- End blog sidebar -->
 
     </div>
-  </section><!-- End Blog Single Section -->
+
+  </div>
+</section><!-- End Blog Single Section -->
 
 <script>
 
 
-    $.ajax({
-        type: 'POST',
-        url: '/rate/',
-        data: {
-            'csrfmiddlewaretoken': csrf[0].value,
-            
-            
-        },
-        success: function(response){
-            console.log(response)
-            confirmBox.innerHTML = `<h1>Successfully rated with ${response.rate}</h1>`
-        },
-        error: function(error){
-            console.log(error)
-            confirmBox.innerHTML = '<h1>Ups... something went wrong</h1>'
-        }
-    })
+  $.ajax({
+    type: 'POST',
+    url: '/rate/',
+    data: {
+      'csrfmiddlewaretoken': csrf[0].value,
 
-  
+
+    },
+    success: function (response) {
+      console.log(response)
+      confirmBox.innerHTML = `<h1>Successfully rated with ${response.rate}</h1>`
+    },
+    error: function (error) {
+      console.log(error)
+      confirmBox.innerHTML = '<h1>Ups... something went wrong</h1>'
+    }
+  })
+
+
 
 </script>
 

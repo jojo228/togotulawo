@@ -31,7 +31,7 @@ class ArticleForm(forms.ModelForm):
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'price': forms.TextInput(attrs={'class': 'form-control'}),
             'discount': forms.TextInput(attrs={'class': 'form-control'}),   
-            'domaine': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
+            'domaine': forms.Select(attrs={'class': 'form-control'}),
             'type': forms.Select(attrs={'class': 'form-control'}),
         }
 
@@ -43,8 +43,10 @@ class ArticleForm(forms.ModelForm):
             "contenu": "Resumé ou sommaire",
             "resource": "Ressource (le fichier PDF de votre publication)",
             "is_draft": "Enregistré comme brouillon",
-            "active": "Rendre visible aux utilisateurs",
+            "active": "Rendre visible sur le site",
             "couverture": "Photo de couverture",
+            "domaine": "Domaine",
+
         }
 
 

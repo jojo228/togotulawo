@@ -40,8 +40,8 @@
 			<td>{{i.title}}</td>
 			<td>{{i.date_created}}</td>
             <td>
-				<a class="btn btn-sm btn-info" href="{% url 'article_update' i.slug %}">Modifier</a>
-				<a class="btn btn-sm btn-danger" href="{% url 'article_delete' i.id %}">Supprimer</a>
+				<a class="btn btn-sm btn-info" href="{% url 'dashboard:article_update' i.slug %}">Modifier</a>
+				<a class="btn btn-sm btn-danger" href="{% url 'dashboard:article_delete' i.id %}">Supprimer</a>
 			</td>			
 		</tr>
 		{% endfor %}

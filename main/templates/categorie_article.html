@@ -20,7 +20,7 @@
         {% for a in article %}
         <div class="col-lg-4">
           <div class="post-box">
-            <div class="post-img"><img src="{{a.couverture.url}}" class="img-fluid" alt=""></div>
+            <div class="post-img"><img src="{% if a.couverture %} {{a.couverture.url}} {% endif %}" class="img-fluid" alt=""></div>
             <span class="post-date">{{a.price|intcomma|cfa}}</span>
             <span class="post-date">{{a.publish_date}}</span>
             <h3 class="post-title">{{a.title}}</h3>

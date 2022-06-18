@@ -42,7 +42,7 @@ def article_page(request, slug):
 
     comment = article.comment_set.all().count()
     
-    serial_number  = request.GET.get('lecture')
+    """ serial_number  = request.GET.get('lecture')
     videos = article.video_set.all().order_by("serial_number")
 
     if serial_number is None:
@@ -60,13 +60,13 @@ def article_page(request, slug):
             try:
                 user_article = UserArticle.objects.get(user = user  , article = article)
             except:
-                return redirect("checkout" , slug=article.slug)
+                return redirect("checkout" , slug=article.slug) """
 
 
     context = {
         "article" : article , 
-        "video" : video , 
-        'videos':videos,
+        """ "video" : video , 
+        'videos':videos, """
         'comment':comment,
     }
  

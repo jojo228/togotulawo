@@ -1,0 +1,120 @@
+{% extends 'main_base.html' %}
+{% load article_custom_tags %}
+{% load humanize %}
+{% block content %}
+
+
+<!-- ======= Breadcrumbs ======= -->
+<section class="breadcrumbs">
+    <div class="container">
+
+        <ol>
+            <li><a href="{% url 'main:accueil' %}">Accueil</a></li>
+            <li>Détails de l'offre</li>
+        </ol>
+
+    </div>
+</section><!-- End Breadcrumbs -->
+
+<section id="blog" class="blog">
+    <div class="container" data-aos="fade-up">
+
+        <div class="row">
+
+            <div class="col-lg-8 entries">
+
+                <div class="blog-author d-flex align-items-center">
+                    <img src="{{prob.entreprise.image.url}}" class="rounded-circle float-left" alt="">
+                    <div>
+                        <h4>{{prob.entreprise.raison_social}}</h4>
+                        <div class="social-links">
+                            <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
+                            <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
+                            <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
+                            <a href="https://instagram.com/#"><i class="biu bi-linkedin"></i></a>
+                        </div>
+                        <p>
+                            {{prob.entreprise.objet_social}}
+                        </p>
+                    </div>
+                </div><!-- End blog author bio -->
+
+                <article class="entry entry-single">
+
+                    <div class="entry-img">
+                        <img src="{% if article.couverture %} {{article.couverture.url}} {% endif %}" alt=""
+                            class="img-fluid">
+                    </div>
+
+                    <h2 class="entry-title">
+                        <a href="">Description</a>
+                    </h2>
+
+                    <div class="entry-meta">
+                        <ul>
+                            <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
+                                    href="blog-single.html"><time
+                                        datetime="2020-01-01">{{prob.publish_date}}</time></a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="entry-content">
+                        <p>{{prob.description|safe}}</p>
+                    </div>
+
+                    <div class="entry-footer">
+                        <i class="bi bi-folder"></i>
+                        <ul class="cats">
+                            <li><a href="#">{{prob.domaine}}</a></li>
+                        </ul>
+
+                        <i class="bi bi-tags"></i>
+                        <ul class="tags">
+                            {% for a in article.tag_set.all %}
+                            <li><a href="#">{{prob.description}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                </article><!-- End blog entry -->
+
+                {% if article.resource %}
+                <div class="reply-form">
+                    <embed src="../static/{{prob.resource}}" type="application/pdf" width='700' height='600'
+                        allowfullscreen webkitallowfullscreen>
+
+                </div>
+                {% endif %}
+
+                
+
+                
+
+            </div><!-- End blog entries list -->
+
+            <div class="col-lg-4">
+                <div class="sidebar">
+
+                    <!-- ======= Pricing Section ======= -->
+                    <h3 class="sidebar-title">Détails</h3>
+
+                    <ul>
+                        <li><strong>Domaine</strong>: {{prob.domaine}}</li>
+                        <li><strong>Durée</strong>: {{prob.duree_recherche}} mois</li>
+                        <li><strong>Profil recherché</strong>:{{prob.profil_rechercher|safe}}</li>
+                        
+                    </ul>
+                    <a href="/offer_create/{{prob.slug}}" class="btn btn-primary">Postuler</a>
+                </div><!-- End sidebar -->
+
+            </div><!-- End blog sidebar -->
+
+        </div>
+
+    </div>
+</section><!-- End Blog Single Section -->
+
+
+
+{% endblock %}

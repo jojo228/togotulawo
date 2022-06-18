@@ -8,7 +8,7 @@
     <div class="container">
 
         <ol>
-            <li><a href="{% url 'accueil' %}">Accueil</a></li>
+            <li><a href="{% url 'main:accueil' %}">Accueil</a></li>
             <li>Confirmation de l'achat</li>
         </ol>
         <h2>Confirmation de l'achat</h2>
@@ -21,11 +21,11 @@
     <div class="container">
 
         <div class="row gy-4">
-
+            {% if article.couverture %}
             <div class="col-lg-8">
                 <div class="portfolio-details-slider swiper">
                     <div class="swiper-wrapper align-items-center">
-
+                         
                         <div class="swiper-slide">
                             <img src="{{article.couverture.url}}" alt="">
                         </div>
@@ -34,7 +34,7 @@
 
                 </div>
             </div>
-
+            {% endif %}
             <div class="col-lg-4">
                 <div class="portfolio-info">
                     <h3>Détails</h3>

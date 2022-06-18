@@ -1,0 +1,50 @@
+{% extends 'ense_index.html' %}
+{% load article_custom_tags %}
+{% load humanize %}
+
+{% block content %}
+
+
+
+<h3 class="text-center">Liste des postulations </h3> <br/>
+
+ 
+<!-- [ Main Content ] start -->
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Nom</th>
+			<th scope="col">Prenom</th>
+			<th scope="col">Email</th>
+			<th scope="col">Action</th>
+			
+			
+		</tr>
+	</thead>
+	<tbody>
+		{% for i in postule %}
+		<tr>
+			<th scope="row">{{forloop.counter}}</th>
+			<td>{{i.nom}}</td>
+			<td>{{i.prenom}}</td>
+			<td>{{i.email}}</td>
+			
+            <td>
+				<a class="btn btn-sm btn-info" href="">Afficher</a>
+			</td>			
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+<!-- [ Main Content ] end -->
+
+
+{% endblock %}

@@ -1,4 +1,5 @@
-from main.views.homepage import home_page
-from main.views.articles import article_page
-from account.views import SignupView , LoginView , signout
+from main.views.homepage import *
+from main.views.offers import *
+from main.views.articles import *
+from account.views import *
 
