@@ -1,6 +1,6 @@
 from django import forms
 from account.models import Entreprise
-from entreprise.models import Postuler, Problematique
+from entreprise.models import Problematique
 from main.models.article import Categorie
 
 
@@ -16,47 +16,24 @@ for item in option:
 class ProblematiqueForm(forms.ModelForm):
     class Meta:
         model = Problematique
-        fields = ['domaine', 'description', 'profil_rechercher', 'duree_recherche', 'is_draft', 'active']
+        fields = ['titre', 'domaine', 'description', 'profil_rechercher', 'duree_recherche', 'is_draft', 'active']
 
 
         widgets = {
+            'titre': forms.TextInput(attrs={'class': 'form-control'}),
             'domaine': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
             'duree_recherche': forms.NumberInput(attrs={'class': 'form-control'}),
             
         }
 
         labels = {
+            "titre": "Titre",
             "domaine": "Domaine",
             "description": "Description de votre problème",
             "profil_rechercher": "Decrivez le profil recherché",
-            "duree_recherche": "Durée estimé de la recherche(en mois)",
+            "duree_recherche": "Durée prévisionnelle de la recherche(en mois)",
             "is_draft": "Enregistré comme brouillon",
             "active": "Rendre visible sur le site",
-        }
-
-
-
-class PostuleForm(forms.ModelForm):
-    class Meta:
-        model = Postuler
-        fields = ['nom_du_candidat', 'prenom_du_candidat', 'contact_du_candidat', 'email_du_candidat', 'motivation_du_candidat',]
-
-
-        widgets = {
-            'nom_du_candidat': forms.TextInput(attrs={'class': 'form-control'}),
-            'prenom_du_candidat': forms.TextInput(attrs={'class': 'form-control'}),
-            'contact_du_candidat': forms.NumberInput(attrs={'class': 'form-control'}),
-            'email_du_candidat': forms.EmailInput(attrs={'class': 'form-control'}),
-            
-        }
-
-        labels = {
-            "motivation_du_candidat": "Motivation",
-            "nom_du_candidat": "Nom",
-            "prenom_du_candidat": "Prénoms",
-            "contact_du_candidat": "Contact",
-            "email_du_candidat": "Email",
-            
         }
 
 

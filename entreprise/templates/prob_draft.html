@@ -37,7 +37,7 @@
 		{% for i in problematique %}
 		<tr>
 			<th scope="row">{{forloop.counter}}</th>
-			<td>{{i.title}}</td>
+			<td>{{i.titre}}</td>
 			<td>{{i.publish_date}}</td>
             <td>
 				<a class="btn btn-sm btn-info" href="{% url 'entreprise:prob_update' i.slug %}">Modifier</a>

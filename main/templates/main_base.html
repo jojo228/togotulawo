@@ -77,7 +77,10 @@
           {% if request.user.is_authenticated %}
 
           {% if user.client %}
-          <li><a class="getstarted scrollto" href="">Ma Bibliothèque</a></li>
+          <li><a class="getstarted scrollto" href="{% url 'main:bibliotheque' %}">Ma Bibliothèque</a></li>
+          <li><a href="{% url 'account:profil' %}"><i class="bi bi-person"></i></a></li>
+
+          <li><a href=""><i class="bi bi-arrow-right"></i></a></li>
           
           {%else%}
          

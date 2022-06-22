@@ -11,6 +11,7 @@ from main.helpers import generate_slug
 
 class Problematique(models.Model):
     entreprise = models.ForeignKey(Entreprise, on_delete=models.CASCADE)
+    titre = models.CharField(max_length=300)
     domaine = models.CharField(max_length=50)
     description = FroalaField()
     slug = models.SlugField(max_length=300, unique=True)
@@ -21,10 +22,10 @@ class Problematique(models.Model):
     publish_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.domaine
+        return self.titre
 
     def save(self , *args, **kwargs): 
-        self.slug = generate_slug(self.description)
+        self.slug = generate_slug(self.titre)
         super(Problematique, self).save(*args, **kwargs)
 
 

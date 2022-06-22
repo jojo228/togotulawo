@@ -116,3 +116,26 @@ def recherche(request,):
     }
 
     return render(request, template_name="search.html", context=context)
+
+
+
+class Bibliotheque(ListView):
+    model = UserArticle
+    template_name = 'bibliotheque.html'
+    paginate_by = 12
+
+    def get_queryset(self):
+        filter_val=self.request.GET.get("filter","")
+        order_by=self.request.GET.get("orderby","id")
+        article = UserArticle.objects.all()
+        if filter_val:
+            article = article.filter(Q(title__icontains=filter_val) | Q(contenu__icontains=filter_val) | Q(price__icontains=filter_val)).order_by(order_by)
+
+        return article
+
+    def get_context_data(self,**kwargs):
+        context=super(Bibliotheque,self).get_context_data(**kwargs)
+        context["filter"]=self.request.GET.get("filter","")
+        context["orderby"]=self.request.GET.get("orderby","id")
+        context["all_table_fields"]=UserArticle._meta.get_fields()
+        return context

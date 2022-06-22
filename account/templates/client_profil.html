@@ -1,0 +1,22 @@
+{% extends 'main_base.html' %}
+
+{% block content %}
+
+<div class="row">
+    
+    <div class="col-md-9">
+        <div class="card card-body">
+
+            <form method="POST" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+
+                <input class="btn btn-primary" type="submit" name="Update Information" value="Mettre à Jour">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

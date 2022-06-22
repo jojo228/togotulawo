@@ -37,6 +37,7 @@ def problematique_create(request):
             form = ProblematiqueForm(request.POST)            
             publish_date = request.POST.get('publish_date')
             duree_recherche = request.POST.get('duree_recherche')
+            titre = request.POST.get('titre')
             domaine = request.POST.get('domaine')
             active = bool(request.POST.get('active'))
             draft = bool(request.POST.get('is_draft'))
@@ -50,6 +51,7 @@ def problematique_create(request):
                 entreprise=user, domaine=domaine, active=active, is_draft=draft,
                 duree_recherche = duree_recherche, publish_date = publish_date,
                 description = description, profil_rechercher = profil_rechercher,
+                titre = titre
             )
             print(article)
             return redirect('/entreprise/prob-list/')
@@ -76,31 +78,21 @@ def problematique_update(request , slug):
     try:
         
         problematique = Problematique.objects.get(slug = slug)
-       
-        if problematique.user != request.user:
+
+        if problematique.entreprise != request.user.entreprise:
             return redirect('/')
-        
-        initial_dict = {'contenu': problematique.contenu}
-        form = ProblematiqueForm(initial = initial_dict)
+       
+        form = ProblematiqueForm(instance= problematique)
         if request.method == 'POST':
-            form = ProblematiqueForm(request.POST)
-            publish_date = request.POST.get('publish_date')
-            duree_recherche = request.POST.get('duree_recherche')
-            domaine = request.POST.get('domaine')
-            user = request.user.entreprise
+            form = ProblematiqueForm(request.POST, instance=problematique)
+            
             
             if form.is_valid():
-                description = form.cleaned_data['description']
-                profil_rechercher = form.cleaned_data['profil_rechercher']
+                form.save()
+            return redirect('/entreprise/prob-list/')
             
-            prob_obj = Problematique.objects.create(
-                user = user , domaine = domaine,
-                duree_recherche = duree_recherche, publish_date = publish_date,
-                description = description, profil_rechercher = profil_rechercher,
-            )
         
-        
-        context['article_obj'] = prob_obj
+        context['problematique'] = problematique 
         context['form'] = form
     except Exception as e :
         print(e)
@@ -119,7 +111,7 @@ def problematique_delete(request , id):
     except Exception as e :
         print(e)
 
-    return redirect('/liste-problematique/')
+    return redirect('/entreprise/prob-list/')
 
 
 
@@ -142,7 +134,7 @@ def problematique_draft(request):
     context = {}
     
     try:
-        problematique = Problematique.objects.filter(entreprise=request.user.entreprise, is_draft=True)
+        problematique = Problematique.objects.filter(entreprise=request.user.entreprise, is_draft=True, active=False)
         context['problematique'] =  problematique
     except Exception as e: 
         print(e)
@@ -163,15 +155,30 @@ def problematique_draft(request):
 
 def postule_list(request):
     context = {}
-    
+
     try:
-        postule = Postuler.objects.filter(entreprise=request.user.entreprise)
+        postule = Postuler.objects.filter(
+            problematique__entreprise=request.user.entreprise)
         context['postule'] =  postule
     except Exception as e: 
         print(e)
     
     print(context)
     return render(request , 'postule_list.html' ,context)
+
+
+def postule_read(request, id):
+    context = {}
+
+    try:
+        postule = Postuler.objects.filter(
+            problematique__entreprise=request.user.entreprise).get(id=id)
+        context['postule'] =  postule
+    except Exception as e: 
+        print(e)
+    
+    print(context)
+    return render(request , 'postule_read.html' ,context)
 
 
 ###-----------------------POSTULER A UNE PROBLEMATIQUE TERMINE------------------------###

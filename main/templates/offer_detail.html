@@ -24,7 +24,7 @@
             <div class="col-lg-8 entries">
 
                 <div class="blog-author d-flex align-items-center">
-                    <img src="{{prob.entreprise.image.url}}" class="rounded-circle float-left" alt="">
+                    <img src="{% if prob.entreprise.image %} {{prob.entreprise.image.url}} {%endif%}" class="rounded-circle float-left" alt="">
                     <div>
                         <h4>{{prob.entreprise.raison_social}}</h4>
                         <div class="social-links">
@@ -101,11 +101,11 @@
 
                     <ul>
                         <li><strong>Domaine</strong>: {{prob.domaine}}</li>
-                        <li><strong>Durée</strong>: {{prob.duree_recherche}} mois</li>
+                        <li><strong>Durée prévisionnelle</strong>: {{prob.duree_recherche}} mois</li>
                         <li><strong>Profil recherché</strong>:{{prob.profil_rechercher|safe}}</li>
                         
                     </ul>
-                    <a href="/offer_create/{{prob.slug}}" class="btn btn-primary">Postuler</a>
+                    <a href="/offer_create/{{prob.id}}" class="btn btn-primary">Postuler</a>
                 </div><!-- End sidebar -->
 
             </div><!-- End blog sidebar -->

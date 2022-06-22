@@ -202,8 +202,10 @@
                       <li>Type: {{article.type}}</li>
                       <li>Domaine: {{article.domaine}}</li>
                       <li>Ratings: *****</li>
-                      <li>Ressource: <a href="{% if article.resource %} {{article.resource.url}} {% endif %}"
+                      {% if article.resource %}
+                      <li>Ressource: <a href=" {{article.resource.url}} "
                           download="{{article.resource}}">Télécharger</a></li>
+                          {% endif %}
 
                     </ul>
                     <a href="/checkout/{{article.slug}}" class="btn-buy">Acheter</a>

@@ -43,7 +43,7 @@
                     <div class="reply-form">
                         <h4>Formulaire de candidature</h4>
 
-                        <form action="{% url 'main:offer_create' prob.slug %}" method="POST">
+                        <form action="" method="POST">
                             {% csrf_token %}
 
                             <div class="row">
@@ -52,7 +52,7 @@
                                         {{form.as_p}}
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Envoyé</button>
+                            <button type="submit" class="btn btn-primary">Soumettre</button>
 
                         </form>
 
@@ -71,7 +71,7 @@
 
                     <ul>
                         <li><strong>Domaine</strong>: {{prob.domaine}}</li>
-                        <li><strong>Durée</strong>: {{prob.duree_recherche}} mois</li>
+                        <li><strong>Durée prévisionnelle</strong>: {{prob.duree_recherche}} mois</li>
 
                     </ul>
                 </div><!-- End sidebar -->

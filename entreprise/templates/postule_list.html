@@ -6,7 +6,7 @@
 
 
 
-<h3 class="text-center">Liste des postulations </h3> <br/>
+<h3 class="text-center">Liste des candidatures </h3> <br/>
 
  
 <!-- [ Main Content ] start -->
@@ -14,11 +14,11 @@
 	<thead>
 		<tr>
 			<th scope="col">#</th>
+			<th scope="col">Problematique</th>
 			<th scope="col">Nom</th>
 			<th scope="col">Prenom</th>
 			<th scope="col">Email</th>
 			<th scope="col">Action</th>
-			
 			
 		</tr>
 	</thead>
@@ -26,12 +26,13 @@
 		{% for i in postule %}
 		<tr>
 			<th scope="row">{{forloop.counter}}</th>
-			<td>{{i.nom}}</td>
-			<td>{{i.prenom}}</td>
-			<td>{{i.email}}</td>
+			<td>{{i.problematique.titre}}</td>
+			<td>{{i.nom_du_candidat}}</td>
+			<td>{{i.prenom_du_candidat}}</td>
+			<td>{{i.email_du_candidat}}</td>
 			
             <td>
-				<a class="btn btn-sm btn-info" href="">Afficher</a>
+				<a class="btn btn-sm btn-info" href="{% url 'entreprise:postule_read' i.id %}">Afficher</a>
 			</td>			
 		</tr>
 		{% endfor %}

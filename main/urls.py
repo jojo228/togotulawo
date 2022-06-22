@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.urls import include, path
 from django.shortcuts import HttpResponse
-from main.views.articles import categorie_articles, article_page, comment, recherche
+from main.views.articles import Bibliotheque, categorie_articles, article_page, comment, recherche
 from main.views.ckeckout import checkout, verifyPayment
 from main.views.homepage import home_page
 from django.conf import settings
@@ -27,9 +27,11 @@ urlpatterns = [
 
     path('offers/', OfferList.as_view(), name='offers'),
     path('offer_detail/<str:slug>', offer_detail, name='offer_detail'),
-    path('offer_create/<str:slug>', offer_create, name="offer_create"),
+    path('offer_create/<int:id>', offer_create, name="offer_create"),
 
     path('success-message/', success_message , name = 'success_message'),
+
+    path('bibliotheque/', Bibliotheque.as_view(), name='bibliotheque'),
 
 
 

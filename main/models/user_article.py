@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 
 
 
-
 class UserArticle(models.Model):
     user = models.ForeignKey(User , null = False , on_delete=models.CASCADE)
     article = models.ForeignKey(Article , null = False , on_delete=models.CASCADE)

@@ -1,5 +1,5 @@
 from django.urls import path
-from entreprise.views import home_page, problematique_create, problematique_delete, problematique_list, problematique_read, problematique_update, entreprise_profil, problematique_draft, postule_list
+from entreprise.views import home_page, postule_read, problematique_create, problematique_delete, problematique_list, problematique_read, problematique_update, entreprise_profil, problematique_draft, postule_list
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -22,6 +22,7 @@ urlpatterns = [
 
     #Postuler
     path('postule_list/', postule_list, name="postule_list"),
+    path('postule_read/<int:id>', postule_read, name="postule_read"),
 
 ]
 

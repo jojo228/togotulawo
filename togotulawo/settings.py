@@ -68,15 +68,6 @@ JAZZMIN_SETTINGS: Dict[str, Any] = {
         {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
         {"model": "auth.user"}
     ],
-    
-    "custom_links": {
-        "account": [{
-            "name": "Make Messages", 
-            "url": "make_messages", 
-            "icon": "fas fa-comments",
-            "permissions": ["account.view_account"]
-        }]
-    },
 
 
     "topmenu_links": [

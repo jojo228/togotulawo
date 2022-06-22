@@ -4,6 +4,8 @@ from account.forms import RegistrationForm , LoginForm
 from django.views import View
 from django.views.generic.edit import FormView
 
+from account.forms.profil_form import ClientForm
+
 
 class SignupView(FormView):
     template_name="courses/signup.html" 
@@ -31,5 +33,21 @@ class LoginView(FormView):
 def signout(request ):
     logout(request)
     return redirect("home")
+
+
+
+def client_profil(request):
+
+   user = request.user.client
+   form = ClientForm(instance=user)
+
+   if request.method == 'POST':
+        form = ClientForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+
+   context = {'form': form}
+
+   return render(request, 'client_profil.html', context)
 
 

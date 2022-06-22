@@ -97,31 +97,17 @@ def article_update(request , slug):
         
         article = Article.objects.get(slug = slug)
        
-        if article.user != request.user:
+        if article.auteur != request.user.auteur:
             return redirect('/')
         
-        initial_dict = {'contenu': article.contenu}
-        form = ArticleForm(initial = initial_dict)
+        form = ArticleForm(instance=article)
         if request.method == 'POST':
-            form = ArticleForm(request.POST)
-            print(request.FILES)
-            image = request.FILES['image']
-            title = request.POST.get('title')
-            subtitle = request.POST.get('subtitle')
-            domaine = request.POST.get('domaine')
-            user = request.user
-            
+            form = ArticleForm(request.POST, request.FILES, instance=article)
+           
             if form.is_valid():
-                contenu = form.cleaned_data['contenu']
-            
-            article_obj = Article.objects.create(
-                user = user , title = title,
-                subtitle = subtitle, domaine = domaine,
-                contenu = contenu, image = image
-            )
+                form.save()
         
-        
-        context['article_obj'] = article_obj
+        context['article'] = article
         context['form'] = form
     except Exception as e :
         print(e)
