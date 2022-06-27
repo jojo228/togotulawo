@@ -1,0 +1,60 @@
+{% extends 'main_base.html' %}
+{% block content %}
+
+<!-- ======= Services Section ======= -->
+<section id="services" class="services">
+
+    <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+
+            <p>Choisissez le type de compte</p>
+        </header>
+
+        <div class="row gy-4">
+
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-box blue">
+                    <i class="ri-discuss-line icon"></i>
+                    <h3>Client</h3>
+                    <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure
+                        perferendis tempore.</p>
+                    <a href="{% url 'account:client_signup' %}" class="read-more"><span>Continuer</span> <i
+                            class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-box orange">
+                    <i class="ri-discuss-line icon"></i>
+                    <h3>Auteur</h3>
+                    <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non
+                        ut nesciunt dolorem.</p>
+                    <a href="{% url 'account:auteur_signup' %}" class="read-more"><span>Continuer</span> <i
+                            class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                <div class="service-box green">
+                    <i class="ri-discuss-line icon"></i>
+                    <h3>Entreprise</h3>
+                    <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas
+                        adipisci eos earum corrupti.</p>
+                    <a href="{% url 'account:ense_signup' %}" class="read-more"><span>Continuer</span> <i class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section><!-- End Services Section -->
+
+
+
+
+</main><!-- End #main -->
+
+
+{% endblock %}

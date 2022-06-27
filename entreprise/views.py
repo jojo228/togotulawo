@@ -8,8 +8,8 @@ def home_page(request):
 
     return render(request, template_name = "ense_index.html")
 
-
-def entreprise_profil(request):
+ 
+def entreprise_profil(request): 
 
    user = request.user.entreprise
    form = EntrepriseForm(instance=user)
