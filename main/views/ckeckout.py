@@ -12,9 +12,7 @@ from time import time
 import requests
 
 
-
-
-@login_required(login_url='/login')
+@login_required(login_url='/account/login')
 def checkout(request, slug,):
     article = Article.objects.get(slug=slug)
     user = request.user
@@ -78,9 +76,9 @@ def checkout(request, slug,):
     return render(request, template_name="checkout.html", context=context)
 
 
-@login_required(login_url='/login')
+@login_required(login_url='/account/login')
 @csrf_exempt
-def verifyPayment(request):
+def verify_payment(request):
     if request.method == "POST":
         data = request.POST
         context = {}
@@ -105,7 +103,7 @@ def verifyPayment(request):
             return redirect('my-articles')
 
         except:
-            return HttpResponse("Invalid Payment Details")
+            return HttpResponse("Détails de paiement invalides")
 
 
 

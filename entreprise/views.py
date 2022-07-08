@@ -1,14 +1,16 @@
 from django.shortcuts import redirect, render
 from entreprise.forms import ProblematiqueForm, EntrepriseForm
 from entreprise.models import Postuler, Problematique
+from django.contrib.auth.decorators import login_required
 
 
-
+@login_required(login_url='/account/login')
 def home_page(request):
 
     return render(request, template_name = "ense_index.html")
 
- 
+
+@login_required(login_url='/account/login')
 def entreprise_profil(request): 
 
    user = request.user.entreprise
@@ -28,7 +30,7 @@ def entreprise_profil(request):
 
 ###-----------------------PROBLEMATIQUE------------------------###
 
-
+@login_required(login_url='/account/login')
 def problematique_create(request):
     
     context = {'form' : ProblematiqueForm}
@@ -62,6 +64,7 @@ def problematique_create(request):
     return render(request , 'prob_create.html' , context)
 
 
+@login_required(login_url='/account/login')
 def problematique_read(request , slug):
     context = {}
     try:
@@ -73,6 +76,7 @@ def problematique_read(request , slug):
 
 
 
+@login_required(login_url='/account/login')
 def problematique_update(request , slug):
     context = {}
     try:
@@ -101,6 +105,7 @@ def problematique_update(request , slug):
 
 
 
+@login_required(login_url='/account/login')
 def problematique_delete(request , id):
     try:
         problematique = Problematique.objects.get(id = id)
@@ -115,6 +120,7 @@ def problematique_delete(request , id):
 
 
 
+@login_required(login_url='/account/login')
 def problematique_list(request):
     context = {}
     
@@ -129,6 +135,7 @@ def problematique_list(request):
 
 
 
+@login_required(login_url='/account/login')
 def problematique_draft(request):
 
     context = {}
@@ -153,6 +160,7 @@ def problematique_draft(request):
 ###-----------------------POSTULER A UNE PROBLEMATIQUE------------------------###
 
 
+@login_required(login_url='/account/login')
 def postule_list(request):
     context = {}
 
@@ -167,6 +175,7 @@ def postule_list(request):
     return render(request , 'postule_list.html' ,context)
 
 
+@login_required(login_url='/account/login')
 def postule_read(request, id):
     context = {}
 

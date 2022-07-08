@@ -4,7 +4,7 @@
 
 <head>
 
-    <title>Togotulawo</title>
+    <title>Créez un compte entreprise</title>
     <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 11]>
@@ -56,54 +56,70 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="card-body">
+                        {% for message in messages %}
+                        <div class="alert alert-success d-flex align-items-center" role="alert">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2"
+                                viewBox="0 0 16 16" role="img" aria-label="Success:">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                            </svg>
+                            <div style="margin-left: 2%;">
+                                {{message}}
+                            </div>
+                        </div>
+                        
+                        {% endfor %}
                         <h4 class="mb-3 f-w-400">Créez votre compte entreprise</h4>
+
+                        <form action="{% url 'account:ense_signup' %}" method="POST">
+                            {% csrf_token %}
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="feather icon-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Nom d'utilisateur">
+                            <input type="text" name="username" class="form-control" placeholder="Nom d'utilisateur">
                         </div>
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="feather icon-home"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Raison sociale">
+                            <input type="text" name="raison_social" class="form-control" placeholder="Raison sociale">
                         </div>
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="feather icon-activity"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Objet social(Decrivez nous votre activité)">
+                            <input type="text" name="objet_social" class="form-control" placeholder="Objet social(Decrivez nous votre activité)">
                         </div>
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="feather icon-mail"></i></span>
                             </div>
-                            <input type="email" class="form-control" placeholder="Email address">
+                            <input type="email" name="email" class="form-control" placeholder="Email address">
                         </div>
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="feather icon-map-pin"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Adresse">
+                            <input type="text" name="adresse" class="form-control" placeholder="Adresse">
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="feather icon-lock"></i></span>
                             </div>
-                            <input type="password" class="form-control" placeholder="Mot de passe">
+                            <input type="password" name="password1" class="form-control" placeholder="Mot de passe">
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="feather icon-lock"></i></span>
                             </div>
-                            <input type="password" class="form-control" placeholder="Confirmez Mot de passe">
+                            <input type="password" name="password2" class="form-control" placeholder="Confirmez Mot de passe">
                         </div>
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="feather icon-camera"></i></span>
                             </div>
-                            <input type="file" class="form-control" placeholder="Photo de profil">
+                            <input type="file" name="image" class="form-control" placeholder="Photo de profil">
                         </div>
                         <div class="form-group text-left mt-2">
                             <div class="checkbox checkbox-primary d-inline">
@@ -112,11 +128,12 @@
                             </div>
                         </div>
                         <button class="btn btn-primary mb-4">Sign up</button>
+                        </form>
                         <p class="mb-2">Vous avez déjà un compte ? <a href="{% url 'account:connexion' %}" class="f-w-400">Connectez-vous</a>
                     </div>
                 </div>
                 <div class="col-md-6 d-none d-md-block">
-                    <img src="{% static 'assets/images/auth-bg.jpg' %}" alt="" class="img-fluid">
+                    <img src="{% static 'dashboard/assets/images/auth-bg.jpg' %}" alt="" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -128,21 +145,6 @@
 <script src="/dashboard/assets/js/vendor-all.min.js"></script>
 <script src="/dashboard/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
-
-<div class="footer-fab">
-    <div class="b-bg">
-        <i class="fas fa-question"></i>
-    </div>
-    <div class="fab-hover">
-        <ul class="list-unstyled">
-            <li><a href="../doc/index-bc-package.html" target="_blank" data-text="UI Kit"
-                    class="btn btn-icon btn-rounded btn-info m-0"><i class="feather icon-layers"></i></a></li>
-            <li><a href="../doc/index.html" target="_blank" data-text="Document"
-                    class="btn btn-icon btn-rounded btn-primary m-0"><i class="feather icon feather icon-book"></i></a>
-            </li>
-        </ul>
-    </div>
-</div>
 
 
 </body>

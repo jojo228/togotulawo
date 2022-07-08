@@ -9,6 +9,8 @@ from django.views.generic import ListView
 from django.utils.decorators import method_decorator
 from django.contrib import messages
 from django.db.models import Q
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 
 
@@ -73,6 +75,7 @@ def article_page(request, slug):
     return render(request, template_name="pageArticle.html", context=context)
 
 
+@login_required(login_url='/account/login')
 def comment(request, id):
     url = request.META.get('HTTP_REFERER')
     
@@ -118,8 +121,7 @@ def recherche(request,):
     return render(request, template_name="search.html", context=context)
 
 
-
-class Bibliotheque(ListView):
+class Bibliotheque(LoginRequiredMixin, ListView):
     model = UserArticle
     template_name = 'bibliotheque.html'
     paginate_by = 12

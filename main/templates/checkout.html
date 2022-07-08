@@ -1,6 +1,12 @@
 {% extends 'main_base.html' %}
 {% load article_custom_tags %}
 {% load humanize %}
+
+{% block title %}
+<title>Caisse</title>
+{% endblock title %}
+
+
 {% block content %}
 
 <!-- ======= Breadcrumbs ======= -->
@@ -59,14 +65,14 @@
                             <p class="display-5">Montant : <b>{% cal_sellprice article.price coupon.discount as value %}
                                     {{value|intcomma|cfa}}</b></p>
             
-                            <a class="btn btn-light border" href="?action=create_payment&couponcode={{coupon.code}}">Payer
+                            <a class="btn btn-primary border" href="?action=create_payment&couponcode={{coupon.code}}">Acheter
                                 </a>
             
                             {%else%}
                             <p class="display-7">Montant : <b>{% cal_sellprice article.price article.discount as value %}
                                     {{value|intcomma|cfa}}</b></p>
             
-                            <a class="btn btn-light border" href="https://paygateglobal.com/v1/page?token=2a2b0731-8259-40e3-8df0-26df05801e0e&amount={{value}}&description=Achat du cours {{article.name}}&identifier={{identifier}}&{{url}}">Payer</a>
+                            <a class="btn btn-primary border" href="https://paygateglobal.com/v1/page?token=2a2b0731-8259-40e3-8df0-26df05801e0e&amount={{value}}&description=Achat du cours {{article.name}}&identifier={{identifier}}&{{url}}">Acheter</a>
             
             
                             {% endif %}
@@ -84,14 +90,14 @@
                             <form action="" method="get">
 
                                 <div class="row">
-                                    <div class="col-md-9">
+                                    <div class="col-md-8">
                                         <input type="text" name="couponcode" class="form-control" id="">
 
                                     </div>
 
                                     <div class="col-md-1">
 
-                                        <input type="submit" value="Apply" class="btn btn-primary">
+                                        <input type="submit" value="Appliquer" class="btn btn-info">
 
 
                                     </div>
@@ -102,8 +108,8 @@
 
                         </ul>
                     </ul>
-                    <a class="btn btn-light border"
-                        href="https://paygateglobal.com/v1/page?token=2a2b0731-8259-40e3-8df0-26df05801e0e&amount={{value}}&description=Achat du cours {{article.title}}&identifier={{identifier}}&{{url}}">Acheter</a>
+                    <!-- <a class="btn btn-light border"
+                        href="https://paygateglobal.com/v1/page?token=2a2b0731-8259-40e3-8df0-26df05801e0e&amount={{value}}&description=Achat de {{article.title}}&identifier={{identifier}}&{{url}}">Acheter</a> -->
                 </div>
 
 

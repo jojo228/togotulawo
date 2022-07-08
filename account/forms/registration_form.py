@@ -3,24 +3,63 @@ from django.contrib.auth.models import User
 from django import forms
 from django.forms import ValidationError
 
-class RegistrationForm(UserCreationForm):
-    first_name = forms.CharField(max_length=20 , required = True)
-    last_name = forms.CharField(max_length=20 , required = True)
+from account.models import Auteur, Client, Entreprise
+
+
+class CreateUserForm(UserCreationForm):
     email = forms.EmailField(max_length=25 , required = True)
+
     class Meta:
         model = User
         fields = ['first_name'
          , 'last_name' , 'username'
           , "email" , 'password1'  , 'password2' ]
         
-    def clean_email(self):
-        email = self.cleaned_data['email']
-        user  = None
-        try:
-            user = User.objects.get(email = email)
-        except:
-            return email
+    def save(self, commit=True):
+        user  = super(CreateUserForm, self).save(commit=False)
+        user.email = self.cleaned_data['email']
             
-        if(user is not None):
-            raise ValidationError("L'utilisateur existe déjà");
+        if commit:
+            user.save()
+        return user
+
+
+
+class EntrepriseUserForm(UserCreationForm):
+    email = forms.EmailField(max_length=25 , required = True)
+
+    class Meta:
+        model = User
+        fields = ['username'
+          , "email" , 'password1'  , 'password2' ]
         
+    def save(self, commit=True):
+        user = super(EntrepriseUserForm, self).save(commit=False)
+        user.email = self.cleaned_data['email']
+            
+        if commit:
+            user.save()
+        return user
+
+    
+
+class ClientForm(forms.ModelForm):
+
+    class Meta:
+        model = Client
+        exclude = ("user",)
+
+
+class AuteurForm(forms.ModelForm):
+
+    class Meta:
+        model = Auteur
+        exclude = ("user",)
+
+
+class EntrepriseForm(forms.ModelForm):
+
+    class Meta:
+        model = Entreprise
+        exclude = ("user",)
+

@@ -4,7 +4,7 @@
 
 <head>
 
-    <title>Togotulawo</title>
+    <title>Se connecter</title>
     <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 11]>
@@ -54,8 +54,21 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="card-body">
+                        {% for message in messages %}
+                        <div class="alert alert-success d-flex align-items-center" role="alert">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2"
+                                viewBox="0 0 16 16" role="img" aria-label="Success:">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                            </svg>
+                            <div style="margin-left: 2%;">
+                                {{message}}
+                            </div>
+                        </div>
+                        
+                        {% endfor %}
                         <img src="{% static 'assets/images/logo-dark.png' %}" alt="" class="img-fluid mb-4">
-                        <h4 class="mb-3 f-w-400">Login into your account</h4>
+                        <h4 class="mb-3 f-w-400">Connectez vous à votre compte</h4>
 
                         <form action="{% url 'account:connexion' %}" method="POST">
                             {% csrf_token %}
@@ -78,14 +91,16 @@
                                 <label for="checkbox-fill-a1" class="cr"> Save credentials</label>
                             </div>
                         </div>
-                        <input type="hidden" name="next" value="{{ next }}">
+                        {% if request.GET.next %}
+                        <input type="hidden" name="next" value="{{ request.GET.next }}">
+                        {% endif %}
                         <button class="btn btn-primary mb-4">Se connecter</button>
                         </form>
 
-                        <p class="mb-2 text-muted">Forgot password? <a href="{% url 'password_reset' %}"
-                                class="f-w-400">Reset</a></p>
-                        <p class="mb-0 text-muted">Don’t have an account? <a href="{% url 'account:signup_choice' %}"
-                                class="f-w-400">Signup</a></p>
+                        <p class="mb-2 text-muted">Mot de passe oublié ? <a href="{% url 'password_reset' %}"
+                                class="f-w-400">Restaurer</a></p>
+                        <p class="mb-0 text-muted">Vous n'avez pas de compte ? <a href="{% url 'account:signup_choice' %}"
+                                class="f-w-400">Cliquez ici!</a></p>
                     </div>
                 </div>
                 <div class="col-md-6 d-none d-md-block">
@@ -100,22 +115,6 @@
 <!-- Required Js -->
 <script src="/dashboard/assets/js/vendor-all.min.js"></script>
 <script src="/dashboard/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-
-
-<div class="footer-fab">
-    <div class="b-bg">
-        <i class="fas fa-question"></i>
-    </div>
-    <div class="fab-hover">
-        <ul class="list-unstyled">
-            <li><a href="../doc/index-bc-package.html" target="_blank" data-text="UI Kit"
-                    class="btn btn-icon btn-rounded btn-info m-0"><i class="feather icon-layers"></i></a></li>
-            <li><a href="../doc/index.html" target="_blank" data-text="Document"
-                    class="btn btn-icon btn-rounded btn-primary m-0"><i class="feather icon feather icon-book"></i></a>
-            </li>
-        </ul>
-    </div>
-</div>
 
 
 </body>

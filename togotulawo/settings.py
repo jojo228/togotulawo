@@ -236,7 +236,7 @@ STATICFILES_DIRS = [
 ]
 
 
-LOGIN_URL = '/connexion/'
+LOGIN_URL = 'account:connexion'
 LOGIN_REDIRECT_URL = 'main:accueil'
 LOGOUT_REDIRECT_URL = 'account:connexion'
 

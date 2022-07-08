@@ -2,7 +2,8 @@
 from django.contrib import admin
 from django.urls import include, path
 from django.shortcuts import HttpResponse
-from account.views import AuteurSignupView, ClientSignupView, EnseSignupView, SignupView, client_profil, connexion, password_reset_request, signout, signup_choice
+from account.signup_views import auteur_signup, client_signup, signup_choice, ense_signup
+from account.views import client_profil, connexion, password_reset_request, signout
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -12,15 +13,14 @@ urlpatterns = [
 
     #Authentication urls
     path('login', connexion , name = 'connexion'),
-    path('signup', SignupView.as_view() , name = 'signup'),
     path('logout', signout , name = 'logout'),
 
     path('password_reset', password_reset_request, name='password_reset'),
 
     path('signup_choice', signup_choice , name = 'signup_choice'),
-    path('client_signup', ClientSignupView.as_view() , name = 'client_signup'),
-    path('auteur_signup', AuteurSignupView.as_view(), name='auteur_signup'),
-    path('ense_signup', EnseSignupView.as_view(), name='ense_signup'),
+    path('client_signup', client_signup , name = 'client_signup'),
+    path('auteur_signup', auteur_signup, name='auteur_signup'),
+    path('ense_signup', ense_signup, name='ense_signup'),
 
 
 

@@ -8,7 +8,10 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Togotulawo</title>
+  {% block title %}
+<title>Bienvenu sur Togotulawo</title>
+  {% endblock title %}
+  
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -17,7 +20,9 @@
   <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="{% static 'main/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -28,7 +33,7 @@
   <link href="{% static 'main/assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
   <link rel="stylesheet" href="{% static '/assets/fonts/feather/css/feather.css' %}">
   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <!-- Template Main CSS File -->
@@ -67,32 +72,35 @@
           <li><a class="nav-link scrollto" href="{% url 'main:offers' %}">Offres</a></li>
           <li><a class="nav-link scrollto" href="#contact">Formations</a></li>
           <li><a>
-            <div class="sidebar-item search-form">
-              <form action="/recherche/" method="get">
-                <input type="text" name="filter" id="filter"/>
-                <button type="submit"><i class="bi bi-search"></i></button>
-              </form>
-          </div></a></li>
-          
+              <div class="sidebar-item search-form">
+                <form action="/recherche/" method="get">
+                  <input type="text" name="filter" id="filter" />
+                  <button type="submit"><i class="bi bi-search"></i></button>
+                </form>
+              </div>
+            </a></li>
+
           {% if request.user.is_authenticated %}
 
           {% if user.client %}
           <li><a class="getstarted scrollto" href="{% url 'main:bibliotheque' %}">Ma Bibliothèque</a></li>
-          <li><a href="{% url 'account:profil' %}"><i class="bi bi-person"></i></a></li>
+          <li><a href="{% url 'account:profil' %}"><i style="font-size: 30px;" class="bi bi-person"></i></a></li>
 
-          <li><a href="{% url 'account:logout' %}"><i class="bi bi-arrow-right"></i></a></li>
-          
+          <li><a href="{% url 'account:logout' %}"><i style="font-size: 30px;" class="bi bi-arrow-right"></i></a></li>
+
           {%else%}
-         
-          <li><a class="getstarted scrollto" href="{% if user.auteur %}  {% url 'dashboard:tableau' %} {%else%} {% url 'entreprise:home' %} {% endif %}">Tableau de bord</a></li>
-          
+
+          <li><a class="getstarted scrollto"
+              href="{% if user.auteur %}  {% url 'dashboard:tableau' %} {%else%} {% url 'entreprise:home' %} {% endif %}">Tableau
+              de bord</a></li>
+
           {% endif %}
 
           {%else%}
           <li><a class="getstarted scrollto" href="{% url 'account:connexion' %}">Connexion</a></li>
           {% endif %}
 
-         
+
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -105,46 +113,21 @@
   <!-- ======= Breadcrumbs ======= -->
   <section class="breadcrumbs">
     <div class="container">
-  
+
       <ol>
         <li><a href="{% url 'main:accueil' %}">Accueil</a></li>
-  
+
       </ol>
-  
+
     </div>
   </section><!-- End Breadcrumbs -->
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="hero d-flex align-items-center">
-  
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 d-flex flex-column justify-content-center">
-          <h1 data-aos="fade-up">We offer modern solutions for growing your business</h1>
-          <h2 data-aos="fade-up" data-aos-delay="400">We are team of talented designers making websites with Bootstrap
-          </h2>
-          <div data-aos="fade-up" data-aos-delay="600">
-            <div class="text-center text-lg-start">
-              <a href="#blog"
-                class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
-                <span>Explorez</span>
-                <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
-          <img src="{% static 'main/assets/img/hero-img.png' %}" class="img-fluid" alt="">
-        </div>
-      </div>
-    </div>
-  
-  </section><!-- End Hero -->
-  
+
+
 
   <main id="main">
 
-    
+
 
     <!-- ======= Blog Section ======= -->
     <section id="blog" class="blog">
@@ -168,17 +151,23 @@
 
               <div class="entry-meta">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-book"></i> <a href="blog-single.html">Type: {{a.type}}</a></li>
-                  <li class="d-flex align-items-center"> <i class="bi bi-list"></i><a href="blog-single.html">Domaine: {{a.domaine}}</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-coin"></i> <a href="blog-single.html">Prix: {{a.price|intcomma|cfa}}</a></li>
-                  
+                  <li class="d-flex align-items-center"><i class="bi bi-book"></i> <a href="blog-single.html">Type:
+                      {{a.type}}</a></li>
+                  <li class="d-flex align-items-center"> <i class="bi bi-list"></i><a href="blog-single.html">Domaine:
+                      {{a.domaine}}</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-coin"></i> <a href="blog-single.html">Prix:
+                      {{a.price|intcomma|cfa}}</a></li>
+
                 </ul>
               </div>
               <div class="entry-meta">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">{{a.auteur}}</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">{{a.publish_date}}</time></a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">{{a.comment_set.all.count}} commentaires</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
+                      href="blog-single.html">{{a.auteur}}</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time
+                        datetime="2020-01-01">{{a.publish_date}}</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
+                      href="blog-single.html">{{a.comment_set.all.count}} commentaires</a></li>
                 </ul>
               </div>
 
@@ -195,7 +184,7 @@
 
             {% endfor %}
 
-            
+
             <div class="blog-pagination">
               <ul class="justify-content-center">
                 <li><a href="#">1</a></li>
@@ -213,7 +202,7 @@
               <h3 class="sidebar-title">Rechercher</h3>
               <div class="sidebar-item search-form">
                 <form action="/recherche/" method="get">
-                  <input type="text" name="filter" id="filter"/>
+                  <input type="text" name="filter" id="filter" />
                   <button type="submit"><i class="bi bi-search"></i></button>
                 </form>
               </div><!-- End sidebar search formn-->
@@ -221,14 +210,16 @@
               <h3 class="sidebar-title">Domaines</h3>
               <div class="sidebar-item categories">
                 <ul>
-                  {% for cat in category  %}
-                  <li><a href="{% url 'main:categorie' cat.slug %}">{{cat.name}}<span>({{cat.article_set.all.count}})</span></a></li>
+                  {% for cat in category %}
+                  <li><a
+                      href="{% url 'main:categorie' cat.slug %}">{{cat.name}}<span>({{cat.article_set.all.count}})</span></a>
+                  </li>
                   {% endfor %}
-                  
+
                 </ul>
               </div><!-- End sidebar categories-->
 
-              
+
 
               <h3 class="sidebar-title">Tags</h3>
               <div class="sidebar-item tags">
@@ -250,21 +241,15 @@
             </div><!-- End sidebar -->
             <div class="sidebar">
 
-              <h3 class="sidebar-title">Rechercher</h3>
-              <div class="sidebar-item search-form">
-                <form action="/recherche/" method="get">
-                  <input type="text" name="filter" id="filter"/>
-                  <button type="submit"><i class="bi bi-search"></i></button>
-                </form>
-              </div><!-- End sidebar search formn-->
-
               <h3 class="sidebar-title">Problématiques</h3>
               <div class="sidebar-item categories">
                 <ul>
-                  {% for cat in category  %}
-                  <li><a href="{% url 'main:categorie' cat.slug %}">{{cat.name}}<span>({{cat.article_set.all.count}})</span></a></li>
+                  {% for cat in category %}
+                  <li><a
+                      href="{% url 'main:categorie' cat.slug %}">{{cat.name}}<span>({{cat.article_set.all.count}})</span></a>
+                  </li>
                   {% endfor %}
-                  
+
                 </ul>
               </div><!-- End sidebar categories-->
 
@@ -307,9 +292,10 @@
           <div class="col-lg-5 col-md-12 footer-info">
             <a href="index.html" class="logo d-flex align-items-center">
               <img src="assets/img/logo.png" alt="">
-              <span>BCA Group</span>
+              <span>Togotulawo</span>
             </a>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies
+              darta donna mare fermentum iaculis eu non diam phasellus.</p>
             <div class="social-links mt-3">
               <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
               <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -343,11 +329,11 @@
           <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
             <h4>Nous Contacter</h4>
             <p>
-              Quartier Hédzranawoé <br>
+              Quartier Cacavélli <br>
               Lomé, Rue de Joel Assou<br>
               TOGO <br><br>
               <strong>Phone:</strong> +228 79 83 18 75<br>
-              <strong>Email:</strong> info@togotulawo.com<br>
+              <strong>Email:</strong> togotulawo@gmail.com<br>
             </p>
 
           </div>
@@ -358,19 +344,20 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>BCA Group</span></strong>. Tout droit réservés
+        &copy; Copyright <strong><span>Togotulawo</span></strong>. Tout droit réservés
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
-        Designé par <a href="https://bootstrapmade.com/">BCA Group</a>
+        Designé par <a href="https://bootstrapmade.com/">Jeedoc Sarl</a>
       </div>
     </div>
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="{% static 'main/assets/vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>

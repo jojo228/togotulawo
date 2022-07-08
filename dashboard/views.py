@@ -3,12 +3,18 @@ from main.models.article import Article
 from dashboard.forms import ProfilForm, ArticleForm
 from main.models.paiement import Payment
 from main.models.user_article import UserArticle
+from django.contrib.auth.decorators import login_required
 
+
+
+@login_required(login_url='/account/login')
 def home_page(request):
 
     return render(request, template_name = "index.html")
 
 
+
+@login_required(login_url='/account/login')
 def sale(request):
     
     order = Payment.objects.filter(article__auteur = request.user.auteur, )
@@ -17,7 +23,7 @@ def sale(request):
     return render(request , 'ventes.html', locals())
 
 
-
+@login_required(login_url='/account/login')
 def author_profil(request):
 
    user = request.user.auteur
@@ -33,7 +39,7 @@ def author_profil(request):
    return render(request, 'profil.html', context)
 
 
-
+@login_required(login_url='/account/login')
 def article_read(request , slug):
     context = {}
     try:
@@ -44,6 +50,8 @@ def article_read(request , slug):
     return render(request , 'article_detail.html' , context)
 
 
+
+@login_required(login_url='/account/login')
 def article_list(request):
     context = {}
     
@@ -57,6 +65,7 @@ def article_list(request):
     return render(request , 'publications.html' ,context)
 
 
+@login_required(login_url='/account/login')
 def article_create(request):
     
     context = {'form' : ArticleForm}
@@ -76,6 +85,7 @@ def article_create(request):
     return render(request , 'publier.html' , context)
 
 
+@login_required(login_url='/account/login')
 def article_draft(request):
 
     context = {}
@@ -90,7 +100,7 @@ def article_draft(request):
     return render(request , 'brouillons.html', context)
 
 
-
+@login_required(login_url='/account/login')
 def article_update(request , slug):
     context = {}
     try:
@@ -115,6 +125,7 @@ def article_update(request , slug):
     return render(request , 'article_update.html' , context)
 
 
+@login_required(login_url='/account/login')
 def article_delete(request , id):
     try:
         article = Article.objects.get(id = id)
