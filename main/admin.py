@@ -1,9 +1,11 @@
 from django.contrib import admin
 from main.models.article import Article, Categorie, Comment, CouponCode, Tag
+from main.models.newsletter import MailMessage, Subscribers
 from main.models.paiement import Payment
 from main.models.user_article import UserArticle
 from main.models.video import Video
 from django.utils.html import format_html
+
 # Register your models here.
 
 
@@ -77,3 +79,5 @@ admin.site.register(UserArticle, UserArticleAdminModel)
 admin.site.register(CouponCode)
 admin.site.register(Categorie, CategorieAdmin)
 admin.site.register(Comment)
+admin.site.register(Subscribers)
+admin.site.register(MailMessage)

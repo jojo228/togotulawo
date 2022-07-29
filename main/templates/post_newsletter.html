@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row mt-5 pt-5">
+        <div class="col-md-6 offset-md-3">
+            {% for message in messages %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+            {% endfor %}
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form }}
+                        <input class="btn btn-info btn-block" type="submit" value="Send Message">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

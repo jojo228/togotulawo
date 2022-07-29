@@ -16,7 +16,7 @@ from django.db.models.query_utils import Q
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from account.forms.profil_form import ClientForm
+from account.forms.profil_form import ClientForm, ClientUserForm
 
 
 
@@ -28,15 +28,22 @@ def signout(request):
 @login_required(login_url='/account/login')
 def client_profil(request):
 
-   user = request.user.client
-   form = ClientForm(instance=user)
+   user = request.user
+   client = request.user.client
+   form = ClientForm(instance=client)
+   user_form = ClientUserForm(instance=user)
 
    if request.method == 'POST':
-        form = ClientForm(request.POST, instance=user)
-        if form.is_valid():
+        form = ClientForm(request.POST, instance=client)
+        user_form = ClientUserForm(request.POST, instance=user)
+        if form.is_valid() and user_form.is_valid():
             form.save()
+            user_form.save()
+            
+            messages.success(request, 'Profil mis à jour avec succès')
 
-   context = {'form': form}
+
+   context = {'form': form, "form2":user_form}
 
    return render(request, 'client_profil.html', context)
 

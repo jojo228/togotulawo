@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-3eh82loz89usu9m2o$fk74k!=drmca3^e08_85b1d+^04ueox6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["10.10.29.200", "127.0.0.1"]
 
 
 # Application definition
@@ -247,4 +247,11 @@ LOGOUT_REDIRECT_URL = 'account:connexion'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'asslajosta@gmail.com' #Enter your email
+EMAIL_HOST_PASSWORD = 'From_2|bySpirit' #Enter the password to the emai

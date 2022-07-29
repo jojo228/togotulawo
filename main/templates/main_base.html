@@ -123,7 +123,31 @@
   </section><!-- End Breadcrumbs -->
 
 
+<!-- <section id="hero" class="hero d-flex align-items-center">
 
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 d-flex flex-column justify-content-center">
+        <h1 data-aos="fade-up">We offer modern solutions for growing your business</h1>
+        <h2 data-aos="fade-up" data-aos-delay="400">We are team of talented designers making websites with Bootstrap
+        </h2>
+        <div data-aos="fade-up" data-aos-delay="600">
+          <div class="text-center text-lg-start">
+            <a href="#about"
+              class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+              <span>Get Started</span>
+              <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
+        <img src="{% static 'main/assets/img/hero-img.png' %}" class="img-fluid" alt="">
+      </div>
+    </div>
+  </div>
+
+</section>End Hero -->
 
   <main id="main">
 
@@ -137,7 +161,7 @@
 
           <div class="col-lg-8 entries">
 
-            {% for a in article %}
+            {% for a in page_obj %}
 
             <article class="entry">
 
@@ -187,11 +211,18 @@
 
             <div class="blog-pagination">
               <ul class="justify-content-center">
-                <li><a href="#">1</a></li>
-                <li class="active"><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
+                {% if page_obj.has_previous %}
+                <li><a href="?page=1">1</a></li>
+                <li><a href="?page={{ page_obj.previous_page_number }}">précedent</a></li>
+                {% endif %}
+                <li class="active"><a href="#">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</a></li>
+                {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}">suivant</a></li>
+                {% endif %}
               </ul>
             </div>
+
+            
 
           </div><!-- End blog entries list -->
 
@@ -277,8 +308,14 @@
             <h4>Newsletter</h4>
             <p>Plus de 7,000 abonnés, Rejoignez les</p>
           </div>
+          {% for message in messages %}
+          <div class="alert alert-success">
+            {{ message }}
+          </div>
+          {% endfor %}
           <div class="col-lg-6">
-            <form action="" method="post">
+            <form action="{% url 'main:accueil' %}" method="post">
+              {% csrf_token %}
               <input type="email" name="email"><input type="submit" value="Souscrire">
             </form>
           </div>
@@ -307,9 +344,9 @@
           <div class="col-lg-2 col-6 footer-links">
             <h4>Liens Utils</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">BCA Group</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">A propos</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Jeedoc</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Comment ça marche?</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'main:faq' %}">FAQ</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Portfolio</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Terms et conditions</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Police privée</a></li>
             </ul>
@@ -351,7 +388,7 @@
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
-        Designé par <a href="https://bootstrapmade.com/">Jeedoc Sarl</a>
+        Designé par <a href="https://jeedoc.tech/">Jeedoc Sarl</a>
       </div>
     </div>
   </footer><!-- End Footer -->

@@ -5,8 +5,10 @@ from django.shortcuts import HttpResponse
 from main.views.articles import Bibliotheque, categorie_articles, article_page, comment, recherche
 from main.views.ckeckout import checkout, verify_payment
 from main.views.homepage import home_page
+from main.views.demo_and_faq import faq
 from django.conf import settings
 from django.conf.urls.static import static
+from main.views.newsletter import mail_letter
 
 from main.views.offers import OfferList, offer_detail, offer_create, success_message
 
@@ -15,6 +17,8 @@ app_name = 'main'
 urlpatterns = [
     #HomePage urls
     path('', home_page, name='accueil'),
+    path('faq/', faq, name='faq'),
+    path('mail_letter/', mail_letter, name='mail-letter'),
 
     #Articles urls
     path('article/<str:slug>', article_page, name='article'),
@@ -32,6 +36,8 @@ urlpatterns = [
     path('success-message/', success_message , name = 'success_message'),
 
     path('bibliotheque/', Bibliotheque.as_view(), name='bibliotheque'),
+    
+    
 
 
 
