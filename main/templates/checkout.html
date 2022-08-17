@@ -1,6 +1,8 @@
 {% extends 'main_base.html' %}
 {% load article_custom_tags %}
 {% load humanize %}
+{% load static %}
+
 
 {% block title %}
 <title>Caisse</title>
@@ -31,7 +33,7 @@
             <div class="col-lg-8">
                 <div class="portfolio-details-slider swiper">
                     <div class="swiper-wrapper align-items-center">
-                         
+
                         <div class="swiper-slide">
                             <img src="{{article.couverture.url}}" alt="">
                         </div>
@@ -46,38 +48,65 @@
                     <h3>Détails</h3>
                     <ul>
                         <li><strong>Titre</strong>: {{article.title}}</li>
-                        <li><strong>Type</strong>: Mémoire</li>
-                        <li><strong>Prix</strong>: <del>{{article.price|intcomma|cfa}}</del>&nbsp; </li>
-                        <li><strong>Prix Promo</strong>: remise {{article.discount}}%
-                            <span>{% cal_sellprice article.price article.discount as value %} {{value|intcomma|cfa}}</span>
-
-                        </li>
                         <br>
+                        <form action="/checkout/{{article.slug}}" method="POST">
+                            {% csrf_token %}
+                            <li>Choisissez le réseau:</li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div>
+                                            <img style="width:100px;height:50px;"
+                                                src="{% static 'main/assets/img/tmoney.png' %}" alt="T-money">
+                                        </div>
+                                        <input type="radio" name="network" value="TMONEY" id="">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div>
+                                            <img style="width:100px;height:50px;"
+                                                src="{% static 'main/assets/img/flooz.jpg' %}" alt="Flooz">
+                                        </div>
+                                        <input type="radio" name="network" value="FLOOZ" id="">
+                                    </div>
+                                </div>
+                            </li>
+                            <li>Entrez votre numéro</li>
+
+
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <input type="tel" name="phone_number" class="form-control" id="">
+
+                                </div>
+                            </div>
                         <div>
-                            
+
                             {% if coupon %}
-            
-                            <p class="alert alert-light border ">
-                                Coupon Code Applied
-                                You Have Got {{coupon.discount}}% Discount
-                            </p>
-                            <br>
-                            <p class="display-5">Montant : <b>{% cal_sellprice article.price coupon.discount as value %}
-                                    {{value|intcomma|cfa}}</b></p>
-            
-                            <a class="btn btn-primary border" href="?action=create_payment&couponcode={{coupon.code}}">Acheter
+
+                                <p class="alert alert-light border ">
+                                    Coupon Code Applied
+                                    You Have Got {{coupon.discount}}% Discount
+                                </p>
+                                <br>
+                                <p class="display-5">Montant : <b>{% cal_sellprice article.price coupon.discount as value %}
+                                        {{value|intcomma|cfa}}</b></p>
+
+                                <a class="btn btn-primary border"
+                                    href="?action=create_payment&couponcode={{coupon.code}}">Acheter
                                 </a>
-            
+
                             {%else%}
-                            <p class="display-7">Montant : <b>{% cal_sellprice article.price article.discount as value %}
-                                    {{value|intcomma|cfa}}</b></p>
-            
-                            <a class="btn btn-primary border" href="https://paygateglobal.com/v1/page?token=2a2b0731-8259-40e3-8df0-26df05801e0e&amount={{value}}&description=Achat du cours {{article.name}}&identifier={{identifier}}&{{url}}">Acheter</a>
-            
-            
+                                <p class="display-7">Montant : <b>{% cal_sellprice article.price article.discount as value %}
+                                        {{value|intcomma|cfa}}</b></p>
+
+                                
+                                    <button class="btn btn-info">Payer</button>
+
+
                             {% endif %}
-            
+
                         </div>
+                        </form>
                         <br>
                         {% if coupon_code_message %}
                         <div class="alert alert-info">
@@ -138,3 +167,4 @@
 {% endif %}
 
 {% endblock %}
+

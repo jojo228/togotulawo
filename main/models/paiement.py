@@ -9,6 +9,8 @@ class Payment(models.Model):
     payment_id = models.CharField(max_length = 50)
     user_article = models.ForeignKey(UserArticle , null = True , blank = True ,  on_delete=models.CASCADE)
     user = models.ForeignKey(User ,  on_delete=models.CASCADE)
+    phone_number = models.CharField(max_length=8, null=True)
+    network = models.CharField(max_length=6, null=True)
     article = models.ForeignKey(Article , on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
     status = models.BooleanField(default=False)

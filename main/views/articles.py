@@ -83,14 +83,14 @@ def comment(request, id):
         form = CommentForm(request.POST)
 
         if form.is_valid():
-                data = Comment()
-                data.text = form.cleaned_data['text']
-                data.rate = form.cleaned_data['rate']
-                data.article_id = id
-                data.client_id = request.user.client.id
-                data.save()
-                messages.success(request, 'Merci! Commentaire ajouté.')
-                return redirect(url)
+            data = Comment()
+            data.text = form.cleaned_data['text']
+            data.rate = form.cleaned_data['rate']
+            data.article_id = id
+            data.client_id = request.user.client.id
+            data.save()
+            messages.success(request, 'Merci! Commentaire ajouté.')
+            return redirect(url)
 
 
 def categorie_articles(request, slug):
@@ -127,13 +127,14 @@ class Bibliotheque(LoginRequiredMixin, ListView):
     paginate_by = 12
 
     def get_queryset(self):
+        user = self.request.user
         filter_val=self.request.GET.get("filter","")
         order_by=self.request.GET.get("orderby","id")
-        article = UserArticle.objects.all()
+        article = UserArticle.objects.filter(user=user).all()
         if filter_val:
             article = article.filter(Q(title__icontains=filter_val) | Q(contenu__icontains=filter_val) | Q(price__icontains=filter_val)).order_by(order_by)
 
-        return article
+        return article 
 
     def get_context_data(self,**kwargs):
         context=super(Bibliotheque,self).get_context_data(**kwargs)

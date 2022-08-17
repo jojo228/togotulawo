@@ -48,8 +48,16 @@ INSTALLED_APPS = [
     'entreprise',
     'froala_editor',
     'chartjs',
+    "rest_framework",
 
 ]
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_RENDERER_CLASSES": (
+        "rest_framework.renderers.JSONRenderer",
+    )
+}
 
 
 JAZZMIN_SETTINGS: Dict[str, Any] = {
@@ -254,4 +262,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'asslajosta@gmail.com' #Enter your email
-EMAIL_HOST_PASSWORD = 'From_2|bySpirit' #Enter the password to the emai
+EMAIL_HOST_PASSWORD = 'From_2|bySpirit' #Enter the password to the email
