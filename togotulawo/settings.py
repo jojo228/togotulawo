@@ -63,12 +63,20 @@ REST_FRAMEWORK = {
 JAZZMIN_SETTINGS: Dict[str, Any] = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
     "site_title": "Togotulawo",
-
     # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
     "site_header": "Togotulawo",
     "site_brand": "Togotulawo",
     "copyright": "Togotulawo Sarl U",
     "welcome_sign": "Bienvenu sur Togotulawo",
+    
+    # Logo to use for your site, must be present in static files, used for brand on top left
+    "site_logo": "main/assets/img/logo-jazzmin.png",
+
+    # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
+    "login_logo": None,
+
+    # Logo to use for login form in dark themes (defaults to login_logo)
+    "login_logo_dark": None,
     # The model admin to search from the search bar, search bar omitted if excluded
     "search_model": "auth.User",
     # Additional links to include in the user menu on the top right ("app" url type is not allowed)

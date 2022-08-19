@@ -107,13 +107,59 @@
 
         <div class="blog-comments">
 
+          <div class="reply-form">
+            <h4>Laisser un commentaire</h4>
+            <p>Donnez une note</p>
+            {% for message in messages %}
+            <div class="alert alert-success">
+              {{ message }}
+            </div>
+            {% endfor %}
+          
+            <form action="{% url 'main:submit_review' article.id %}" method="POST">
+              {% csrf_token %}
+              <div class="row">
+                <div class="rate col-md-6 form-group">
+          
+                  <input type="radio" name="rate" id="rating10" value="5" required /><label for="rating10" title="5"></label>
+                  <input type="radio" name="rate" id="rating9" value="4.5" required /><label for="rating9" title="4.5"
+                    class="half"></label>
+                  <input type="radio" name="rate" id="rating8" value="4" required /><label for="rating8" title="4"></label>
+                  <input type="radio" name="rate" id="rating7" value="3.5" required /><label for="rating7" title="3.5"
+                    class="half"></label>
+                  <input type="radio" name="rate" id="rating6" value="3" required /><label for="rating6" title="3"></label>
+                  <input type="radio" name="rate" id="rating5" value="2.5" required /><label for="rating5" title="2.5"
+                    class="half"></label>
+                  <input type="radio" name="rate" id="rating4" value="2" required /><label for="rating4" title="2"></label>
+                  <input type="radio" name="rate" id="rating3" value="1.5" required /><label for="rating3" title="1.5"
+                    class="half"></label>
+                  <input type="radio" name="rate" id="rating2" value="1" required /><label for="rating2" title="1"></label>
+                  <input type="radio" name="rate" id="rating1" value="0.5" required /><label for="rating1" title="0.5"
+                    class="half"></label>
+          
+          
+                </div>
+          
+              </div>
+          
+              <div class="row">
+                <div class="col form-group">
+                  <textarea name="text" class="form-control" placeholder="Votre Commentaire*"></textarea>
+                </div>
+              </div>
+              <button onclick="sendData()" type="submit" class="btn btn-primary">Poster</button>
+          
+            </form>
+          </div>
+        <br>
+
           <h4 class="comments-count">{{comment}} Commentaires</h4>
           {% for comment in article.comment_set.all %}
           <div id="comment-1" class="comment">
             <div class="d-flex">
               <div class="comment-img"><img src="assets/img/blog/comments-1.jpg" alt=""></div>
               <div>
-                <h5><a href="">{{comment.client.user.get_full_name}}</a> <a href="#" class="reply">
+                <h5><a href="">{{comment.user.get_full_name}}</a> <a href="#" class="reply">
                     <span class="fa fa-star {% if comment.rate > 0 %} checked {% endif %}"></span>
                     <span class="fa fa-star {% if comment.rate > 1 %} checked {% endif %}"></span>
                     <span class="fa fa-star {% if comment.rate > 2 %} checked {% endif %}"></span>
@@ -130,52 +176,7 @@
           </div><!-- End comment #1 -->
           {% endfor %}
 
-          <div class="reply-form">
-            <h4>Laisser un commentaire</h4>
-            <p>Donnez une note</p>
-
-            <form action="{% url 'main:submit_review' article.id %}" method="POST">
-              {% csrf_token %}
-              <div class="row">
-                <div class="rate col-md-6 form-group">
-
-                  <input type="radio" name="rate" id="rating10" value="5" required /><label for="rating10"
-                    title="5"></label>
-                  <input type="radio" name="rate" id="rating9" value="4.5" required /><label for="rating9" title="4.5"
-                    class="half"></label>
-                  <input type="radio" name="rate" id="rating8" value="4" required /><label for="rating8"
-                    title="4"></label>
-                  <input type="radio" name="rate" id="rating7" value="3.5" required /><label for="rating7" title="3.5"
-                    class="half"></label>
-                  <input type="radio" name="rate" id="rating6" value="3" required /><label for="rating6"
-                    title="3"></label>
-                  <input type="radio" name="rate" id="rating5" value="2.5" required /><label for="rating5" title="2.5"
-                    class="half"></label>
-                  <input type="radio" name="rate" id="rating4" value="2" required /><label for="rating4"
-                    title="2"></label>
-                  <input type="radio" name="rate" id="rating3" value="1.5" required /><label for="rating3" title="1.5"
-                    class="half"></label>
-                  <input type="radio" name="rate" id="rating2" value="1" required /><label for="rating2"
-                    title="1"></label>
-                  <input type="radio" name="rate" id="rating1" value="0.5" required /><label for="rating1" title="0.5"
-                    class="half"></label>
-
-
-                </div>
-
-              </div>
-
-              <div class="row">
-                <div class="col form-group">
-                  <textarea name="text" class="form-control" placeholder="Votre Commentaire*"></textarea>
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Poster</button>
-
-            </form>
-
-
-          </div>
+          
 
 
 
@@ -204,7 +205,6 @@
                       {% cal_sellprice article.price article.discount as value %}{{value|intcomma|cfa}}
 
                     </div>
-                    <!-- <img src="assets/img/pricing-free.png" class="img-fluid" alt=""> -->
                     <ul>
                       <li>Type: {{article.type}}</li>
                       <li>Domaine: {{article.domaine}}</li>
@@ -231,8 +231,8 @@
 
 
           <h3 class="sidebar-title">Vidéo de présentation</h3>
-          <iframe id='player' class="mx-auto" width="100%" height="315"
-            src="https://www.youtube.com/embed/{{video.video_id}}" frameborder="0"
+          <iframe title="Video de presentation" id='player' class="mx-auto" width="100%" height="315"
+            src="https://www.youtube.com/embed/{{video.video_id}}"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
           </iframe>
@@ -249,10 +249,10 @@
 
 <script>
 
-
+  const sendData = function(){
   $.ajax({
     type: 'POST',
-    url: '/rate/',
+    url: '/submit_review/',
     data: {
       'csrfmiddlewaretoken': csrf[0].value,
 
@@ -267,6 +267,7 @@
       confirmBox.innerHTML = '<h1>Ups... something went wrong</h1>'
     }
   })
+  }
 
 
 

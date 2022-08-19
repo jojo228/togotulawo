@@ -94,7 +94,7 @@ class CouponCode(models.Model):
 
 
 class Comment(models.Model):
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
     text = models.CharField(max_length=1000, null=True)
     rate = models.FloatField()

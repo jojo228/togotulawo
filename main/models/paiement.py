@@ -6,7 +6,8 @@ from django.contrib.auth.models import User
 
 class Payment(models.Model):
     order_id = models.CharField(max_length = 50 , null = False)
-    payment_id = models.CharField(max_length = 50)
+    paygate_payment_id = models.CharField(max_length = 50, null=True)
+    payment_reference = models.CharField(max_length = 50, null=True)
     user_article = models.ForeignKey(UserArticle , null = True , blank = True ,  on_delete=models.CASCADE)
     user = models.ForeignKey(User ,  on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=8, null=True)

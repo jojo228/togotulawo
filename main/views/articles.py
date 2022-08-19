@@ -87,10 +87,11 @@ def comment(request, id):
             data.text = form.cleaned_data['text']
             data.rate = form.cleaned_data['rate']
             data.article_id = id
-            data.client_id = request.user.client.id
+            data.user = request.user
             data.save()
             messages.success(request, 'Merci! Commentaire ajouté.')
             return redirect(url)
+    
 
 
 def categorie_articles(request, slug):
