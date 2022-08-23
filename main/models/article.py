@@ -50,6 +50,7 @@ class Article(models.Model):
     type = models.CharField(max_length=100, choices=option)
     resource = models.FileField(
         upload_to="files/resource", null=True, blank=True)
+    video_link = models.URLField(max_length=200)
 
     discount = models.IntegerField(null=False, default=0)
     price = models.IntegerField(null=False)
@@ -68,20 +69,6 @@ class Article(models.Model):
     def save(self , *args, **kwargs): 
         self.slug = generate_slug(self.title)
         super(Article, self).save(*args, **kwargs)
-
-
-
-class ArticleProperty(models.Model):
-    description = models.CharField(max_length=100, null=False)
-    article = models.ForeignKey(Article, null=False, on_delete=models.CASCADE)
-
-    class Meta:
-        abstract = True
-
-
-
-class Tag(ArticleProperty):
-    pass
 
 
 

@@ -24,13 +24,14 @@ class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
         fields = ['title', 'contenu', 'domaine', 'type', 'couverture',
-         'resource', 'price', 'discount', 'is_draft', 'active']
+         'resource', 'price', 'discount', 'video_link', 'is_draft', 'active']
 
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'price': forms.TextInput(attrs={'class': 'form-control'}),
             'discount': forms.TextInput(attrs={'class': 'form-control'}),   
+            'video_link': forms.TextInput(attrs={'class': 'form-control'}),   
             'domaine': forms.Select(attrs={'class': 'form-control'}),
             'type': forms.Select(attrs={'class': 'form-control'}),
         }
@@ -46,6 +47,7 @@ class ArticleForm(forms.ModelForm):
             "active": "Rendre visible sur le site",
             "couverture": "Photo de couverture",
             "domaine": "Domaine",
+            'video_link': "Lien de la video"
 
         }
 

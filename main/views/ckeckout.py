@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from main.models.article import Article, CouponCode
 from main.models.paiement import Payment
 from main.models.user_article import UserArticle
-from main.models.video import Video
 from django.shortcuts import HttpResponse
 from rest_framework import status
 from rest_framework.response import Response

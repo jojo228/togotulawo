@@ -1,21 +1,11 @@
 from django.contrib import admin
-from main.models.article import Article, Categorie, Comment, CouponCode, Tag
+from main.models.article import Article, Categorie, Comment, CouponCode
 from main.models.newsletter import MailMessage, Subscribers
 from main.models.paiement import Payment
 from main.models.user_article import UserArticle
-from main.models.video import Video
 from django.utils.html import format_html
 
 # Register your models here.
-
-
-class TagAdmin(admin.TabularInline):
-    model = Tag
-
-
-class VideoAdmin(admin.TabularInline):
-    model = Video
-
 
 
 class CategorieAdmin(admin.ModelAdmin):
@@ -24,7 +14,6 @@ class CategorieAdmin(admin.ModelAdmin):
 
 
 class ArticleAdmin(admin.ModelAdmin):
-    inlines = [TagAdmin,  VideoAdmin]
     list_display = ["title", 'get_price', 'get_discount', 'active']
     list_filter = ("discount", 'active')
     prepopulated_fields = {"slug": ("title",)}
@@ -73,7 +62,6 @@ class UserArticleAdminModel(admin.ModelAdmin):
 
 
 admin.site.register(Article, ArticleAdmin)
-admin.site.register(Video)
 admin.site.register(Payment, PaymentAdmin)
 admin.site.register(UserArticle, UserArticleAdminModel)
 admin.site.register(CouponCode)
