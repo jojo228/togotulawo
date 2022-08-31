@@ -55,7 +55,7 @@
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
       <a href="{% url 'main:accueil' %}" class="logo d-flex align-items-center">
-        <img src="{% static 'main/assets/img/logo.png' %}" alt="">
+        <!-- <img src="{% static 'main/assets/img/logo.png' %}" alt=""> -->
         <span>Togotulawo</span>
       </a>
 
@@ -175,11 +175,11 @@
 
               <div class="entry-meta">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-book"></i> <a href="blog-single.html">Type:
+                  <li class="d-flex align-items-center"><i class="bi bi-book"></i> <a >Type:
                       {{a.type}}</a></li>
-                  <li class="d-flex align-items-center"> <i class="bi bi-list"></i><a href="blog-single.html">Domaine:
+                  <li class="d-flex align-items-center"> <i class="bi bi-list"></i><a >Domaine:
                       {{a.domaine}}</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-coin"></i> <a href="blog-single.html">Prix:
+                  <li class="d-flex align-items-center"><i class="bi bi-coin"></i> <a >Prix:
                       {{a.price|intcomma|cfa}}</a></li>
 
                 </ul>
@@ -187,11 +187,20 @@
               <div class="entry-meta">
                 <ul>
                   <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
-                      href="blog-single.html">{{a.auteur}}</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time
+                      >{{a.auteur}}</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a ><time
                         datetime="2020-01-01">{{a.publish_date}}</time></a></li>
                   <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                      href="blog-single.html">{{a.comment_set.all.count}} commentaires</a></li>
+                      >{{a.comment_set.all.count}} commentaires</a></li>
+                </ul>
+              </div>
+              <div class="entry-meta">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="bi bi-download"></i> <a
+                      >Télécharger 0 fois</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-send-check"></i>
+                    <a >Recommander 0 fois</a></li>
+                  
                 </ul>
               </div>
 

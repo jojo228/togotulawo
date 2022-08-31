@@ -56,12 +56,15 @@ class ArticleForm(forms.ModelForm):
 class ProfilForm(forms.ModelForm):
     class Meta:
         model = Auteur
-        fields = ['website', 'image', 'niveau_etude',
-         'faculte', 'annee_graduation', 'tel', 'bio']
+        fields = ['affiliation', 'pays_affiliation', 'faculte', 'niveau_etude', 'grade', 'annee_graduation', 'tel',
+         'website', 'image', 'bio']
 
         widgets = {
+            'pays_affiliation': forms.TextInput(attrs={'class': 'form-control'}),
+            'affiliation': forms.TextInput(attrs={'class': 'form-control'}),
             'website': forms.TextInput(attrs={'class': 'form-control'}),
             'niveau_etude': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
+            'grade': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
             'faculte': forms.TextInput(attrs={'class': 'form-control'}),   
             'annee_graduation': forms.TextInput(attrs={'class': 'form-control'}),  
             'tel': forms.TextInput(attrs={'class': 'form-control'}),  
@@ -74,6 +77,9 @@ class ProfilForm(forms.ModelForm):
             "faculte": "Domaine",
             "annee_graduation": "Année de graduation",
             "tel": "Téléphone",
+            "pays_affiliation": "Pays d'affiliation",
+            "affiliation": "Affiliation",
+            "grade": "Grade",
             "bio": "Biographie",
             "image": "Photo de profil",
             

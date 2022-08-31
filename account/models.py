@@ -2,19 +2,26 @@ from django.db import models
 from django.contrib.auth.models import User
 
 option = (
-    ('License', 'License'),
-    ('Maîtrise', 'Maîtrise'),
-    ('Master', 'Master'),
-    ('Doctorat', 'Doctorat'),
+    ('Licence', 'Licence'),
     ('DEA', 'DEA'),
-    ('Professorat', 'Professorat'),
+    ('Maîtrise/Master', 'Maîtrise/Master'),
+    ('Doctorat/Phd', 'Doctorat/Phd'),
+)
+grad = (
+    ('Assisstant', 'Assisstant'),
+    ('Maître assisstant/Maître de recherche', 'Maître assisstant/Maître de recherche'),
+    ('Maître de conférence', 'Maître de conférence'),
+    ('Professeur titulaire/Directeur de recherche', 'Professeur titulaire/Directeur de recherche'),
 )
 
 
 class Auteur(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     niveau_etude = models.CharField(max_length=50, choices=option, null=True, blank=True,)
+    grade = models.CharField(max_length=50, choices=grad, null=True, blank=True,)
     faculte = models.CharField(max_length=50, null=True, blank=True,)
+    affiliation = models.CharField(max_length=50, null=True, blank=True,)
+    pays_affiliation = models.CharField(max_length=50, null=True, blank=True,)
     annee_graduation = models.DateField(null=True, blank=True,)
     tel = models.PositiveIntegerField(null=True, blank=True,)
     website = models.URLField(max_length=200, null=True, blank=True,)
