@@ -10,7 +10,7 @@ option = (
 grad = (
     ('Assisstant', 'Assisstant'),
     ('Maître assisstant/Maître de recherche', 'Maître assisstant/Maître de recherche'),
-    ('Maître de conférence', 'Maître de conférence'),
+    ('Maître de conférences', 'Maître de conférences'),
     ('Professeur titulaire/Directeur de recherche', 'Professeur titulaire/Directeur de recherche'),
 )
 

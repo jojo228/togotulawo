@@ -13,7 +13,7 @@ def home_page(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    category = Categorie.objects.all()
+    category = Categorie.objects.all().order_by('name')
 
     problematique = Problematique.objects.filter(is_draft=False, active=True)
     

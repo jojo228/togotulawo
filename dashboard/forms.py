@@ -12,12 +12,6 @@ from main.models.article import Article, Categorie
 #         ('Médecine', 'Médecine'), ('Maths', 'Maths'), ('Physique', 'Physique'), ('Statistique', 'Statistique'), 
 #     )
 
-option= Categorie.objects.all().values_list('name', 'name')
-
-choice_list = []
-
-for item in option:
-    choice_list.append(item)
 
 
 class ArticleForm(forms.ModelForm):
@@ -63,8 +57,8 @@ class ProfilForm(forms.ModelForm):
             'pays_affiliation': forms.TextInput(attrs={'class': 'form-control'}),
             'affiliation': forms.TextInput(attrs={'class': 'form-control'}),
             'website': forms.TextInput(attrs={'class': 'form-control'}),
-            'niveau_etude': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
-            'grade': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
+            'niveau_etude': forms.Select(attrs={'class': 'form-control'}),
+            'grade': forms.Select(attrs={'class': 'form-control'}),
             'faculte': forms.TextInput(attrs={'class': 'form-control'}),   
             'annee_graduation': forms.TextInput(attrs={'class': 'form-control'}),  
             'tel': forms.TextInput(attrs={'class': 'form-control'}),  
