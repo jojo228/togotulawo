@@ -2,12 +2,10 @@ from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render , redirect
 from django.contrib.auth import logout, login, authenticate
-from django.views import View
-from django.views.generic.edit import FormView
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.core.mail import send_mail, BadHeaderError
 from django.contrib.auth.forms import PasswordResetForm
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
@@ -15,8 +13,12 @@ from django.utils.encoding import force_bytes
 from django.db.models.query_utils import Q
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
 from account.forms.profil_form import ClientForm, ClientUserForm
+
+from rest_framework import viewsets
+from rest_framework import permissions
+from account.serializers import UserSerializer, GroupSerializer
+
 
 
 
@@ -91,3 +93,23 @@ def connexion(request):
 			else:
 				return redirect(settings.LOGIN_REDIRECT_URL)
 	return render(request=request, template_name='login.html')
+
+
+#SERIALIZERS VIEWS
+
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class GroupViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
+    permission_classes = [permissions.IsAuthenticated]

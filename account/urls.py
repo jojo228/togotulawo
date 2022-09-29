@@ -1,7 +1,5 @@
 
-from django.contrib import admin
-from django.urls import include, path
-from django.shortcuts import HttpResponse
+from django.urls import path
 from account.signup_views import auteur_signup, client_signup, signup_choice, ense_signup
 from account.views import client_profil, connexion, password_reset_request, signout
 from django.conf import settings

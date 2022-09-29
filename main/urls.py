@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.urls import include, path
 from django.shortcuts import HttpResponse
-from main.views.articles import Bibliotheque, categorie_articles, article_page, comment, recherche
+from main.views.articles import Bibliotheque, categorie_articles, article_page, comment, problematique, recherche
 from main.views.ckeckout import checkout, verify_payment
 from main.views.homepage import home_page
 from main.views.demo_and_faq import faq
@@ -26,6 +26,7 @@ urlpatterns = [
     path('verify_payment', verify_payment , name = 'verify_payment'),
     path('recherche/', recherche , name = 'recherche'),
     path('categorie/<str:slug>', categorie_articles, name = 'categorie'),
+    path('problematique/<str:slug>', problematique, name = 'problematique'),
     path('submit_review/<int:id>', comment, name='submit_review'),
 
 

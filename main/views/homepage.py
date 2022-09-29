@@ -15,7 +15,7 @@ def home_page(request):
 
     category = Categorie.objects.all().order_by('name')
 
-    problematique = Problematique.objects.filter(is_draft=False, active=True)
+    problematique = Categorie.objects.all().order_by('name')
     
     if request.method == 'POST':
         form = SubscibersForm(request.POST)
@@ -26,7 +26,7 @@ def home_page(request):
     else:
         form = SubscibersForm()
 
-    context = {'article': article, 'category': category, 'prob': problematique, 'page_obj': page_obj, 'form': form,}
+    context = {'article': article, 'category': category, 'problematique': problematique, 'page_obj': page_obj, 'form': form,}
 
     return render(request, template_name = "main_base.html", context=context)
 

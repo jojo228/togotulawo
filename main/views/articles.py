@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from entreprise.models import Problematique
 from main.models.article import Article, Comment, Categorie
 from main.forms.comment import CommentForm
 from main.models.user_article import UserArticle
@@ -84,6 +85,20 @@ def categorie_articles(request, slug):
     }
 
     return render(request, template_name="categorie_article.html", context=context)
+
+
+
+def problematique(request, slug):
+
+    categorie = Categorie.objects.get(slug=slug)
+    problematique = Problematique.objects.filter(domaine=categorie)
+
+    context = {
+        "probs" : problematique, 
+        "categorie" : categorie, 
+    }
+
+    return render(request, template_name="prob_categorie.html", context=context)
 
 
 

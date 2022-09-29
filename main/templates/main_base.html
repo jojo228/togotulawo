@@ -284,9 +284,9 @@
               <h3 class="sidebar-title">Problématiques</h3>
               <div class="sidebar-item categories">
                 <ul>
-                  {% for cat in category %}
+                  {% for prob in problematique %}
                   <li><a
-                      href="{% url 'main:categorie' cat.slug %}">{{cat.name}}<span>({{cat.article_set.all.count}})</span></a>
+                      href="{% url 'main:categorie' prob.slug %}">{{prob.name}}<span>({{prob.problematique_set.all.count}})</span></a>
                   </li>
                   {% endfor %}
 
@@ -353,7 +353,7 @@
             <h4>Liens Utils</h4>
             <ul>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Comment ça marche?</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'main:faq' %}">FAQ</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'main:faq' %}">F.A.Q</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Portfolio</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Terms et conditions</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Police privée</a></li>
@@ -363,7 +363,7 @@
           <div class="col-lg-2 col-6 footer-links">
             <h4>Nos Services</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Development Web</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Archivage numérique</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Development Desktop</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Development Mobile</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Data Science</a></li>

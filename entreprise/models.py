@@ -1,9 +1,9 @@
-from tkinter import CASCADE
 from django.db import models
 from froala_editor.fields import FroalaField
 
 from account.models import Entreprise
 from main.helpers import generate_slug
+from main.models.article import Categorie
 
 # Create your models here.
 
@@ -12,7 +12,7 @@ from main.helpers import generate_slug
 class Problematique(models.Model):
     entreprise = models.ForeignKey(Entreprise, on_delete=models.CASCADE)
     titre = models.CharField(max_length=300)
-    domaine = models.CharField(max_length=50)
+    domaine = models.ForeignKey(Categorie, null=True, on_delete=models.SET_NULL)
     description = FroalaField()
     slug = models.SlugField(max_length=300, unique=True)
     profil_rechercher = FroalaField()

@@ -1,0 +1,44 @@
+{% extends 'main_base.html' %}
+{% load article_custom_tags %}
+{% load humanize %}
+
+{% block title %}
+<title>Problématique | {{categorie.slug}}</title>
+{% endblock title %}
+
+
+{% block content %}
+
+<!-- ======= Recent Blog Posts Section ======= -->
+<section id="recent-blog-posts" class="recent-blog-posts">
+
+    <div class="container" data-aos="fade-up">
+
+      <header class="section-header">
+        <div class="card-body">
+            <b>Filtrer Par : - </b>
+            
+        </div>
+      </header>
+
+      <div class="row">
+        {% for prob in probs %}
+        <div class="col-lg-4">
+          <div class="post-box">
+            <div class="post-img"><img src="{% if prob.couverture %} {{prob.couverture.url}} {% endif %}" class="img-fluid" alt=""></div>
+            <span class="post-date">{{prob.price|intcomma|cfa}}</span>
+            <span class="post-date">{{prob.publish_date}}</span>
+            <h3 class="post-title">{{prob.title}}</h3>
+            <a href="/article/{{prob.slug}}" class="readmore stretched-link mt-auto"><span>Lire Plus</span><i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      
+    </div>
+
+  </section><!-- End Recent Blog Posts Section -->
+
+
+
+{% endblock %}
