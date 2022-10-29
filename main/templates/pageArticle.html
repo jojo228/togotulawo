@@ -93,10 +93,10 @@
           <div>
             <h4>{{article.auteur}}</h4>
             <div class="social-links">
-              <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
-              <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
-              <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
-              <a href="https://instagram.com/#"><i class="biu bi-linkedin"></i></a>
+              {% if article.auteur.twitter_link %}<a href="{{article.auteur.twitter_link}}"><i class="bi bi-twitter"></i></a>{% endif %}
+              {% if article.auteur.fbook_link %}<a href="{{article.auteur.fbook_link}}"><i class="bi bi-facebook"></i></a>{% endif %}
+              {% if article.auteur.insta_link %}<a href="{{article.auteur.insta_link}}"><i class="biu bi-instagram"></i></a>{% endif %}
+              {% if article.auteur.linkedin_link %}<a href="{{article.auteur.linkedin_link}}"><i class="biu bi-linkedin"></i></a>{% endif %}
             </div>
             <p>
               {{article.auteur.bio}}
@@ -197,6 +197,7 @@
 
                 <div class="col" data-aos="zoom-in" data-aos-delay="100">
                   <div class="box">
+                    {% if article.price %}
                     <div class="price">
 
                       <sup><del>{{article.price|intcomma}}f</del>&nbsp;</sup>
@@ -204,17 +205,24 @@
                       {% cal_sellprice article.price article.discount as value %}{{value|intcomma|cfa}}
 
                     </div>
+                    {% endif %}
+
                     <ul>
-                      <li>Type: {{article.type}}</li>
-                      <li>Domaine: {{article.domaine}}</li>
-                      <li>Ratings: *****</li>
+                      <li>Type: <b>{{article.type}}</b></li>
+                      <li>Domaine: <b>{{article.domaine}}</b></li>
+                      <li>Lu: <b>{{article.get_hit_count}} (fois)</b></li>
                       {% if article.resource %}
                       <li>Ressource: <a href=" {{article.resource.url}} "
                           download="{{article.resource}}">Télécharger</a></li>
                           {% endif %}
 
                     </ul>
+                    {% if article.price %}
                     <a href="/checkout/{{article.slug}}" class="btn-buy">Acheter</a>
+                    {% endif %}
+                    {% if fav %}
+                    <a href="/checkout/{{article.slug}}" class="btn-buy">Sauvegarder</a>
+                    {% endif %}
                   </div>
                 </div>
 
@@ -228,13 +236,14 @@
 
 
 
-
+          {% if article.video_link %}
           <h3 class="sidebar-title">Vidéo de présentation</h3>
           <iframe title="Video de presentation" id='player' class="mx-auto" width="100%" height="315"
             src="https://www.youtube.com/embed/{{video_link}}"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
           </iframe>
+          {% endif %}
 
 
         </div><!-- End sidebar -->

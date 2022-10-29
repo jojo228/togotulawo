@@ -41,7 +41,7 @@ class ArticleForm(forms.ModelForm):
             "active": "Rendre visible sur le site",
             "couverture": "Photo de couverture",
             "domaine": "Domaine",
-            'video_link': "Lien de la video"
+            'video_link': "Lien de la video(optionel)"
 
         }
 
@@ -51,12 +51,15 @@ class ProfilForm(forms.ModelForm):
     class Meta:
         model = Auteur
         fields = ['affiliation', 'pays_affiliation', 'faculte', 'niveau_etude', 'grade', 'annee_graduation', 'tel',
-         'website', 'image', 'bio']
+         'twitter_link','linkedin_link','fbook_link','insta_link', 'image', 'bio']
 
         widgets = {
             'pays_affiliation': forms.TextInput(attrs={'class': 'form-control'}),
             'affiliation': forms.TextInput(attrs={'class': 'form-control'}),
-            'website': forms.TextInput(attrs={'class': 'form-control'}),
+            'twitter_link': forms.TextInput(attrs={'class': 'form-control'}),
+            'linkedin_link': forms.TextInput(attrs={'class': 'form-control'}),
+            'fbook_link': forms.TextInput(attrs={'class': 'form-control'}),
+            'insta_link': forms.TextInput(attrs={'class': 'form-control'}),
             'niveau_etude': forms.Select(attrs={'class': 'form-control'}),
             'grade': forms.Select(attrs={'class': 'form-control'}),
             'faculte': forms.TextInput(attrs={'class': 'form-control'}),   
@@ -66,7 +69,10 @@ class ProfilForm(forms.ModelForm):
         }
 
         labels = {
-            "website": "Lien (Linkedin/Twitter/Facebook/Instagram)",
+            "twitter_link": "Lien Twitter (optionel)",
+            "linkedin_link": "Lien Linkedin (optionel)",
+            "fbook_link": "Lien Facebook (optionel)",
+            "insta_link": "Lien Instagram (optionel)",
             "niveau_etude": "Niveau d'étude",
             "faculte": "Domaine",
             "annee_graduation": "Année de graduation",

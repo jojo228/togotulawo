@@ -24,10 +24,13 @@ class Auteur(models.Model):
     pays_affiliation = models.CharField(max_length=50, null=True, blank=True,)
     annee_graduation = models.DateField(null=True, blank=True,)
     tel = models.PositiveIntegerField(null=True, blank=True,)
-    website = models.URLField(max_length=200, null=True, blank=True,)
+    twitter_link = models.URLField(max_length=200, null=True, blank=True,)
+    linkedin_link = models.URLField(max_length=200, null=True, blank=True,)
+    fbook_link = models.URLField(max_length=200, null=True, blank=True,)
+    insta_link = models.URLField(max_length=200, null=True, blank=True,)
     bio = models.CharField(max_length=1000, null=True, blank=True,)
     image = models.ImageField(
-        default="dashboard/assets/images/user/user.png", null=True, blank=True, upload_to='files/profic_pic')
+        default='files/profic_pic/t_user.png', null=True, blank=True, upload_to='files/profic_pic')
 
     def __str__(self):
         return self.user.get_full_name()

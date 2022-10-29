@@ -125,6 +125,7 @@ def article_update(request , slug):
     return render(request , 'article_update.html' , context)
 
 
+
 @login_required(login_url='/account/login')
 def article_delete(request , id):
     try:

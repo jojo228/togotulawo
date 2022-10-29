@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from entreprise.models import Problematique
-from main.models.article import Article, Comment, Categorie
+from main.models.article import Article, Comment, Categorie, HitCount
 from main.forms.comment import CommentForm
 from main.models.user_article import UserArticle
 from django.contrib.auth.decorators import login_required
@@ -37,13 +37,26 @@ class ArticleList(ListView):
         return context
 
 
+def get_ip_address(request):
+        user_ip_address = request.META.get('HTTP_X_FORWARDED_FOR')
+        if user_ip_address:
+            ip = user_ip_address.split(',')[0]
+        else:
+            ip = request.META.get('REMOTE_ADDR')
+        return ip
+
 
 def article_page(request, slug):
-
     article = Article.objects.get(slug=slug)
-
     comment = article.comment_set.all().count()
+
+    user_ip = get_ip_address(request)
     
+    ip_ad = HitCount()
+    ip_ad.article = article
+    ip_ad.ip_address = user_ip
+    ip_ad.save()
+    print(ip_ad)
     
     context = {
         "article" : article , 

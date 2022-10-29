@@ -179,8 +179,10 @@
                       {{a.type}}</a></li>
                   <li class="d-flex align-items-center"> <i class="bi bi-list"></i><a >Domaine:
                       {{a.domaine}}</a></li>
+                      {% if a.price %}
                   <li class="d-flex align-items-center"><i class="bi bi-coin"></i> <a >Prix:
                       {{a.price|intcomma|cfa}}</a></li>
+                      {% endif %}
 
                 </ul>
               </div>
@@ -197,7 +199,7 @@
               <div class="entry-meta">
                 <ul>
                   <li class="d-flex align-items-center"><i class="bi bi-download"></i> <a
-                      >Télécharger 0 fois</a></li>
+                      >Lu {{a.get_hit_count}} fois</a></li>
                   <li class="d-flex align-items-center"><i class="bi bi-send-check"></i>
                     <a >Recommander 0 fois</a></li>
                   
@@ -206,7 +208,7 @@
 
               <div class="entry-content">
                 <p>
-                  {{a.contenu|safe}}
+                  {{a.contenu|truncatechars_html:300|safe}}
                 </p>
                 <div class="read-more">
                   <a href="/article/{{a.slug}}">Plus de détails</a>
@@ -281,12 +283,11 @@
             </div><!-- End sidebar -->
             <div class="sidebar">
 
-              <h3 class="sidebar-title">Problématiques</h3>
+              <h3 class="sidebar-title">Problématique</h3>
               <div class="sidebar-item categories">
                 <ul>
-                  {% for prob in problematique %}
-                  <li><a
-                      href="{% url 'main:categorie' prob.slug %}">{{prob.name}}<span>({{prob.problematique_set.all.count}})</span></a>
+                  {% for cat in category %}
+                  <li><a href="{% url 'main:problematique' cat.slug %}">{{cat.name}}<span>({{cat.problematique_set.all.count}})</span></a>
                   </li>
                   {% endfor %}
 

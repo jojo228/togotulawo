@@ -1,5 +1,5 @@
 from django.contrib import admin
-from main.models.article import Article, Categorie, Comment, CouponCode
+from main.models.article import Article, Categorie, Comment, CouponCode, HitCount
 from main.models.newsletter import MailMessage, Subscribers
 from main.models.paiement import Payment
 from main.models.user_article import UserArticle
@@ -69,3 +69,4 @@ admin.site.register(Categorie, CategorieAdmin)
 admin.site.register(Comment)
 admin.site.register(Subscribers)
 admin.site.register(MailMessage)
+admin.site.register(HitCount)

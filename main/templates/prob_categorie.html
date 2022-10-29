@@ -26,10 +26,9 @@
         <div class="col-lg-4">
           <div class="post-box">
             <div class="post-img"><img src="{% if prob.couverture %} {{prob.couverture.url}} {% endif %}" class="img-fluid" alt=""></div>
-            <span class="post-date">{{prob.price|intcomma|cfa}}</span>
             <span class="post-date">{{prob.publish_date}}</span>
-            <h3 class="post-title">{{prob.title}}</h3>
-            <a href="/article/{{prob.slug}}" class="readmore stretched-link mt-auto"><span>Lire Plus</span><i class="bi bi-arrow-right"></i></a>
+            <h3 class="post-title">{{prob.titre}}</h3>
+            <a href="/offer_detail/{{prob.slug}}" class="readmore stretched-link mt-auto"><span>Lire Plus</span><i class="bi bi-arrow-right"></i></a>
           </div>
         </div>
         {% endfor %}

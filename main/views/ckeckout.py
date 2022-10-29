@@ -15,8 +15,7 @@ from time import time
 import requests
 
 
-
-@api_view(('GET', 'POST'))
+#@api_view(('GET', 'POST'))
 @login_required(login_url='/account/login')
 def checkout(request, slug,): 
     article = Article.objects.get(slug=slug)
@@ -142,11 +141,7 @@ def checkout(request, slug,):
         
             # return HttpResponse("Détails de paiement invalides")
         # return Response({"error": "Request failed"}, status=r.status_code)
-            
-        
-        
-    
-
+          
     context = {
         "article": article,
         "order": order,
@@ -157,7 +152,6 @@ def checkout(request, slug,):
         "coupon_code_message": coupon_code_message,
         'url': url,
         
-       
     }
     return render(request, template_name="checkout.html", context=context)
 
