@@ -6,6 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.core.mail import send_mail, BadHeaderError
 from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.models import User, Group
+from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
@@ -86,13 +87,19 @@ def connexion(request):
 			username = form.cleaned_data.get('username')
 			password = form.cleaned_data.get('password')
 			user = authenticate(username=username, password=password)
+
 			if user is not None:
 				login(request, user)
 			if 'next' in request.POST:
 					return HttpResponseRedirect(redirect_to)
 			else:
 				return redirect(settings.LOGIN_REDIRECT_URL)
+		else:
+			messages.error(request, "Nom d'utilsateur ou mot de passe incorrect!")
+
 	return render(request=request, template_name='login.html')
+
+
 
 
 #SERIALIZERS VIEWS
