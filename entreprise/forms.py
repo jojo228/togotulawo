@@ -1,6 +1,6 @@
 from django import forms
 from account.models import Entreprise
-from entreprise.models import Problematique
+from entreprise.models import Livre, Problematique
 from main.models.article import Categorie
 
 
@@ -34,6 +34,25 @@ class ProblematiqueForm(forms.ModelForm):
             "duree_recherche": "Durée prévisionnelle de la recherche(en mois)",
             "is_draft": "Enregistré comme brouillon",
             "active": "Rendre visible sur le site",
+        }
+
+
+
+class LivreForm(forms.ModelForm):
+    class Meta:
+        model = Livre
+        fields = ['titre', 'description', 'document']
+
+        widgets = {
+            'titre': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control'}),
+            
+        }
+
+        labels = {
+            "titre": "Titre",
+            "description": "Description du document(optionel)",
+            "document": "Ajouter le fichier",
         }
 
 

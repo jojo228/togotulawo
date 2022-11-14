@@ -79,6 +79,16 @@
 							<li class=""><a href="{% url 'entreprise:prob_list' %}" class="">Mes Publications</a></li>
 						</ul>
 					</li>
+
+					<li class="nav-item pcoded-hasmenu">
+						<a href="#" class="nav-link"><span class="pcoded-micon"><i
+									class="feather icon-folder"></i></span><span class="pcoded-mtext">Gestion de
+								Bibliothèque</span></a>
+						<ul class="pcoded-submenu">
+							<li class=""><a href="{% if request.user.entreprise.is_premium %} {% url 'entreprise:doc_create' %} {% else %} {% url 'entreprise:premium_request' %} {% endif %}" class="">Ajouter un document</a></li>
+							<li class=""><a href="{% if request.user.entreprise.is_premium %} {% url 'entreprise:doc_list' %} {% else %} {% url 'entreprise:premium_request' %} {% endif %}" class="">Liste des documents</a></li>
+						</ul>
+					</li>
 					
 					
 					<li class="nav-item"><a href="{% url 'entreprise:prob_draft' %}" class="nav-link"><span class="pcoded-micon"><i
@@ -115,7 +125,7 @@
 				<li class="nav-item">
 					<div class="main-search open">
 						<div class="input-group">
-							<input type="text" id="m-search" class="form-control" placeholder="Search . . .">
+							<input type="text" id="m-search" class="form-control" placeholder="Rechercher . . .">
 							<a href="#!" class="input-group-append search-close">
 								<i class="feather icon-x input-group-text"></i>
 							</a>

@@ -1,13 +1,21 @@
 from django.shortcuts import redirect, render
-from entreprise.forms import ProblematiqueForm, EntrepriseForm
-from entreprise.models import Postuler, Problematique
+from entreprise.forms import LivreForm, ProblematiqueForm, EntrepriseForm
+from entreprise.models import Livre, Postuler, Problematique
 from django.contrib.auth.decorators import login_required
+
 
 
 @login_required(login_url='/account/login')
 def home_page(request):
 
     return render(request, template_name = "ense_index.html")
+
+
+
+@login_required(login_url='/account/login')
+def premium_request(request):
+
+    return render(request, template_name = "premium_request.html")
 
 
 @login_required(login_url='/account/login')
@@ -90,7 +98,6 @@ def problematique_update(request , slug):
         if request.method == 'POST':
             form = ProblematiqueForm(request.POST, instance=problematique)
             
-            
             if form.is_valid():
                 form.save()
             return redirect('/entreprise/prob-list/')
@@ -150,6 +157,102 @@ def problematique_draft(request):
     return render(request , 'prob_draft.html', context)
 
 ###-----------------------PROBLEMATIQUE TERMINE------------------------###
+
+
+
+###-----------------------LIVRES------------------------###
+
+@login_required(login_url='/account/login')
+def doc_create(request):
+    
+    context = {'form' : LivreForm}
+    try:
+        if request.method == 'POST':
+            form = LivreForm(request.POST, request.FILES)
+            
+            if form.is_valid():
+                livre = form.save(commit=False)
+                livre.entreprise = request.user.entreprise
+                livre.save()      
+
+            return redirect('/entreprise/doc-list/')
+    
+    except Exception as e :
+        print(e)
+    
+    return render(request , 'book_create.html' , context)
+
+
+
+@login_required(login_url='/account/login')
+def doc_read(request, slug):
+    
+    livre = Livre.objects.get(slug=slug)
+    context =  {
+        'livre':livre
+    }
+    
+    return render(request , 'book_read.html' , context=context)
+
+
+
+@login_required(login_url='/account/login')
+def doc_update(request , id):
+    context = {}
+    try:
+        
+        livre = Livre.objects.get(id = id)
+
+        if livre.entreprise != request.user.entreprise:
+            return redirect('/')
+       
+        form = LivreForm(instance= livre)
+        if request.method == 'POST':
+            form = LivreForm(request.POST, instance=livre)
+            
+            if form.is_valid():
+                form.save()
+            return redirect('/entreprise/doc-list/')
+            
+        
+        context['livre'] = livre 
+        context['form'] = form
+    except Exception as e :
+        print(e)
+
+    return render(request , 'book_update.html' , context)
+
+
+
+@login_required(login_url='/account/login')
+def doc_delete(request , id):
+    try:
+        livre = Livre.objects.get(id = id)
+        
+        if livre.entreprise == request.user.entreprise:
+            livre.delete()
+        
+    except Exception as e :
+        print(e)
+
+    return redirect('/entreprise/doc-list/')
+
+
+
+@login_required(login_url='/account/login')
+def doc_list(request):
+    context = {}
+    
+    try:
+        livres = Livre.objects.filter(entreprise=request.user.entreprise)
+        context['livres'] =  livres
+    except Exception as e: 
+        print(e)
+    
+    print(context)
+    return render(request , 'book_list.html' ,context)
+
+###-----------------------LIVRES TERMINE------------------------###
 
 #---
 #---

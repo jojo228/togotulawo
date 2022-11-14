@@ -1,8 +1,7 @@
 from django.db import models
 from froala_editor.fields import FroalaField
-
-from account.models import Entreprise
 from main.helpers import generate_slug
+from account.models import Entreprise
 from main.models.article import Categorie
 
 # Create your models here.
@@ -40,5 +39,22 @@ class Postuler(models.Model):
 
     def __str__(self):
         return self.nom_du_candidat
+
+
+
+class Livre(models.Model):
+    entreprise = models.ForeignKey(Entreprise, on_delete=models.CASCADE)
+    titre = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=300, unique=True)
+    description = models.TextField(max_length=2000, null=True, blank=True)
+    document = models.FileField(upload_to="files/documents")
+    date_pub = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.titre
+
+    def save(self , *args, **kwargs): 
+        self.slug = generate_slug(self.titre)
+        super(Livre, self).save(*args, **kwargs)
 
     

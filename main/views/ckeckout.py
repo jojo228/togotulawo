@@ -34,7 +34,7 @@ def checkout(request, slug,):
     
     try:
         user_article = UserArticle.objects.get(user=user, article=article)
-        error = "Ce document existe déjà dans votre bibliothèque"
+        error = "Ce document existe déjà dans votre bibliothèque, la voir"
     except:
         pass
     
@@ -53,7 +53,8 @@ def checkout(request, slug,):
         except:
             coupon_code_message = 'Code Coupon Invalide'
             print('coupon code invalid')
-
+            
+    #is the amount is zero dont create payment
     if amount == 0:
         article_user = UserArticle(user=user, article=article)
         article_user.save()

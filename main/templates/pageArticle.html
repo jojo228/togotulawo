@@ -83,13 +83,13 @@
         {% if article.resource %}
         <div class="reply-form">
           <embed src="../static/{{article.resource}}" type="application/pdf" width='700' height='600' allowfullscreen
-            webkitallowfullscreen>
+            webkitallowfullscreen toolbar='0' >
 
         </div>
         {% endif %}
 
         <div class="blog-author d-flex align-items-center">
-          <img src="{{article.auteur.image.url}}" class="rounded-circle float-left" alt="">
+          <img src="{% if article.auteur.image %}{{article.auteur.image.url}}{% endif %}" class="rounded-circle float-left" alt="">
           <div>
             <h4>{{article.auteur}}</h4>
             <div class="social-links">
@@ -99,7 +99,7 @@
               {% if article.auteur.linkedin_link %}<a href="{{article.auteur.linkedin_link}}"><i class="biu bi-linkedin"></i></a>{% endif %}
             </div>
             <p>
-              {{article.auteur.bio}}
+            {% if article.auteur.bio %} {{article.auteur.bio}} {% else %} Je suis un utilisateur de Togotulawo {% endif %}
             </p>
           </div>
         </div><!-- End blog author bio -->

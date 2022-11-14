@@ -76,7 +76,7 @@ class ProfilForm(forms.ModelForm):
             "niveau_etude": "Niveau d'étude",
             "faculte": "Domaine",
             "annee_graduation": "Année de graduation",
-            "tel": "Téléphone",
+            "tel": "Téléphone(Numéro Flooz ou Tmoney. Vous recevrez tous les montants de vos ventes sur ce numéro)",
             "pays_affiliation": "Pays d'affiliation",
             "affiliation": "Affiliation",
             "grade": "Grade",

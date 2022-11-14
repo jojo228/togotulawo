@@ -1,0 +1,54 @@
+{% extends 'ense_index.html' %}
+{% block content %}
+{%load static%}
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-8">
+            <div class="card card-body">
+                <h4>{{livre.titre}}</h4>
+                <hr>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h6>{{livre.description|safe}}</h6>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                    <embed src="/../static/{{livre.document}}" type="application/pdf" width='725' height='900'
+                        allowfullscreen webkitallowfullscreen>
+            </div>
+        </div>
+
+        
+
+
+        <div class="col-md">
+            <div class="card card-body">
+                <h5>Option:</h5>
+                <hr>
+                <h6>Date: {{livre.date_pub}}</h6>
+                <a class="btn btn-outline-info  btn-sm btn-block" href=" {{livre.document.url}} " download="{{livre.document}}">Télécharger</a>
+
+                <!-- <a class="btn btn-outline-info hidden-print" onclick="myFunction()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print</a> -->
+
+
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+</div>
+
+
+{% endblock %}

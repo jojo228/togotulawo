@@ -52,6 +52,7 @@ class Entreprise(models.Model):
     telephone = models.PositiveIntegerField(blank=True, null=True)
     image = models.ImageField(default="dashboard/assets/images/user/user.png",
                               null=True, blank=True, upload_to='files/ense_pic')
+    is_premium = models.BooleanField(default=False)
 
     def __str__(self):
         return self.raison_social
