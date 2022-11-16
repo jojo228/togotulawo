@@ -134,8 +134,6 @@
 			<th scope="col">Payment ID</th>
 			<th scope="col">Document title</th>
 			<th scope="col">Client</th>
-			<th scope="col">Statut</th>
-			<th scope="col">Action</th>
 			
 		</tr>
 	</thead>
@@ -146,11 +144,7 @@
 			<td>{{i.order_id}}</td>
 			<td>{{i.payment_id}}</td>
 			<td>{{i.article.title}}</td>
-			<td>{{i.user.get_full_name}}</td>
-			<td>{{i.status}}</td>
-            <td>
-				<a class="btn btn-sm btn-info" href="">Afficher</a>
-			</td>			
+			<td>{{i.user.get_full_name}}</td>		
 		</tr>
 		{% endfor %}
 	</tbody>

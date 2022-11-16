@@ -344,7 +344,10 @@
               <img src="assets/img/logo.png" alt="">
               <span>Togotulawo</span>
             </a>
-            <p>Valorisons notre potentiel intellectuel.</p>
+            <p>Nous sommes une entreprise spécialisée dans la digitalisation, l'archivage numérique et la transcription des documents.
+              En plus d'être une marketplace pour les auteurs de livres, articles etc... nous mettons également en relation entreprises
+              et universitaires.
+                Quelles que soient vos contraintes et vos exigences, nous répondons rapidement à votre problématique.</p>
             <div class="social-links mt-3">
               <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
               <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -361,9 +364,9 @@
                  
                   
               <li><i class="bi bi-chevron-right"></i> <a href="{% url 'main:faq' %}">F.A.Q</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Portfolio</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a data-toggle="modal" data-target=".bd-term-condition-modal-lg" href="#">Terms et conditions</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Police privée</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Blog</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'main:terms_conditions' %}">Terms et conditions</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'main:police_privee' %}">Police privée</a></li>
             </ul>
           </div>
 
@@ -373,7 +376,7 @@
               <li><i class="bi bi-chevron-right"></i> <a href="#" data-toggle="modal" data-target=".bd-an-modal-lg">Archivage numérique</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#" data-toggle="modal" data-target=".bd-tdd-modal-lg">Transcription de documents</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#" data-toggle="modal" data-target=".bd-hdd-modal-lg">Hébergement de documents</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#" data-toggle="modal" data-target=".bd-add-modal-lg">Analyse de données</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#" data-toggle="modal" data-target=".bd-add-modal-lg">Marketplace</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#" data-toggle="modal" data-target=".bd-sef-modal-lg">Stages et formations</a></li>
             </ul>
           </div>
@@ -481,40 +484,42 @@
     aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in ipsum id orci porta dapibus. Vivamus
-        suscipit
-        tortor eget felis porttitor volutpat. Vivamus suscipit tortor eget felis porttitor volutpat. Curabitur non nulla
-        sit
-        amet nisl tempus convallis quis ac lectus. Proin eget tortor risus. Vestibulum ac diam sit amet quam vehicula
-        elementum
-        sed sit amet dui. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit,
-        eget
-        tincidunt nibh pulvinar a. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-        Donec
-        velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Transcription de documents</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <p> La transcription de documents consiste à convertir tous types de manuscrits en document numérique, par exemple en format
+        Word ou Excel.</p>
+
+        <p> Les documents à transcrire sont nombreux (comptes-rendus, conférence, interviews, PV...), tout comme les méthodes
+        de transcription audio. Chaque méthode permet d’obtenir un résultat différent (tout dépendra de la demande et du besoin
+        client). 
+        <ul>
+          <li>La transcription intégrale ou verbatim</li>
+          <li>La transcription intégrale épurée</li>
+          <li>La transcription reformulée</li>
+          <li>La transcription synthétisée</li>
+        </ul>
+        </p>
+        
+        <p>
+        Vos avantages : 
+        <ul>
+          <li>Soyez assurés de la conformité de vos fichiers à vos exigences  </li>
+          <li>Confiez vos données à nos équipes de professionnels </li>
+          <li>Libérez-vous d’une tâche chronophage et contraignante</li>
+        </ul>
+       
+        </p>
+
 
       </div>
     </div>
   </div>
                             <!-- Terms et conditons ? -->
-  <div class="modal fade bd-term-condition-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in ipsum id orci porta dapibus. Vivamus
-        suscipit
-        tortor eget felis porttitor volutpat. Vivamus suscipit tortor eget felis porttitor volutpat. Curabitur non nulla
-        sit
-        amet nisl tempus convallis quis ac lectus. Proin eget tortor risus. Vestibulum ac diam sit amet quam vehicula
-        elementum
-        sed sit amet dui. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit,
-        eget
-        tincidunt nibh pulvinar a. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-        Donec
-        velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula
-      </div>
-    </div>
-  </div>
+  
 
 
 

@@ -5,7 +5,7 @@ from django.shortcuts import HttpResponse
 from main.views.articles import Bibliotheque, categorie_articles, article_page, comment, problematique, recherche
 from main.views.ckeckout import checkout, verify_payment
 from main.views.homepage import home_page
-from main.views.demo_and_faq import faq
+from main.views.demo_and_faq import faq, police_privee, term_condition
 from django.conf import settings
 from django.conf.urls.static import static
 from main.views.newsletter import mail_letter
@@ -17,7 +17,10 @@ app_name = 'main'
 urlpatterns = [
     #HomePage urls
     path('', home_page, name='accueil'),
+
     path('faq/', faq, name='faq'),
+    path('terms_conditions/', term_condition, name='terms_conditions'),
+    path('police_privee/', police_privee, name='police_privee'),
     path('mail_letter/', mail_letter, name='mail-letter'),
 
     #Articles urls

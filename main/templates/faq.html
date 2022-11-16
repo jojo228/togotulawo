@@ -10,6 +10,17 @@
 
 
 <!-- ======= F.A.Q Section ======= -->
+
+<section class="breadcrumbs">
+    <div class="container">
+
+        <ol>
+            <li><a href="{% url 'main:accueil' %}">Accueil</a></li>
+            <li>F.A.Q</li>
+        </ol>
+
+    </div>
+</section><!-- End Breadcrumbs -->
 <section id="faq" class="faq">
 
     <div class="container" data-aos="fade-up">
@@ -100,29 +111,26 @@
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#faq2-content-2">
-                                Tempus quam pellentesque nec nam aliquam sem et tortor consequat?
+                                Quelle est la capacité de stockage dont je dispose pour héberger des documents ?
                             </button>
                         </h2>
                         <div id="faq2-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
                             <div class="accordion-body">
-                                Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est
-                                ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit
-                                adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
+                                Déjà pour pouvoir stocker des documents vous devez être un utilisateur premium, une fois utilisateur
+                                premium vous avez un accès illimité de stockage pour stocker vos documents.
                             </div>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#faq2-content-2">
-                                Tempus quam pellentesque nec nam aliquam sem et tortor consequat?
+                                data-bs-target="#faq2-content-3">
+                                Puis-je me faire rembourser si je ne suis pas satisfait par le contenu d'un document ?
                             </button>
                         </h2>
-                        <div id="faq2-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
+                        <div id="faq2-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
                             <div class="accordion-body">
-                                Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est
-                                ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit
-                                adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
+                                Non...!!!
                             </div>
                         </div>
                     </div>
@@ -136,5 +144,8 @@
     </div>
 
 </section><!-- End F.A.Q Section -->
+
+
+
 
 {% endblock %}
