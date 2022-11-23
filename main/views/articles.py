@@ -1,5 +1,5 @@
-from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render, redirect
 from entreprise.models import Problematique
 from main.models.article import Article, Comment, Categorie, HitCount
 from main.forms.comment import CommentForm
@@ -50,6 +50,11 @@ def article_page(request, slug):
     article = Article.objects.get(slug=slug)
     comment = article.comment_set.all().count()
 
+    fav = bool
+
+    if article.favourites.filter(id=request.user.id).exists():
+        fav = True
+
     user_ip = get_ip_address(request)
     
     ip_ad = HitCount()
@@ -63,6 +68,7 @@ def article_page(request, slug):
         """ "video" : video , 
         'videos':videos, """
         'comment':comment,
+        'fav':fav
     }
  
     return render(request, template_name="pageArticle.html", context=context)
@@ -148,5 +154,16 @@ class Bibliotheque(LoginRequiredMixin, ListView):
         context=super(Bibliotheque,self).get_context_data(**kwargs)
         context["filter"]=self.request.GET.get("filter","")
         context["orderby"]=self.request.GET.get("orderby","id")
+        context['new']= Article.objects.filter(favourites=self.request.user)
         context["all_table_fields"]=UserArticle._meta.get_fields()
         return context
+
+
+@login_required(login_url='/account/login')
+def favourite_add(request, slug):
+    post = get_object_or_404(Article, slug=slug)
+    if post.favourites.filter(id=request.user.id).exists():
+        post.favourites.remove(request.user)
+    else:
+        post.favourites.add(request.user)
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])

@@ -219,9 +219,14 @@
                     </ul>
                     {% if article.price %}
                     <a href="/checkout/{{article.slug}}" class="btn-buy">Acheter</a>
-                    {% endif %}
+                    {% else %}
+
                     {% if fav %}
-                    <a href="/checkout/{{article.slug}}" class="btn-buy">Sauvegarder</a>
+                   
+                    <a href="{% url 'main:favourite_add' article.slug %}" class="btn-buy">Retirer</a>
+                    {%else %}
+                    <a href="{% url 'main:favourite_add' article.slug %}" class="btn-buy">Favoris</a>
+                    {% endif %}
                     {% endif %}
                   </div>
                 </div>

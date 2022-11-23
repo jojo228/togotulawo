@@ -11,6 +11,23 @@ def home_page(request):
     return render(request, template_name = "ense_index.html")
 
 
+@login_required(login_url='/account/login')
+def app_print(request, id):
+
+    context = {}
+
+    try:
+        postule = Postuler.objects.filter(
+            problematique__entreprise=request.user.entreprise).get(id=id)
+        context['postule'] =  postule
+    except Exception as e: 
+        print(e)
+    
+    print(context)
+
+    return render(request , 'application_print.html' , context)
+
+
 
 @login_required(login_url='/account/login')
 def premium_request(request):

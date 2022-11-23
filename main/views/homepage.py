@@ -11,7 +11,6 @@ def home_page(request):
     
     most_viewed_posts = sorted(Article.objects.all().filter(is_draft=False), key=lambda a: a.get_hit_count, reverse=True)
 
-
     paginator = Paginator(article, 15)  # Show 15 articles per page.
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
