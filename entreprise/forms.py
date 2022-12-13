@@ -5,12 +5,12 @@ from main.models.article import Categorie
 
 
 
-option= Categorie.objects.all().values_list('name', 'name').order_by('name')
+# option= Categorie.objects.all().values_list('name', 'name').order_by('name')
 
-choice_list = []
+# choice_list = []
 
-for item in option:
-    choice_list.append(item)
+# for item in option:
+#     choice_list.append(item)
 
 
 class ProblematiqueForm(forms.ModelForm):
@@ -21,7 +21,7 @@ class ProblematiqueForm(forms.ModelForm):
 
         widgets = {
             'titre': forms.TextInput(attrs={'class': 'form-control'}),
-            'domaine': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
+            # 'domaine': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
             'duree_recherche': forms.NumberInput(attrs={'class': 'form-control'}),
             
         }
