@@ -82,8 +82,8 @@
 
         {% if article.resource %}
         <div class="reply-form">
-          <embed src="../static/{{article.resource}}" type="application/pdf" width='700' height='600' allowfullscreen
-            webkitallowfullscreen toolbar='0' >
+          <embed src="{{article.resource.url}}#toolbar=0" type="application/pdf" width='700' height='600' allowfullscreen
+            webkitallowfullscreen>
 
         </div>
         {% endif %}
