@@ -37,7 +37,7 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 if not DEBUG:
     DEBUG_PROPAGATE_EXCEPTIONS = True
 
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOW_HOSTS", "127.0.0.1").split(',')
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1").split(',')
 DEVELOPMENT_MODE = os.getenv('DEVELOPMENT_MODE', 'False') == 'True'
 
 
