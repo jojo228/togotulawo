@@ -265,4 +265,8 @@ venv.bak/
 
 migrations/
 
+# Directory
 */files/
+
+# Json
+*.json
