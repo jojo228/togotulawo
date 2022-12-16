@@ -151,10 +151,12 @@ class Bibliotheque(LoginRequiredMixin, ListView):
         return article 
 
     def get_context_data(self,**kwargs):
+        user = self.request.user
         context=super(Bibliotheque,self).get_context_data(**kwargs)
         context["filter"]=self.request.GET.get("filter","")
         context["orderby"]=self.request.GET.get("orderby","id")
         context['new']= Article.objects.filter(favourites=self.request.user)
+        context['article']= UserArticle.objects.filter(user=user).all()
         context["all_table_fields"]=UserArticle._meta.get_fields()
         return context
 
