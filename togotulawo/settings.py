@@ -203,13 +203,6 @@ WSGI_APPLICATION = 'togotulawo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
-
 DATABASES = {
         'default': {
             'ENGINE': os.getenv('DB_ENGINE'),
@@ -263,18 +256,18 @@ LANGUAGES = DJANGO_LANGUAGES
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+# Statics files
 STATIC_URL = '/static/'
-
-MEDIA_URL = '/media/'
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
+# login
 LOGIN_URL = 'account:connexion'
 LOGIN_REDIRECT_URL = 'main:accueil'
 LOGOUT_REDIRECT_URL = 'account:connexion'

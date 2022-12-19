@@ -268,3 +268,9 @@ venv.bak/
 *.sqlite3
 
 migrations/
+
+# Directory
+*/files/
+
+# Json
+*.json
