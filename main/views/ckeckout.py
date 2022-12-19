@@ -30,7 +30,7 @@ def checkout(request, slug,):
     payment = None
     error = None
     amount = None
-    url = requests.get('http://127.0.0.1:8000/verify_payment')
+    url = requests.get('http://togotulawo.com/verify_payment')
     
     try:
         user_article = UserArticle.objects.get(user=user, article=article)

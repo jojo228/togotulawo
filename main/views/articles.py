@@ -144,17 +144,19 @@ class Bibliotheque(LoginRequiredMixin, ListView):
         user = self.request.user
         filter_val=self.request.GET.get("filter","")
         order_by=self.request.GET.get("orderby","id")
-        article = UserArticle.objects.filter(user=user).all()
+        article = Article.objects.filter(userarticle__user=user).all()
         if filter_val:
             article = article.filter(Q(title__icontains=filter_val) | Q(contenu__icontains=filter_val) | Q(price__icontains=filter_val)).order_by(order_by)
 
         return article 
 
     def get_context_data(self,**kwargs):
+        user = self.request.user
         context=super(Bibliotheque,self).get_context_data(**kwargs)
         context["filter"]=self.request.GET.get("filter","")
         context["orderby"]=self.request.GET.get("orderby","id")
         context['new']= Article.objects.filter(favourites=self.request.user)
+        context['article']= UserArticle.objects.filter(user=user).all()
         context["all_table_fields"]=UserArticle._meta.get_fields()
         return context
 
