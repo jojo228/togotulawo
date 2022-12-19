@@ -32,7 +32,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = os.getenv('DEBUG', 'False') == 'False'
 
 if not DEBUG:
     DEBUG_PROPAGATE_EXCEPTIONS = True
@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'froala_editor',
     'chartjs',
     "rest_framework",
+    'django.contrib.sitemaps',
 
 ]
 
@@ -286,4 +287,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'asslajosta@gmail.com' #Enter your email
-EMAIL_HOST_PASSWORD = 'From_2|bySpirit' #Enter the password to the email
+EMAIL_HOST_PASSWORD = '' #Enter the password to the email
