@@ -271,7 +271,7 @@ migrations/
 
 # Directory
 */files/
-*/togotulawo/.settings.py
+*settings.py
 
 # Json
 *.json

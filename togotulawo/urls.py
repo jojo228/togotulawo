@@ -23,10 +23,21 @@ from account import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.contrib.sitemaps.views import sitemap
+
+from main.templatetags.sitemap import ArticleSiteMap
+
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
+
+
+
+
+sitemaps = {
+    'article': ArticleSiteMap(),
+}
 
 
 urlpatterns = [
@@ -39,6 +50,7 @@ urlpatterns = [
     #REST-API urls
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('', include(router.urls)),
+    path('sitemap.xml', sitemap, {'sitemaps':sitemaps}, name='django.contrib.sitemaps.views.sitemap')
 ]
 
 

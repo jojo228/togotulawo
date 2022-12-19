@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'froala_editor',
     'chartjs',
     "rest_framework",
+    'django.contrib.sitemaps',
 
 ]
 
