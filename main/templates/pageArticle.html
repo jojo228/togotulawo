@@ -79,13 +79,16 @@
           </div>
 
         </article><!-- End blog entry -->
-
-        {% if article.resource %}
+        {% if request.user.is_authenticated %}
+        {% if article.resource %} 
+        {% if user_article %} 
         <div class="reply-form">
           <embed src="{{article.resource.url}}#toolbar=0" type="application/pdf" width='700' height='600' allowfullscreen
             webkitallowfullscreen>
 
         </div>
+        {% endif %}
+        {% endif %}
         {% endif %}
 
         <div class="blog-author d-flex align-items-center">

@@ -32,7 +32,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = os.getenv('DEBUG', 'False') == 'False'
 
 if not DEBUG:
     DEBUG_PROPAGATE_EXCEPTIONS = True
@@ -171,6 +171,7 @@ JAZZMIN_UI_TWEAKS = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django_session_timeout.middleware.SessionTimeoutMiddleware',
     "django.middleware.locale.LocaleMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -179,6 +180,18 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+#Session timeout config
+
+SESSION_EXPIRE_SECONDS = 3600  # 1 hour
+
+SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
+
+SESSION_TIMEOUT_REDIRECT = 'main:accueil'
+
+
+ 
 
 ROOT_URLCONF = 'togotulawo.urls'
 
@@ -286,5 +299,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'asslajosta@gmail.com' #Enter your email
-EMAIL_HOST_PASSWORD = '' #Enter the password to the email
+EMAIL_HOST_USER = 'togotulawo@gmail.com' #Enter your email
+EMAIL_HOST_PASSWORD = 'L1kABo55' #Enter the password to the email

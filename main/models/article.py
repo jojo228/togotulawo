@@ -46,7 +46,7 @@ class Article(models.Model):
     auteur = models.ForeignKey(Auteur, null=False, on_delete=models.CASCADE)
     domaine = models.ForeignKey(Categorie, null=False, on_delete=models.CASCADE)
     type = models.CharField(max_length=100, choices=option)
-    resource = models.FileField(upload_to="files/resource", null=True, blank=True)
+    resource = models.FileField(upload_to="files/resource", null=True, blank=True, max_length=500)
     video_link = models.URLField(max_length=200, null=True, blank=True)
 
     favourites = models.ManyToManyField(
