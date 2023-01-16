@@ -19,6 +19,10 @@ from account.forms.profil_form import ClientForm, ClientUserForm
 from rest_framework import viewsets
 from rest_framework import permissions
 from account.serializers import UserSerializer, GroupSerializer
+from .tokens import account_activation_token
+from django.contrib.sites.shortcuts import get_current_site
+
+
 
 
 
@@ -60,15 +64,15 @@ def password_reset_request(request):
 			if associated_users.exists():
 				for user in associated_users:
 					subject = "Password Reset Requested"
-					email_template_name = "account/password_reset_email.txt"
+					email_template_name = 'password_reset_email.txt'
 					c = {
 					"email":user.email,
-					'domain':'https://www.togotulawo.com',
+					'domain':get_current_site(request).domain,
 					'site_name': 'Togotulawo',
 					"uid": urlsafe_base64_encode(force_bytes(user.pk)),
 					"user": user,
-					'token': default_token_generator.make_token(user),
-					'protocol': 'http',
+					'token': account_activation_token.make_token(user),
+					'protocol': 'https' if request.is_secure() else 'http'
 					}
 					email = render_to_string(email_template_name, c)
 					try:
@@ -76,7 +80,7 @@ def password_reset_request(request):
 					except BadHeaderError:
 						return HttpResponse('Invalid header found.')
 	password_reset_form = PasswordResetForm()
-	return render(request=request, template_name="main/password/password_reset.html", context={"password_reset_form":password_reset_form})
+	return render(request=request, template_name='main/password/password_reset.html', context={"password_reset_form":password_reset_form})
 
 
 def connexion(request):
