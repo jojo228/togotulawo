@@ -3,8 +3,7 @@ from django.contrib.auth.models import User
 from django import forms
 from django.contrib.auth import authenticate , login
 from django.forms import ValidationError
-from captcha.fields import ReCaptchaField
-from captcha.widgets import ReCaptchaV2Checkbox
+
 
 
 
@@ -12,7 +11,6 @@ from captcha.widgets import ReCaptchaV2Checkbox
 class LoginForm(AuthenticationForm):
     
     username = forms.EmailField(max_length=25 , required = True , label='Email')
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox())
 
 
     def clean(self):
