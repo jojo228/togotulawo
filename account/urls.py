@@ -1,6 +1,6 @@
 
 from django.urls import path
-from account.signup_views import auteur_signup, client_signup, signup_choice, ense_signup
+from account.signup_views import auteur_signup, client_signup, signup_choice, ense_signup, activate
 from account.views import client_profil, connexion, password_reset_request, signout
 from django.conf import settings
 from django.conf.urls.static import static
@@ -23,6 +23,8 @@ urlpatterns = [
 
 
     path('profil', client_profil, name='profil'),
+
+    path('activate/<uidb64>/<token>', activate, name='activate'),
 
 ]
 

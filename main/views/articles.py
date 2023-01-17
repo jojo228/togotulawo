@@ -50,6 +50,14 @@ def article_page(request, slug):
     article = Article.objects.get(slug=slug)
     comment = article.comment_set.all().count()
 
+    user_article = None
+
+    try:
+        user_article = UserArticle.objects.get(article=article, user=request.user)
+    except:
+        pass
+    
+
     fav = bool
 
     if article.favourites.filter(id=request.user.id).exists():
@@ -68,7 +76,8 @@ def article_page(request, slug):
         """ "video" : video , 
         'videos':videos, """
         'comment':comment,
-        'fav':fav
+        'fav':fav,
+        'user_article':user_article,
     }
  
     return render(request, template_name="pageArticle.html", context=context)
