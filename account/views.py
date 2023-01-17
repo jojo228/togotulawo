@@ -22,9 +22,6 @@ from account.serializers import UserSerializer, GroupSerializer
 from .tokens import account_activation_token
 from django.contrib.sites.shortcuts import get_current_site
 
-from captcha.fields import ReCaptchaField
-from captcha.widgets import ReCaptchaV2Checkbox
-
 
 
 
