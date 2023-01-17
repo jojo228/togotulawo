@@ -4,6 +4,8 @@ from django import forms
 from django.forms import ValidationError
 
 from account.models import Auteur, Client, Entreprise
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV2Checkbox
 
 
 class CreateUserForm(UserCreationForm):

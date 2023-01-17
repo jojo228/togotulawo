@@ -22,6 +22,9 @@ from account.serializers import UserSerializer, GroupSerializer
 from .tokens import account_activation_token
 from django.contrib.sites.shortcuts import get_current_site
 
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV2Checkbox
+
 
 
 
@@ -85,6 +88,7 @@ def password_reset_request(request):
 
 def connexion(request):
 	redirect_to = request.POST.get('next')
+	form = AuthenticationForm()
 	if request.method == 'POST':
 		form = AuthenticationForm(request, data=request.POST)
 		if form.is_valid():
@@ -99,9 +103,18 @@ def connexion(request):
 			else:
 				return redirect(settings.LOGIN_REDIRECT_URL)
 		else:
-			messages.error(request, "Nom d'utilsateur ou mot de passe incorrect!")
+			for key, error in list(form.errors.items()):
 
-	return render(request=request, template_name='login.html')
+				if key == 'captcha' and error[0] == 'This field is required.':
+					messages.error(request, "Desolé, vous devez absolument passer le test de Recaptcha")
+					continue
+					
+				messages.error(request, "Nom d'utilsateur ou mot de passe incorrect!")
+
+	context = {'form': form}
+
+
+	return render(request=request, template_name='login.html', context=context)
 
 
 

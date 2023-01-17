@@ -60,8 +60,10 @@ INSTALLED_APPS = [
     'chartjs',
     "rest_framework",
     'django.contrib.sitemaps',
+    'captcha',
 
 ]
+
 
 
 REST_FRAMEWORK = {
@@ -180,6 +182,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+#Google Captcha
+RECAPTCHA_PUBLIC_KEY = os.getenv('RECAPTCHA_PUBLIC_KEY')
+RECAPTCHA_PRIVATE_KEY = os.getenv('RECAPTCHA_PRIVATE_KEY')
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
+RECAPTCHA_DOMAIN = 'www.recaptcha.net'
 
 
 #Session timeout config
