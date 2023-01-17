@@ -3,10 +3,17 @@ from django.contrib.auth.models import User
 from django import forms
 from django.contrib.auth import authenticate , login
 from django.forms import ValidationError
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV2Checkbox
+
+
+
 
 class LoginForm(AuthenticationForm):
     
     username = forms.EmailField(max_length=25 , required = True , label='Email')
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox())
+
 
     def clean(self):
         email = self.cleaned_data['username']
@@ -16,10 +23,13 @@ class LoginForm(AuthenticationForm):
             user = User.objects.get(email = email)
             result = authenticate(username = user.username , password = password)
 
+
             if(result is not None):
                 return result
             else:
                 raise ValidationError("Email ou mot de passe invalide")
         except:
             raise ValidationError("Email ou mot de passe invalide")
+        
+    
         
