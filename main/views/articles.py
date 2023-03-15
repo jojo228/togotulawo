@@ -153,7 +153,7 @@ class Bibliotheque(LoginRequiredMixin, ListView):
         user = self.request.user
         filter_val=self.request.GET.get("filter","")
         order_by=self.request.GET.get("orderby","id")
-        article = UserArticle.objects.filter(user=user).all()
+        article = Article.objects.filter(userarticle__user=user).all()
         if filter_val:
             article = article.filter(Q(title__icontains=filter_val) | Q(contenu__icontains=filter_val) | Q(price__icontains=filter_val)).order_by(order_by)
 
