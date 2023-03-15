@@ -4,6 +4,8 @@ from froala_editor.fields import FroalaField
 from main.helpers import *
 from account.models import Auteur, Client
 from django.urls import reverse
+from ckeditor_uploader.fields import  RichTextUploadingField
+
 
 
 
@@ -41,7 +43,7 @@ class Article(models.Model):
     title = models.CharField(max_length=300, unique=True)
     subtitle = models.CharField(max_length=255, blank=True)
     slug = models.SlugField(max_length=300, unique=True)
-    contenu = FroalaField()
+    contenu = RichTextUploadingField()
     couverture = models.ImageField(upload_to='files/couverture', null=True, blank=True)
     auteur = models.ForeignKey(Auteur, null=False, on_delete=models.CASCADE)
     domaine = models.ForeignKey(Categorie, null=False, on_delete=models.CASCADE)

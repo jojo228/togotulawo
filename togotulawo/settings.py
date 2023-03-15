@@ -61,6 +61,8 @@ INSTALLED_APPS = [
     "rest_framework",
     'django.contrib.sitemaps',
     'captcha',
+    'ckeditor',
+    'ckeditor_uploader',
 
 ]
 
@@ -302,10 +304,27 @@ LOGOUT_REDIRECT_URL = 'account:connexion'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+# CkEditor config
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'skin': 'moono',
+        'codeSnippet_theme': 'monokai',
+        'toolbar': 'all',
+        'extraPlugins': ','.join(
+            [
+                'codesnippet',
+                'widget',
+                'dialog'
+            ]
+        ),
+    }
+}
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 AUTHENTICATION_BACKENDS = [
-    'account.backends.EmailBackend'
+     'account.backends.EmailBackend',
 ]
 
 # SMTP Configuration (Its working fine, just add the mail and its password)

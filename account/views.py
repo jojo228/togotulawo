@@ -14,6 +14,7 @@ from django.utils.encoding import force_bytes
 from django.db.models.query_utils import Q
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from account.forms.login_form import LoginForm
 from account.forms.profil_form import ClientForm, ClientUserForm
 
 from rest_framework import viewsets
@@ -100,13 +101,13 @@ def connexion(request):
 			else:
 				return redirect(settings.LOGIN_REDIRECT_URL)
 		else:
-			for key, error in list(form.errors.items()):
+			""" for key, error in list(form.errors.items()):
 
 				if key == 'captcha' and error[0] == 'This field is required.':
 					messages.error(request, "Desolé, vous devez absolument passer le test de Recaptcha")
-					continue
+					continue """
 					
-				messages.error(request, "Nom d'utilsateur ou mot de passe incorrect!")
+			messages.error(request, "Email/Nom d'utilisateur ou mot de passe incorrect !")
 
 	context = {'form': form}
 

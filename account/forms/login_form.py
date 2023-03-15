@@ -6,8 +6,6 @@ from django.forms import ValidationError
 
 
 
-
-
 class LoginForm(AuthenticationForm):
     
     username = forms.EmailField(max_length=25 , required = True , label='Email')

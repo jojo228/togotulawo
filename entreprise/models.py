@@ -3,6 +3,8 @@ from froala_editor.fields import FroalaField
 from main.helpers import generate_slug
 from account.models import Entreprise
 from main.models.article import Categorie
+from ckeditor_uploader.fields import  RichTextUploadingField
+
 
 # Create your models here.
 
@@ -12,9 +14,9 @@ class Problematique(models.Model):
     entreprise = models.ForeignKey(Entreprise, on_delete=models.CASCADE)
     titre = models.CharField(max_length=300)
     domaine = models.ForeignKey(Categorie, null=True, on_delete=models.SET_NULL)
-    description = FroalaField()
+    description = RichTextUploadingField()
     slug = models.SlugField(max_length=300, unique=True)
-    profil_rechercher = FroalaField()
+    profil_rechercher = RichTextUploadingField()
     duree_recherche = models.IntegerField()
     is_draft = models.BooleanField(default=True)
     active = models.BooleanField(default=False)
@@ -34,7 +36,7 @@ class Postuler(models.Model):
     prenom_du_candidat = models.CharField(max_length=50)
     contact_du_candidat = models.IntegerField()
     email_du_candidat = models.EmailField()
-    motivation_du_candidat = FroalaField()
+    motivation_du_candidat = RichTextUploadingField()
     postule_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

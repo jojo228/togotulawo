@@ -1,7 +1,6 @@
 from cProfile import label
 from logging import PlaceHolder
 from django import forms
-from froala_editor.widgets import FroalaEditor
 from account.models import Auteur
 from main.models.article import Article, Categorie
 
