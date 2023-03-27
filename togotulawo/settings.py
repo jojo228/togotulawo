@@ -52,10 +52,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+
     'account',
     'main',
     'dashboard',
     'entreprise',
+    'landing',
+
+
     'froala_editor',
     'chartjs',
     "rest_framework",
@@ -294,7 +298,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # login
 LOGIN_URL = 'account:connexion'
-LOGIN_REDIRECT_URL = 'main:accueil'
+LOGIN_REDIRECT_URL = 'landing:home'
 LOGOUT_REDIRECT_URL = 'account:connexion'
 
 

@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+    <title>A propos</title>
+{% endblock title %}
+
+
+
+{% block content %}
+<div class="main-container">
+    <div class="content-wrapper">
+
+        <div class="content-wrapper-header">
+            <div class="content-wrapper-context">
+                <h3 class="img-content">
+                    
+                    Alors Qui Sommes Nous ?
+                </h3>
+                <div class="content-text">
+                    TOGOTULAWO est une société de conseil en technologie qui aide ses clients du monde entier à accélérer l'innovation
+                    grâce à une grande variété de services numériques.
+                     <br>
+                    Depuis plus de 2 ans, TOGOTULAWO a livré avec succès plus de 50 projets permettant à nos clients d'innover mieux et
+                    plus vite pour acquérir un avantage concurrentiel. Nous sommes des conseillers et des ingénieurs qui aident les
+                    entreprises à se démarquer dans le monde numérique et à bâtir un avenir meilleur.
+                    <br>
+                    Nous aidons les grandes entreprises, y compris les PME et les TPME, à s'adapter, à se moderniser et à
+                    accélérer l'innovation en fournissant une grande variété de services numériques.
+                    <br>
+                    Les meilleures startups et scale-ups améliorent leurs chances de réussir dans la course rapide à la mise sur le marché
+                    avec l'aide de l'équipe de TOGOTULAWO en fournissant les bonnes compétences au bon moment.
+                    <br>
+                    Nos clients sont dans les secteurs de la banque et de la technologie financière, des télécommunications, de l'assurance,
+                    de la vente au détail et du commerce électronique, des médias, des produits de grande consommation, de la construction
+                    et des mines, de la technologie médicale et de la santé, des soins de santé traditionnels, des industries
+                    pharmaceutiques, etc.
+                    <br>
+                    Nous aidons les dirigeants à relever avec succès leurs plus grands défis et à transformer leur vision en réalité.
+                </div>
+                <a href="{% url 'landing:contact' %}">
+                <button class="content-button">Nous contacter</button>
+                </a>
+            </div>
+            <img class="content-wrapper-img" src="https://assets.codepen.io/3364143/glass.png" alt="">
+        </div>
+    </div>
+</div>
+
+{% endblock %}
