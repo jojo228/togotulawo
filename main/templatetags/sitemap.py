@@ -11,4 +11,4 @@ class ArticleSiteMap(Sitemap):
         return Article.objects.all()
 
     def location(self, item):
-        return "/article/" + str(item) 
+        return "/ged/article/" + str(item) 
