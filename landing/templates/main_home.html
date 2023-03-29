@@ -3,17 +3,19 @@
 <html lang="en">
 
 <head>
+  {% block title %}
+  <title>Accueil-Togotulawo</title>
+  {% endblock title %}
+
   <meta charset="UTF-8">
   <meta content="Digitalisation,archivage numérique et la transcription des documents.Marketplace pour les auteurs de livres et articles."name="description">
   <meta content="togotulawo,archivage numérique au togo,archivage numérique,togo,transcription des documents,togotulawo,marketplace,publier article en ligne,"name="keywords">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta name="author" content="Joel ASSOU" />
 
-  {% block title %}<title>Bienvenu sur Togotulawo</title>{% endblock title %}
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="{% static './landing/togotulawo/style.css' %}">
-
-  <link href="{% static 'main/assets/img/favicon.png' %}" rel="icon">
 
 </head>
 
@@ -38,9 +40,9 @@
       <div class="menu-circle"></div>
 
       <div class="header-menu">
-        <a {% if request.resolver_match.url_name == 'landing:home' %} class="menu-link is-active" {% else %} class="menu-link" {%endif %} href="{% url 'landing:home' %}">Woézon</a>
-        <a {% if request.resolver_match.url_name == 'landing:about' %} class="menu-link is-active" {% else %} class="menu-link" {%endif %} href="{% url 'landing:about' %}">Qui sommes nous ?</a>
-        <a {% if request.resolver_match.url_name == 'landing:contact' %} class="menu-link is-active" {% else %} class="menu-link"{% endif %} href="{% url 'landing:contact' %}">Contact</a>
+        <a class="menu-link" href="{% url 'landing:home' %}">Woézon</a>
+        <a class="menu-link" href="{% url 'landing:about' %}">Qui sommes nous ?</a>
+        <a class="menu-link" href="{% url 'landing:contact' %}">Contact</a>
       </div>
 
       <div class="search-bar">
