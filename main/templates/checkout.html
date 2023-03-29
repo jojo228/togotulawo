@@ -50,7 +50,7 @@
                     <ul>
                         <li><strong>Titre</strong>: {{article.title}}</li>
                         <br>
-                        <form action="/checkout/{{article.slug}}" method="POST">
+                        <form action="/ged/checkout/{{article.slug}}" method="POST">
                             {% csrf_token %}
                             <li>Choisissez le réseau:</li>
                             <li>
