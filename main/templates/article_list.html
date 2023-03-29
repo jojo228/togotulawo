@@ -7,32 +7,33 @@
 <!-- ======= Recent Blog Posts Section ======= -->
 <section id="recent-blog-posts" class="recent-blog-posts">
 
-    <div class="container" data-aos="fade-up">
+  <div class="container" data-aos="fade-up">
 
-      <header class="section-header">
-        <div class="card-body">
-            <b>Filtrer Par : - </b>
-            
-        </div>
-      </header>
+    <header class="section-header">
+      <div class="card-body">
+        <b>Filtrer Par : - </b>
 
-      <div class="row">
-        {% for a in article %}
-        <div class="col-lg-4">
-          <div class="post-box">
-            <div class="post-img"><img src="{{a.couverture.url}}" class="img-fluid" alt=""></div>
-            <span class="post-date">{{a.price|intcomma|cfa}}</span>
-            <span class="post-date">{{a.publish_date}}</span>
-            <h3 class="post-title">{{a.title}}</h3>
-            <a href="/article/{{a.slug}}" class="readmore stretched-link mt-auto"><span>Lire Plus</span><i class="bi bi-arrow-right"></i></a>
-          </div>
-        </div>
-        {% endfor %}
       </div>
-      
+    </header>
+
+    <div class="row">
+      {% for a in article %}
+      <div class="col-lg-4">
+        <div class="post-box">
+          <div class="post-img"><img src="{{a.couverture.url}}" class="img-fluid" alt=""></div>
+          <span class="post-date">{{a.price|intcomma|cfa}}</span>
+          <span class="post-date">{{a.publish_date}}</span>
+          <h3 class="post-title">{{a.title}}</h3>
+          <a href="/ged/article/{{a.slug}}" class="readmore stretched-link mt-auto"><span>Lire Plus</span><i
+              class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+      {% endfor %}
     </div>
 
-  </section><!-- End Recent Blog Posts Section -->
+  </div>
+
+</section><!-- End Recent Blog Posts Section -->
 
 
 

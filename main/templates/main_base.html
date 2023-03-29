@@ -7,14 +7,20 @@
 <head>
 
   {% block title %}
-<title>Bienvenu sur Togotulawo</title>
+  <title>Bienvenu sur Togotulawo</title>
   {% endblock title %}
 
-  
+
   <meta charset="utf-8">
-  <meta content="togotulawo,digitalisation,archivage numérique,transcription des documents.marketplace pour auteurs de livres, articles." name="description">
-  <meta content="Digitalisation,archivage numérique et la transcription des documents.Marketplace pour les auteurs de livres et articles." name="description">
-  <meta content="togotulawo,archivage numérique au togo,archivage numérique,togo,transcription des documents,togotulawo,marketplace,publier article en ligne," name="keywords">
+  <meta
+    content="togotulawo,digitalisation,archivage numérique,transcription des documents.marketplace pour auteurs de livres, articles."
+    name="description">
+  <meta
+    content="Digitalisation,archivage numérique et la transcription des documents.Marketplace pour les auteurs de livres et articles."
+    name="description">
+  <meta
+    content="togotulawo,archivage numérique au togo,archivage numérique,togo,transcription des documents,togotulawo,marketplace,publier article en ligne,"
+    name="keywords">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta name="author" content="Joel ASSOU" />
 
@@ -123,7 +129,7 @@
   </section><!-- End Breadcrumbs -->
 
 
-<!-- <section id="hero" class="hero d-flex align-items-center">
+  <!-- <section id="hero" class="hero d-flex align-items-center">
 
   <div class="container">
     <div class="row">
@@ -170,39 +176,39 @@
               </div>
 
               <h2 class="entry-title">
-                <a href="/article/{{a.slug}}">{{a.title}}</a>
+                <a href="/ged/article/{{a.slug}}">{{a.title}}</a>
               </h2>
 
               <div class="entry-meta">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-book"></i> <a >Type:
+                  <li class="d-flex align-items-center"><i class="bi bi-book"></i> <a>Type:
                       {{a.type}}</a></li>
-                  <li class="d-flex align-items-center"> <i class="bi bi-list"></i><a >Domaine:
+                  <li class="d-flex align-items-center"> <i class="bi bi-list"></i><a>Domaine:
                       {{a.domaine}}</a></li>
-                      {% if a.price %}
-                  <li class="d-flex align-items-center"><i class="bi bi-coin"></i> <a >Prix:
+                  {% if a.price %}
+                  <li class="d-flex align-items-center"><i class="bi bi-coin"></i> <a>Prix:
                       {{a.price|intcomma|cfa}}</a></li>
-                      {% endif %}
+                  {% endif %}
 
                 </ul>
               </div>
               <div class="entry-meta">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
-                      >{{a.auteur}}</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a ><time
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a>{{a.auteur}}</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a><time
                         datetime="2020-01-01">{{a.publish_date}}</time></a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                      >{{a.comment_set.all.count}} commentaires</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a>{{a.comment_set.all.count}}
+                      commentaires</a></li>
                 </ul>
               </div>
               <div class="entry-meta">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-download"></i> <a
-                      >Lu {{a.get_hit_count}} fois</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-download"></i> <a>Lu {{a.get_hit_count}}
+                      fois</a></li>
                   <li class="d-flex align-items-center"><i class="bi bi-send-check"></i>
-                    <a >Recommander 0 fois</a></li>
-                  
+                    <a>Recommander 0 fois</a>
+                  </li>
+
                 </ul>
               </div>
 
@@ -233,7 +239,7 @@
               </ul>
             </div>
 
-            
+
 
           </div><!-- End blog entries list -->
 
@@ -287,7 +293,8 @@
               <div class="sidebar-item categories">
                 <ul>
                   {% for cat in category %}
-                  <li><a href="{% url 'main:problematique' cat.slug %}">{{cat.name}}<span>({{cat.problematique_set.all.count}})</span></a>
+                  <li><a
+                      href="{% url 'main:problematique' cat.slug %}">{{cat.name}}<span>({{cat.problematique_set.all.count}})</span></a>
                   </li>
                   {% endfor %}
 
@@ -341,13 +348,17 @@
               <img src="assets/img/logo.png" alt="">
               <span>Togotulawo</span>
             </a>
-            <p>Nous sommes une entreprise spécialisée dans la digitalisation, l'archivage numérique et la transcription des documents.
-              En plus d'être une marketplace pour les auteurs de livres, articles etc... nous mettons également en relation entreprises
+            <p>Nous sommes une entreprise spécialisée dans la digitalisation, l'archivage numérique et la transcription
+              des documents.
+              En plus d'être une marketplace pour les auteurs de livres, articles etc... nous mettons également en
+              relation entreprises
               et universitaires.
-                Quelles que soient vos contraintes et vos exigences, nous répondons rapidement à votre problématique.</p>
+              Quelles que soient vos contraintes et vos exigences, nous répondons rapidement à votre problématique.</p>
             <div class="social-links mt-3">
-              <a href="https://twitter.com/togotulawo?t=LQBs8lb-39ooSrbSgojx4g&s=09" class="twitter"><i class="bi bi-twitter"></i></a>
-              <a href="https://www.facebook.com/profile.php?id=100088644978882" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="https://twitter.com/togotulawo?t=LQBs8lb-39ooSrbSgojx4g&s=09" class="twitter"><i
+                  class="bi bi-twitter"></i></a>
+              <a href="https://www.facebook.com/profile.php?id=100088644978882" class="facebook"><i
+                  class="bi bi-facebook"></i></a>
               <a href="https://www.instagram.com/togotulawo/" class="instagram"><i class="bi bi-instagram"></i></a>
               <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
             </div>
@@ -356,13 +367,15 @@
           <div class="col-lg-2 col-6 footer-links">
             <h4>Liens Utils</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#" data-toggle="modal" data-target=".bd-ccm-modal-lg">Comment ça marche?</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#" data-toggle="modal"
+                  data-target=".bd-ccm-modal-lg">Comment ça marche?</a></li>
 
-                 
-                  
+
+
               <li><i class="bi bi-chevron-right"></i> <a href="{% url 'main:faq' %}">F.A.Q</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Blog</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'main:terms_conditions' %}">Terms et conditions</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'main:terms_conditions' %}">Terms et
+                  conditions</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="{% url 'main:police_privee' %}">Police privée</a></li>
             </ul>
           </div>
@@ -370,11 +383,16 @@
           <div class="col-lg-2 col-6 footer-links">
             <h4>Nos Services</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#" data-toggle="modal" data-target=".bd-an-modal-lg">Archivage numérique</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#" data-toggle="modal" data-target=".bd-tdd-modal-lg">Transcription de documents</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#" data-toggle="modal" data-target=".bd-hdd-modal-lg">Hébergement de documents</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#" data-toggle="modal" data-target=".bd-add-modal-lg">Marketplace</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#" data-toggle="modal" data-target=".bd-sef-modal-lg">Stages et formations</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#" data-toggle="modal"
+                  data-target=".bd-an-modal-lg">Archivage numérique</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#" data-toggle="modal"
+                  data-target=".bd-tdd-modal-lg">Transcription de documents</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#" data-toggle="modal"
+                  data-target=".bd-hdd-modal-lg">Hébergement de documents</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#" data-toggle="modal"
+                  data-target=".bd-add-modal-lg">Marketplace</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#" data-toggle="modal"
+                  data-target=".bd-sef-modal-lg">Stages et formations</a></li>
             </ul>
           </div>
 
@@ -415,13 +433,13 @@
 
   <!-- MODAL VIEWS -->
 
-                              <!-- Comment ca marche ? -->
+  <!-- Comment ca marche ? -->
   <div class="modal fade bd-ccm-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <h4>Compte standard 
-        </h4> 
+        <h4>Compte standard
+        </h4>
         <p>
           ---> Connectez vous ou créez un nouveau compte <br>
 
@@ -436,7 +454,8 @@
         </h4>
         <p>
           ---> Connectez vous ou créez un nouveau compte <br>
-          ---> Publier vos differents documents en allant dans le sous-menu gestion des publications et ensuite sur publier <br>
+          ---> Publier vos differents documents en allant dans le sous-menu gestion des publications et ensuite sur
+          publier <br>
           ---> Consulter vos brouillons dans le menu "Mes Brouillons" <br>
           ---> Consulter vos ventes réalisées sur la plateforme
         </p>
@@ -445,7 +464,8 @@
         </h4>
         <p>
           ---> Connectez vous ou créez un nouveau compte <br>
-          ---> Publier vos differents offres en allant dans le sous-menu gestion des publications et ensuite sur publier <br>
+          ---> Publier vos differents offres en allant dans le sous-menu gestion des publications et ensuite sur publier
+          <br>
           ---> Consulter la liste des candidats qui ont postuler a votre publication dans la liste des candidatures <br>
           ---> Consulter vos brouillons dans le menu "Mes Brouillons" <br>
           ---> Consulter vos ventes réalisées sur la plateforme dans le submenu "kliste des ventes"
@@ -453,48 +473,54 @@
       </div>
     </div>
   </div>
-                              <!-- NOS SERVICES -->
-      <!-- Archivage Numérique -->
+  <!-- NOS SERVICES -->
+  <!-- Archivage Numérique -->
   <div class="modal fade bd-an-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-         <h5 class="modal-title" id="exampleModalLongTitle">L'archivage numérique ou électronique</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">L'archivage numérique ou électronique</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <p>L’archivage numérique consiste à conserver les données sous forme électronique. Tous les types de documents sont
-        concernés : email, dossiers papiers, contrats, factures, plans, données de santé….</p>
+        <p>L’archivage numérique consiste à conserver les données sous forme électronique. Tous les types de documents
+          sont
+          concernés : email, dossiers papiers, contrats, factures, plans, données de santé….</p>
         <p>
-         <p><b>Pourquoi numériser ses documents ?</b></p>
+        <p><b>Pourquoi numériser ses documents ?</b></p>
 
-          Stocker ses documents de façon numérique présente de nombreux avantages :
-          <ul>
-            <li><b>L’archivage numérique est moins couteux que l’archivage physique</b> : il nécessite moins d’espace, aucune salle dédiée à la
+        Stocker ses documents de façon numérique présente de nombreux avantages :
+        <ul>
+          <li><b>L’archivage numérique est moins couteux que l’archivage physique</b> : il nécessite moins d’espace,
+            aucune salle dédiée à la
             conservation des archives et aucun personnel pour gérer ces archives.</li>
-            <li><b> La recherche de documents est plus performante </b> via des solutions de dématérialisation. Des logiciels vous accompagnent
+          <li><b> La recherche de documents est plus performante </b> via des solutions de dématérialisation. Des
+            logiciels vous accompagnent
             dans la recherche. Et vos documents sont accessibles partout, à tout instant.</li>
-            <li><b> Plus de risque de dégâts</b> lié au temps, aux conditions météorologiques ou aux conditions d’archives. Les documents
-            restent toujours lisibles et utilisables. Attention néanmoins à sécuriser les données contre les cyber-attaques.</li>
-          </ul>
-          
-          
-          
-          <p><b>Archivage numérique pour les entreprises</b></p>
-          Pour les entreprises, numériser ses documents pour les archiver revêt un enjeu d’importance. Outre les gains de
-          performance et économique, l’entreprise doit respecter la législation en matière de conservation de ses données
-          d’entreprise.
-          
-          Ne pas être en mesure de présenter les documents à l’administration fiscale s’ils sont demandés est sanctionnable de
-          lourdes amendes.
+          <li><b> Plus de risque de dégâts</b> lié au temps, aux conditions météorologiques ou aux conditions
+            d’archives. Les documents
+            restent toujours lisibles et utilisables. Attention néanmoins à sécuriser les données contre les
+            cyber-attaques.</li>
+        </ul>
+
+
+
+        <p><b>Archivage numérique pour les entreprises</b></p>
+        Pour les entreprises, numériser ses documents pour les archiver revêt un enjeu d’importance. Outre les gains de
+        performance et économique, l’entreprise doit respecter la législation en matière de conservation de ses données
+        d’entreprise.
+
+        Ne pas être en mesure de présenter les documents à l’administration fiscale s’ils sont demandés est
+        sanctionnable de
+        lourdes amendes.
         </p>
 
       </div>
     </div>
   </div>
-      <!-- Transcription de documents -->
+  <!-- Transcription de documents -->
   <div class="modal fade bd-tdd-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -505,12 +531,15 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <p> La transcription de documents consiste à convertir tous types de manuscrits en document numérique, par exemple en format
-        Word ou Excel.</p>
+        <p> La transcription de documents consiste à convertir tous types de manuscrits en document numérique, par
+          exemple en format
+          Word ou Excel.</p>
 
-        <p> Les documents à transcrire sont nombreux (comptes-rendus, conférence, interviews, PV...), tout comme les méthodes
-        de transcription audio. Chaque méthode permet d’obtenir un résultat différent (tout dépendra de la demande et du besoin
-        client). 
+        <p> Les documents à transcrire sont nombreux (comptes-rendus, conférence, interviews, PV...), tout comme les
+          méthodes
+          de transcription audio. Chaque méthode permet d’obtenir un résultat différent (tout dépendra de la demande et
+          du besoin
+          client). 
         <ul>
           <li>La transcription intégrale ou verbatim</li>
           <li>La transcription intégrale épurée</li>
@@ -518,23 +547,23 @@
           <li>La transcription synthétisée</li>
         </ul>
         </p>
-        
+
         <p>
-        Vos avantages : 
+          Vos avantages : 
         <ul>
           <li>Soyez assurés de la conformité de vos fichiers à vos exigences  </li>
           <li>Confiez vos données à nos équipes de professionnels </li>
           <li>Libérez-vous d’une tâche chronophage et contraignante</li>
         </ul>
-       
+
         </p>
 
 
       </div>
     </div>
   </div>
-                            <!-- Terms et conditons ? -->
-  
+  <!-- Terms et conditons ? -->
+
 
 
 
@@ -547,11 +576,14 @@
   <script src="{% static 'main/assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 
   <!-- Template Main JS File -->
   <script src="{% static 'main/assets/js/main.js' %}"></script>
