@@ -31,7 +31,7 @@
       <div class="menu-circle"></div>
 
       <div class="header-menu">
-        <a {% if request.resolver_match.url_name == 'landing:home' %} class="menu-link is-active" {% else %} class="menu-link" {%endif %} href="{% url 'landing:home' %}">Togotulawo</a>
+        <a {% if request.resolver_match.url_name == 'landing:home' %} class="menu-link is-active" {% else %} class="menu-link" {%endif %} href="{% url 'landing:home' %}">Woézon</a>
         <a {% if request.resolver_match.url_name == 'landing:about' %} class="menu-link is-active" {% else %} class="menu-link" {%endif %} href="{% url 'landing:about' %}">Qui sommes nous ?</a>
         <a {% if request.resolver_match.url_name == 'landing:contact' %} class="menu-link is-active" {% else %} class="menu-link"{% endif %} href="{% url 'landing:contact' %}">Contact</a>
       </div>
