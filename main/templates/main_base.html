@@ -1,5 +1,4 @@
 {% load static %}
-{% load hosts %}
 {% load article_custom_tags %}
 {% load humanize %}
 <!DOCTYPE html>
@@ -61,22 +60,22 @@
   <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="{% url 'accueil' %}" class="logo d-flex align-items-center">
+      <a href="{% url 'main:accueil' %}" class="logo d-flex align-items-center">
         <!-- <img src="{% static 'main/assets/img/logo.png' %}" alt="togotulawo"> -->
         <span>Togotulawo</span>
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto " href="{% url 'accueil' %}">Accueil</a></li>
+          <li><a class="nav-link scrollto " href="{% url 'main:accueil' %}">Accueil</a></li>
           <li class="dropdown"><a href="#"><span>Domaines</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               {% for cat in category %}
-              <li><a href="{% url 'categorie' cat.slug %}">{{cat.name}}</a></li>
+              <li><a href="{% url 'main:categorie' cat.slug %}">{{cat.name}}</a></li>
               {% endfor %}
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="{% url 'offers' %}">Offres</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'main:offers' %}">Offres</a></li>
           <li><a class="nav-link scrollto" href="#contact">Formations</a></li>
           <li><a>
               <div class="sidebar-item search-form">
@@ -90,10 +89,10 @@
           {% if request.user.is_authenticated %}
 
           {% if user.client %}
-          <li><a class="getstarted scrollto" href="{% url 'bibliotheque' %}">Ma Bibliothèque</a></li>
-          <li><a href="{% url 'profil' host 'wildcard' %}"><i style="font-size: 30px;" class="bi bi-person"></i></a></li>
+          <li><a class="getstarted scrollto" href="{% url 'main:bibliotheque' %}">Ma Bibliothèque</a></li>
+          <li><a href="{% url 'account:profil' %}"><i style="font-size: 30px;" class="bi bi-person"></i></a></li>
 
-          <li><a href="{% url 'logout' host 'wildcard' %}"><i style="font-size: 30px;" class="bi bi-arrow-right"></i></a></li>
+          <li><a href="{% url 'account:logout' %}"><i style="font-size: 30px;" class="bi bi-arrow-right"></i></a></li>
 
           {%else%}
 
@@ -104,7 +103,7 @@
           {% endif %}
 
           {%else%}
-          <li><a class="getstarted scrollto" href="{% host_url 'connexion' host 'wildcard' %}">Connexion</a></li>
+          <li><a class="getstarted scrollto" href="{% url 'account:connexion' %}">Connexion</a></li>
           {% endif %}
 
 
@@ -122,7 +121,7 @@
     <div class="container">
 
       <ol>
-        <li><a href="{% url 'accueil' %}">Accueil</a></li>
+        <li><a href="{% url 'main:accueil' %}">Accueil</a></li>
 
       </ol>
 
@@ -261,7 +260,7 @@
                 <ul>
                   {% for cat in category %}
                   <li><a
-                      href="{% url 'categorie' cat.slug %}">{{cat.name}}<span>({{cat.article_set.all.count}})</span></a>
+                      href="{% url 'main:categorie' cat.slug %}">{{cat.name}}<span>({{cat.article_set.all.count}})</span></a>
                   </li>
                   {% endfor %}
 
@@ -295,7 +294,7 @@
                 <ul>
                   {% for cat in category %}
                   <li><a
-                      href="{% url 'problematique' cat.slug %}">{{cat.name}}<span>({{cat.problematique_set.all.count}})</span></a>
+                      href="{% url 'main:problematique' cat.slug %}">{{cat.name}}<span>({{cat.problematique_set.all.count}})</span></a>
                   </li>
                   {% endfor %}
 
@@ -332,7 +331,7 @@
           </div>
           {% endfor %}
           <div class="col-lg-6">
-            <form action="{% url 'accueil' %}" method="post">
+            <form action="{% url 'main:accueil' %}" method="post">
               {% csrf_token %}
               <input type="email" name="email"><input type="submit" value="Souscrire">
             </form>
@@ -345,7 +344,7 @@
       <div class="container">
         <div class="row gy-4">
           <div class="col-lg-5 col-md-12 footer-info">
-            <a href="{% url 'accueil' %}" class="logo d-flex align-items-center">
+            <a href="{% url 'main:accueil' %}" class="logo d-flex align-items-center">
               <img src="assets/img/logo.png" alt="">
               <span>Togotulawo</span>
             </a>
@@ -373,11 +372,11 @@
 
 
 
-              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'faq' %}">F.A.Q</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'main:faq' %}">F.A.Q</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Blog</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'terms_conditions' %}">Terms et
+              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'main:terms_conditions' %}">Terms et
                   conditions</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'police_privee' %}">Police privée</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'main:police_privee' %}">Police privée</a></li>
             </ul>
           </div>
 
