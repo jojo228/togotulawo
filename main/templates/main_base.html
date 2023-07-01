@@ -90,9 +90,9 @@
 
           {% if user.client %}
           <li><a class="getstarted scrollto" href="{% url 'bibliotheque' %}">Ma Bibliothèque</a></li>
-          <li><a href="{% url 'account:profil' host 'wildcard' %}"><i style="font-size: 30px;" class="bi bi-person"></i></a></li>
+          <li><a href="{% url 'profil' host 'wildcard' %}"><i style="font-size: 30px;" class="bi bi-person"></i></a></li>
 
-          <li><a href="{% url 'account:logout' host 'wildcard' %}"><i style="font-size: 30px;" class="bi bi-arrow-right"></i></a></li>
+          <li><a href="{% url 'logout' host 'wildcard' %}"><i style="font-size: 30px;" class="bi bi-arrow-right"></i></a></li>
 
           {%else%}
 
@@ -103,7 +103,7 @@
           {% endif %}
 
           {%else%}
-          <li><a class="getstarted scrollto" href="{% url 'account:connexion' host 'wildcard' %}">Connexion</a></li>
+          <li><a class="getstarted scrollto" href="{% url 'connexion' host 'wildcard' %}">Connexion</a></li>
           {% endif %}
 
 
