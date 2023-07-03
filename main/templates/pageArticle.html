@@ -1,7 +1,6 @@
 {% extends 'main_base.html' %}
 {% load article_custom_tags %}
 {% load humanize %}
-{% load hosts %}
 
 {% block title %}
 <title>Détails sur l'article</title>
@@ -27,7 +26,7 @@
   <div class="container">
 
     <ol>
-      <li><a href="{% host_url 'accueil' host 'main' %}">Accueil</a></li>
+      <li><a href="{% url 'accueil' %}">Accueil</a></li>
       <li>Détails sur document</li>
     </ol>
     <h2>{{article.title}}</h2>
