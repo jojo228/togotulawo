@@ -123,7 +123,7 @@
             </div>
             {% endfor %}
 
-            <form action="{% host_url 'submit_review' article.id host 'main' %}" method="POST">
+            <form action="{% url 'submit_review' article.id %}" method="POST">
               {% csrf_token %}
               <div class="row">
                 <div class="rate col-md-6 form-group">
@@ -235,14 +235,14 @@
 
                     </ul>
                     {% if article.price %}
-                    <a href="{% host_url 'checkout' a.slug host 'main' %}" class="btn-buy">Acheter</a>
+                    <a href="{% url 'checkout' a.slug %}" class="btn-buy">Acheter</a>
                     {% else %}
 
                     {% if fav %}
 
-                    <a href="{% host_url 'favourite_add' article.slug host 'main' %}" class="btn-buy">Retirer</a>
+                    <a href="{% url 'favourite_add' article.slug %}" class="btn-buy">Retirer</a>
                     {%else %}
-                    <a href="{% host_url 'favourite_add' article.slug host 'main' %}" class="btn-buy">Favoris</a>
+                    <a href="{% url 'favourite_add' article.slug %}" class="btn-buy">Favoris</a>
                     {% endif %}
                     {% endif %}
                   </div>
