@@ -61,22 +61,22 @@
   <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="{% url host_url 'accueil' host 'main' %}" class="logo d-flex align-items-center">
+      <a href="{% host_url 'accueil' host 'main' %}" class="logo d-flex align-items-center">
         <!-- <img src="{% static 'main/assets/img/logo.png' %}" alt="togotulawo"> -->
         <span>Togotulawo</span>
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto " href="{% url host_url 'accueil' host 'main' %}">Accueil</a></li>
+          <li><a class="nav-link scrollto " href="{% host_url 'accueil' host 'main' %}">Accueil</a></li>
           <li class="dropdown"><a href="#"><span>Domaines</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               {% for cat in category %}
-              <li><a href="{% url 'main:categorie' cat.slug %}">{{cat.name}}</a></li>
+              <li><a href="{% 'main:categorie' cat.slug %}">{{cat.name}}</a></li>
               {% endfor %}
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="{% url host_url 'offers' host 'main' %}">Offres</a></li>
+          <li><a class="nav-link scrollto" href="{% host_url 'offers' host 'main' %}">Offres</a></li>
           <li><a class="nav-link scrollto" href="#contact">Formations</a></li>
           <li><a>
               <div class="sidebar-item search-form">
@@ -90,10 +90,10 @@
           {% if request.user.is_authenticated %}
 
           {% if user.client %}
-          <li><a class="getstarted scrollto" href="{% url host_url 'bibliotheque' host 'main' %}">Ma Bibliothèque</a></li>
-          <li><a href="{% url host_url 'accueil' host 'account' %}"><i style="font-size: 30px;" class="bi bi-person"></i></a></li>
+          <li><a class="getstarted scrollto" href="{% host_url 'bibliotheque' host 'main' %}">Ma Bibliothèque</a></li>
+          <li><a href="{% host_url 'accueil' host 'account' %}"><i style="font-size: 30px;" class="bi bi-person"></i></a></li>
 
-          <li><a href="{% url host_url 'accueil' host 'account' %}"><i style="font-size: 30px;" class="bi bi-arrow-right"></i></a></li>
+          <li><a href="{% host_url 'accueil' host 'account' %}"><i style="font-size: 30px;" class="bi bi-arrow-right"></i></a></li>
 
           {%else%}
 
@@ -104,7 +104,7 @@
           {% endif %}
 
           {%else%}
-          <li><a class="getstarted scrollto" href="{% url host_url 'connexion' host 'account' %}">Connexion</a></li>
+          <li><a class="getstarted scrollto" href="{% host_url 'connexion' host 'account' %}">Connexion</a></li>
           {% endif %}
 
 
@@ -122,7 +122,7 @@
     <div class="container">
 
       <ol>
-        <li><a href="{% url host_url 'accueil' host 'main' %}">Accueil</a></li>
+        <li><a href="{% host_url 'accueil' host 'main' %}">Accueil</a></li>
 
       </ol>
 
