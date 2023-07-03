@@ -91,8 +91,7 @@
 
           {% if user.client %}
           <li><a class="getstarted scrollto" href="{% host_url 'bibliotheque' host 'main' %}">Ma Bibliothèque</a></li>
-          <li><a href="{% host_url 'accueil' host 'account' %}"><i style="font-size: 30px;"
-                class="bi bi-person"></i></a></li>
+          <li><a href="{% host_url 'accueil' host 'account' %}"><i style="font-size: 30px;" class="bi bi-person"></i></a></li>
 
           <li><a href="{% host_url 'accueil' host 'account' %}"><i style="font-size: 30px;"
                 class="bi bi-arrow-right"></i></a></li>
@@ -152,7 +151,7 @@
               </div>
 
               <h2 class="entry-title">
-                <a href="/article/{{a.slug}}">{{a.title}}</a>
+                <a href="{% host_url 'article' a.slug host 'main' %}">{{a.title}}</a>
               </h2>
 
               <div class="entry-meta">
@@ -193,7 +192,7 @@
                   {{a.contenu|truncatechars_html:300|safe}}
                 </p>
                 <div class="read-more">
-                  <a href="/article/{{a.slug}}">Plus de détails</a>
+                  <a href="{% host_url 'article' a.slug host 'main' %}">Plus de détails</a>
                 </div>
               </div>
 
