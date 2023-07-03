@@ -4,7 +4,7 @@ from django.conf.urls.static import static
 
 from .views import *
 
-#app_name = "landing"
+app_name = "landing"
 
 
 urlpatterns = [
