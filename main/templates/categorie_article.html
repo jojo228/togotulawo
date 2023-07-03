@@ -1,4 +1,5 @@
 {% extends 'main_base.html' %}
+{% load hosts %}
 {% load article_custom_tags %}
 {% load humanize %}
 
@@ -30,7 +31,7 @@
           <span class="post-date">{{a.price|intcomma|cfa}}</span>
           <span class="post-date">{{a.publish_date}}</span>
           <h3 class="post-title">{{a.title}}</h3>
-          <a href="/ged/article/{{a.slug}}" class="readmore stretched-link mt-auto"><span>Lire Plus</span><i
+          <a href="/article/{{a.slug}}" class="readmore stretched-link mt-auto"><span>Lire Plus</span><i
               class="bi bi-arrow-right"></i></a>
         </div>
       </div>

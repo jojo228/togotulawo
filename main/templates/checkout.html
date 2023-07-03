@@ -1,4 +1,5 @@
 {% extends 'main_base.html' %}
+{% load hosts %}
 {% load article_custom_tags %}
 {% load humanize %}
 {% load static %}
@@ -17,7 +18,7 @@
     <div class="container">
 
         <ol>
-            <li><a href="{% url 'main:accueil' %}">Accueil</a></li>
+            <li><a href="{% host_url 'accueil' host 'main' %}">Accueil</a></li>
             <li>Confirmation de l'achat</li>
         </ol>
         <h2>Confirmation de l'achat</h2>
@@ -50,7 +51,7 @@
                     <ul>
                         <li><strong>Titre</strong>: {{article.title}}</li>
                         <br>
-                        <form action="/ged/checkout/{{article.slug}}" method="POST">
+                        <form action="/gedus/checkout/{{article.slug}}" method="POST">
                             {% csrf_token %}
                             <li>Choisissez le réseau:</li>
                             <li>
@@ -80,48 +81,52 @@
 
                                 </div>
                             </div>
-                        <div>
+                            <div>
 
-                            {% if coupon %}
+                                {% if coupon %}
 
                                 <p class="alert alert-light border ">
                                     Coupon Code Applied
                                     You Have Got {{coupon.discount}}% Discount
                                 </p>
                                 <br>
-                                <p class="display-5">Montant : <b>{% cal_sellprice article.price coupon.discount as value %}
+                                <p class="display-5">Montant : <b>{% cal_sellprice article.price coupon.discount as
+                                        value %}
                                         {{value|intcomma|cfa}}</b></p>
 
                                 <a class="btn btn-primary border"
                                     href="?action=create_payment&couponcode={{coupon.code}}">Acheter
                                 </a>
 
-                            {%else%}
-                                <p class="display-7">Montant : <b>{% cal_sellprice article.price article.discount as value %}
+                                {%else%}
+                                <p class="display-7">Montant : <b>{% cal_sellprice article.price article.discount as
+                                        value %}
                                         {{value|intcomma|cfa}}</b></p>
 
-                                
-                                    <button class="btn btn-info" id="just_load_please" >Payer</button>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="loadMe" tabindex="-1" role="dialog" aria-labelledby="loadMeLabel">
-                                        <div class="modal-dialog modal-sm" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-body text-center">
-                                                    <div class="loader"></div>
-                                                    <div clas="loader-txt">
-                                                        <p>Check out this slick bootstrap spinner modal. <br><br><small>We are addicted to Bootstrap...
-                                                                #love</small></p>
-                                                    </div>
+
+                                <button class="btn btn-info" id="just_load_please">Payer</button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="loadMe" tabindex="-1" role="dialog"
+                                    aria-labelledby="loadMeLabel">
+                                    <div class="modal-dialog modal-sm" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body text-center">
+                                                <div class="loader"></div>
+                                                <div clas="loader-txt">
+                                                    <p>Check out this slick bootstrap spinner modal. <br><br><small>We
+                                                            are addicted to Bootstrap...
+                                                            #love</small></p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
 
 
-                            {% endif %}
+                                {% endif %}
 
-                        </div>
+                            </div>
                         </form>
                         <br>
                         {% if coupon_code_message %}

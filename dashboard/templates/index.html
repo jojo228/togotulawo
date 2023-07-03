@@ -17,19 +17,23 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	
+
 
 	<!-- Favicon icon -->
 	<link rel="icon" href="{% static '/dashboard/assets/images/favicon.png' %}" type="image/x-icon">
 	<!-- fontawesome icon -->
-	<link rel="stylesheet" type="text/css" href="{% static '/dashboard/assets/fonts/fontawesome/css/fontawesome-all.min.css' %}">
+	<link rel="stylesheet" type="text/css"
+		href="{% static '/dashboard/assets/fonts/fontawesome/css/fontawesome-all.min.css' %}">
 	<!-- animation css -->
-	<link rel="stylesheet" type="text/css" href="{% static '/dashboard/assets/plugins/animation/css/animate.min.css' %}">
+	<link rel="stylesheet" type="text/css"
+		href="{% static '/dashboard/assets/plugins/animation/css/animate.min.css' %}">
 
-	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-	<link href="{% static '/maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css' %}" rel="stylesheet" id="bootstrap-css">
+	<link href="{% static '/maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css' %}" rel="stylesheet"
+		id="bootstrap-css">
 	<script src="{% static '/maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js' %}"></script>
 	<script src="{% static '//code.jquery.com/jquery-1.11.1.min.js' %}"></script>
 
@@ -55,9 +59,9 @@
 	<nav class="pcoded-navbar menupos-fixed menu-light brand-blue ">
 		<div class="navbar-wrapper ">
 			<div class="navbar-brand header-logo">
-				<a href="{% url 'main:accueil' %}" class="b-brand" style=" margin-top: 10px;">
-					<h3 style="color: rgb(255, 255, 255);" >Togotulawo</h3>
-					
+				<a href="{% host_url 'accueil' host 'main' %}" class="b-brand" style=" margin-top: 10px;">
+					<h3 style="color: rgb(255, 255, 255);">Togotulawo</h3>
+
 					<!-- <img src="../recouvrement/static/assets/images/Edouka.png" alt="" class="logo images" width="120">
 					<img src="../recouvrement/static/assets/images/" alt="" class="logo-thumb images"> -->
 				</a>
@@ -66,9 +70,10 @@
 			<div class="navbar-content scroll-div">
 				<ul class="nav pcoded-inner-navbar">
 
-					
-					<li class="nav-item"><a href="{% url 'dashboard:ventes' %}" class="nav-link"><span class="pcoded-micon"><i
-						class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">Mes Ventes</span></a>
+
+					<li class="nav-item"><a href="{% url 'dashboard:ventes' %}" class="nav-link"><span
+								class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span
+								class="pcoded-mtext">Mes Ventes</span></a>
 					</li>
 
 					<li class="nav-item pcoded-hasmenu">
@@ -77,24 +82,28 @@
 								Publications</span></a>
 						<ul class="pcoded-submenu">
 							<li class=""><a href="{% url 'dashboard:publier' %}" class="">Publier</a></li>
-							<li class=""><a href="{% url 'dashboard:liste_article' %}" class="">Mes Publications</a></li>
+							<li class=""><a href="{% url 'dashboard:liste_article' %}" class="">Mes Publications</a>
+							</li>
 						</ul>
 					</li>
-					
-					
+
+
 					<li class="nav-item"><a href="" class="nav-link"><span class="pcoded-micon"><i
-						class="feather icon-book"></i></span><span class="pcoded-mtext">Ma Bibliothèque</span></a>
+									class="feather icon-book"></i></span><span class="pcoded-mtext">Ma
+								Bibliothèque</span></a>
 					</li>
-					<li class="nav-item"><a href="{% url 'dashboard:brouillon' %}" class="nav-link"><span class="pcoded-micon"><i
-						class="feather icon-trash-2"></i></span><span class="pcoded-mtext">Mes Brouillons</span></a>
+					<li class="nav-item"><a href="{% url 'dashboard:brouillon' %}" class="nav-link"><span
+								class="pcoded-micon"><i class="feather icon-trash-2"></i></span><span
+								class="pcoded-mtext">Mes Brouillons</span></a>
 					</li>
 
-					<li class="nav-item"><a href="{% url 'dashboard:profil' %}" class="nav-link"><span class="pcoded-micon"><i
-						class="feather icon-user"></i></span><span class="pcoded-mtext">Mon Profil</span></a>
+					<li class="nav-item"><a href="{% url 'dashboard:profil' %}" class="nav-link"><span
+								class="pcoded-micon"><i class="feather icon-user"></i></span><span
+								class="pcoded-mtext">Mon Profil</span></a>
 					</li>
-					
-	 
-			</ul>
+
+
+				</ul>
 			</div>
 		</div>
 	</nav>
@@ -106,8 +115,10 @@
 			<a class="mobile-menu" id="mobile-collapse1" href="#!"><span></span></a>
 			<a href="index.html" class="b-brand">
 				<h3 style="color: azure;">Togotulawo</h3>
-				{% comment %} <img src="{% static '/assets/images/Edouka.png' %}" alt="" class="logo images" width="120">
-				<img src="{% static '/assets/images/logo-icon.svg' %}" alt="" class="logo-thumb images"> {% endcomment %}
+				{% comment %} <img src="{% static '/assets/images/Edouka.png' %}" alt="" class="logo images"
+					width="120">
+				<img src="{% static '/assets/images/logo-icon.svg' %}" alt="" class="logo-thumb images"> {% endcomment
+				%}
 			</a>
 		</div>
 		<a class="mobile-menu" id="mobile-header" href="#!">
@@ -131,106 +142,102 @@
 				</li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
-				
-			<li>
-				<div class="dropdown drp-user">
-					<div class="pro-head">
-						<i class="icon feather icon-user"></i>
-						<span style="font: bold;">{{request.user.get_full_name}}</span>
-						
-					</div>
-				</div>
-			</li>
 
-			<li>
-				<div class="dropdown">
-					<a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
-							class="icon feather icon-bell"></i></a>
-					<div class="dropdown-menu dropdown-menu-right notification">
-						<div class="noti-head">
-							<h6 class="d-inline-block m-b-0">Notifications</h6>
-							<div class="float-right">
-								<a href="#!" class="m-r-10">mark as read</a>
-								<a href="#!">clear all</a>
+				<li>
+					<div class="dropdown drp-user">
+						<div class="pro-head">
+							<i class="icon feather icon-user"></i>
+							<span style="font: bold;">{{request.user.get_full_name}}</span>
+
+						</div>
+					</div>
+				</li>
+
+				<li>
+					<div class="dropdown">
+						<a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
+								class="icon feather icon-bell"></i></a>
+						<div class="dropdown-menu dropdown-menu-right notification">
+							<div class="noti-head">
+								<h6 class="d-inline-block m-b-0">Notifications</h6>
+								<div class="float-right">
+									<a href="#!" class="m-r-10">mark as read</a>
+									<a href="#!">clear all</a>
+								</div>
+							</div>
+							<ul class="noti-body">
+								<li class="n-title">
+									<p class="m-b-0">NEW</p>
+								</li>
+								<li class="notification">
+									<div class="media">
+										<img class="img-radius" src="{% static '/assets/images/user/avatar-1.jpg' %}"
+											alt="Generic placeholder image">
+										<div class="media-body">
+											<p><strong>John Doe</strong><span class="n-time text-muted"><i
+														class="icon feather icon-clock m-r-10"></i>5 min</span></p>
+											<p>New ticket Added</p>
+										</div>
+									</div>
+								</li>
+								<li class="n-title">
+									<p class="m-b-0">EARLIER</p>
+								</li>
+								<li class="notification">
+									<div class="media">
+										<img class="img-radius" src="{% static '/assets/images/user/avatar-2.jpg' %}"
+											alt="Generic placeholder image">
+										<div class="media-body">
+											<p><strong>Joseph William</strong><span class="n-time text-muted"><i
+														class="icon feather icon-clock m-r-10"></i>10 min</span></p>
+											<p>Prchace New Theme and make payment</p>
+										</div>
+									</div>
+								</li>
+								<li class="notification">
+									<div class="media">
+										<img class="img-radius" src="{% static '/assets/images/user/avatar-3.jpg' %}"
+											alt="Generic placeholder image">
+										<div class="media-body">
+											<p><strong>Sara Soudein</strong><span class="n-time text-muted"><i
+														class="icon feather icon-clock m-r-10"></i>12 min</span></p>
+											<p>currently login</p>
+										</div>
+									</div>
+								</li>
+								<li class="notification">
+									<div class="media">
+										<img class="img-radius" src="{% static '/assets/images/user/avatar-1.jpg' %}"
+											alt="Generic placeholder image">
+										<div class="media-body">
+											<p><strong>Joseph William</strong><span class="n-time text-muted"><i
+														class="icon feather icon-clock m-r-10"></i>30 min</span></p>
+											<p>Prchace New Theme and make payment</p>
+										</div>
+									</div>
+								</li>
+
+							</ul>
+							<div class="noti-footer">
+								<a href="#!">show all</a>
 							</div>
 						</div>
-						<ul class="noti-body">
-							<li class="n-title">
-								<p class="m-b-0">NEW</p>
-							</li>
-							<li class="notification">
-								<div class="media">
-									<img class="img-radius"
-									src="{% static '/assets/images/user/avatar-1.jpg' %}"
-										alt="Generic placeholder image">
-									<div class="media-body">
-										<p><strong>John Doe</strong><span class="n-time text-muted"><i
-													class="icon feather icon-clock m-r-10"></i>5 min</span></p>
-										<p>New ticket Added</p>
-									</div>
-								</div>
-							</li>
-							<li class="n-title">
-								<p class="m-b-0">EARLIER</p>
-							</li>
-							<li class="notification">
-								<div class="media">
-									<img class="img-radius"
-									src="{% static '/assets/images/user/avatar-2.jpg' %}"
-										alt="Generic placeholder image">
-									<div class="media-body">
-										<p><strong>Joseph William</strong><span class="n-time text-muted"><i
-													class="icon feather icon-clock m-r-10"></i>10 min</span></p>
-										<p>Prchace New Theme and make payment</p>
-									</div>
-								</div>
-							</li>
-							<li class="notification">
-								<div class="media">
-									<img class="img-radius"
-									src="{% static '/assets/images/user/avatar-3.jpg' %}"
-										alt="Generic placeholder image">
-									<div class="media-body">
-										<p><strong>Sara Soudein</strong><span class="n-time text-muted"><i
-													class="icon feather icon-clock m-r-10"></i>12 min</span></p>
-										<p>currently login</p>
-									</div>
-								</div>
-							</li>
-							<li class="notification">
-								<div class="media">
-									<img class="img-radius"
-									src="{% static '/assets/images/user/avatar-1.jpg' %}"
-										alt="Generic placeholder image">
-									<div class="media-body">
-										<p><strong>Joseph William</strong><span class="n-time text-muted"><i
-													class="icon feather icon-clock m-r-10"></i>30 min</span></p>
-										<p>Prchace New Theme and make payment</p>
-									</div>
-								</div>
-							</li>
-							
-						</ul>
-						<div class="noti-footer">
-							<a href="#!">show all</a>
+					</div>
+
+
+				</li>
+
+				<li>
+					<div class="dropdown drp-user">
+						<div class="pro-head">
+
+							<a href="{% url 'account:logout' %}" class="dud-logout" title="Logout">
+								<i class="feather icon-log-out"></i>
+							</a>
 						</div>
 					</div>
-				</div>
+				</li>
 
-				
-			</li>
-
-			<li>
-				<div class="dropdown drp-user">
-					<div class="pro-head">
-				
-						<a href="{% url 'account:logout' %}" class="dud-logout" title="Logout">
-							<i class="feather icon-log-out"></i>
-						</a>
-					</div>
-				</div>
-			</li>
-				
 			</ul>
 		</div>
 	</header>
@@ -247,7 +254,7 @@
 
 							{% block dashboard %}
 
-							
+
 							{% endblock %}
 						</div>
 
@@ -258,23 +265,24 @@
 		</div>
 
 
-		
+
 
 		<!-- Required Js -->
 		<script src="{% static '/dashboard/assets/js/vendor-all.min.js' %}"></script>
 		<script src="{% static '/dashboard/assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
 		<script src="{% static '/dashboard/assets/js/pcoded.min.js' %}"></script>
-		
+
 		<!-- google-map Js -->
-		<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+		<script
+			src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 		<script type="text/javascript" src="https://maps.google.com/maps/api/js?"></script>
 		<!-- <script type="text/javascript" src=" https://maps.googleapis.com/maps/api/js."></script> -->
 		<script src="{% static '/dashboard/assets/plugins/google-maps/js/gmaps.js' %}"></script>
 		<script src="{% static '/dashboard/assets/js/pages/google-maps.js' %}"></script>
-		 
-		
 
-		
+
+
+
 
 </body>
 

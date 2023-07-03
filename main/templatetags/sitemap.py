@@ -3,12 +3,11 @@ from main.models.article import Article
 
 
 class ArticleSiteMap(Sitemap):
-
     priority = 1.0
-    changefreq = 'daily'
+    changefreq = "daily"
 
     def items(self):
         return Article.objects.all()
 
     def location(self, item):
-        return "/ged/article/" + str(item) 
+        return "/article/" + str(item)

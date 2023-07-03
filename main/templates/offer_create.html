@@ -1,4 +1,5 @@
 {% extends 'main_base.html' %}
+{% load hosts %}
 {% load article_custom_tags %}
 {% load humanize %}
 
@@ -15,7 +16,7 @@
     <div class="container">
 
         <ol>
-            <li><a href="{% url 'main:accueil' %}">Accueil</a></li>
+            <li><a href="{% host_url 'accueil' host 'main' %}">Accueil</a></li>
             <li>Détails de l'offre</li>
         </ol>
 
@@ -54,8 +55,8 @@
 
                             <div class="row">
                                 <div class="col form-group">
-                                        {{form.media}}
-                                        {{form.as_p}}
+                                    {{form.media}}
+                                    {{form.as_p}}
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary">Soumettre</button>

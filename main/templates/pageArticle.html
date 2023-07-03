@@ -1,6 +1,8 @@
 {% extends 'main_base.html' %}
+{% load hosts %}
 {% load article_custom_tags %}
 {% load humanize %}
+{% load hosts %}
 
 
 {% block title %}
@@ -27,7 +29,7 @@
   <div class="container">
 
     <ol>
-      <li><a href="{% url 'main:accueil' %}">Accueil</a></li>
+      <li><a href="{% host_url 'accueil' host 'main' %}">Accueil</a></li>
       <li>Détails sur document</li>
     </ol>
     <h2>{{article.title}}</h2>
@@ -49,14 +51,14 @@
           </div>
 
           <h2 class="entry-title">
-            <a >{{article.title}}</a>
+            <a>{{article.title}}</a>
           </h2>
 
           <div class="entry-meta">
             <ul>
-              <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a ><time
+              <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a><time
                     datetime="2020-01-01">{{article.publish_date}}</time></a></li>
-              
+
             </ul>
           </div>
 
@@ -80,11 +82,11 @@
 
         </article><!-- End blog entry -->
         {% if request.user.is_authenticated %}
-        {% if article.resource %} 
-        {% if user_article %} 
+        {% if article.resource %}
+        {% if user_article %}
         <div class="reply-form">
-          <embed src="{{article.resource.url}}#toolbar=0" type="application/pdf" width='700' height='600' allowfullscreen
-            webkitallowfullscreen>
+          <embed src="{{article.resource.url}}#toolbar=0" type="application/pdf" width='700' height='600'
+            allowfullscreen webkitallowfullscreen>
 
         </div>
         {% endif %}
@@ -92,17 +94,23 @@
         {% endif %}
 
         <div class="blog-author d-flex align-items-center">
-          <img src="{% if article.auteur.image %}{{article.auteur.image.url}}{% endif %}" class="rounded-circle float-left" alt="">
+          <img src="{% if article.auteur.image %}{{article.auteur.image.url}}{% endif %}"
+            class="rounded-circle float-left" alt="">
           <div>
             <h4>{{article.auteur}}</h4>
             <div class="social-links">
-              {% if article.auteur.twitter_link %}<a href="{{article.auteur.twitter_link}}"><i class="bi bi-twitter"></i></a>{% endif %}
-              {% if article.auteur.fbook_link %}<a href="{{article.auteur.fbook_link}}"><i class="bi bi-facebook"></i></a>{% endif %}
-              {% if article.auteur.insta_link %}<a href="{{article.auteur.insta_link}}"><i class="biu bi-instagram"></i></a>{% endif %}
-              {% if article.auteur.linkedin_link %}<a href="{{article.auteur.linkedin_link}}"><i class="biu bi-linkedin"></i></a>{% endif %}
+              {% if article.auteur.twitter_link %}<a href="{{article.auteur.twitter_link}}"><i
+                  class="bi bi-twitter"></i></a>{% endif %}
+              {% if article.auteur.fbook_link %}<a href="{{article.auteur.fbook_link}}"><i
+                  class="bi bi-facebook"></i></a>{% endif %}
+              {% if article.auteur.insta_link %}<a href="{{article.auteur.insta_link}}"><i
+                  class="biu bi-instagram"></i></a>{% endif %}
+              {% if article.auteur.linkedin_link %}<a href="{{article.auteur.linkedin_link}}"><i
+                  class="biu bi-linkedin"></i></a>{% endif %}
             </div>
             <p>
-            {% if article.auteur.bio %} {{article.auteur.bio}} {% else %} Je suis un utilisateur de Togotulawo {% endif %}
+              {% if article.auteur.bio %} {{article.auteur.bio}} {% else %} Je suis un utilisateur de Togotulawo {%
+              endif %}
             </p>
           </div>
         </div><!-- End blog author bio -->
@@ -117,43 +125,48 @@
               {{ message }}
             </div>
             {% endfor %}
-          
+
             <form action="{% url 'main:submit_review' article.id %}" method="POST">
               {% csrf_token %}
               <div class="row">
                 <div class="rate col-md-6 form-group">
-          
-                  <input type="radio" name="rate" id="rating10" value="5" required /><label for="rating10" title="5"></label>
+
+                  <input type="radio" name="rate" id="rating10" value="5" required /><label for="rating10"
+                    title="5"></label>
                   <input type="radio" name="rate" id="rating9" value="4.5" required /><label for="rating9" title="4.5"
                     class="half"></label>
-                  <input type="radio" name="rate" id="rating8" value="4" required /><label for="rating8" title="4"></label>
+                  <input type="radio" name="rate" id="rating8" value="4" required /><label for="rating8"
+                    title="4"></label>
                   <input type="radio" name="rate" id="rating7" value="3.5" required /><label for="rating7" title="3.5"
                     class="half"></label>
-                  <input type="radio" name="rate" id="rating6" value="3" required /><label for="rating6" title="3"></label>
+                  <input type="radio" name="rate" id="rating6" value="3" required /><label for="rating6"
+                    title="3"></label>
                   <input type="radio" name="rate" id="rating5" value="2.5" required /><label for="rating5" title="2.5"
                     class="half"></label>
-                  <input type="radio" name="rate" id="rating4" value="2" required /><label for="rating4" title="2"></label>
+                  <input type="radio" name="rate" id="rating4" value="2" required /><label for="rating4"
+                    title="2"></label>
                   <input type="radio" name="rate" id="rating3" value="1.5" required /><label for="rating3" title="1.5"
                     class="half"></label>
-                  <input type="radio" name="rate" id="rating2" value="1" required /><label for="rating2" title="1"></label>
+                  <input type="radio" name="rate" id="rating2" value="1" required /><label for="rating2"
+                    title="1"></label>
                   <input type="radio" name="rate" id="rating1" value="0.5" required /><label for="rating1" title="0.5"
                     class="half"></label>
-          
-          
+
+
                 </div>
-          
+
               </div>
-          
+
               <div class="row">
                 <div class="col form-group">
                   <textarea name="text" class="form-control" placeholder="Votre Commentaire*"></textarea>
                 </div>
               </div>
               <button onclick="sendData()" type="submit" class="btn btn-primary">Poster</button>
-          
+
             </form>
           </div>
-        <br>
+          <br>
 
           <h4 class="comments-count">{{comment}} Commentaires</h4>
           {% for comment in article.comment_set.all %}
@@ -178,7 +191,7 @@
           </div><!-- End comment #1 -->
           {% endfor %}
 
-          
+
 
 
 
@@ -229,7 +242,7 @@
                     {% else %}
 
                     {% if fav %}
-                   
+
                     <a href="{% url 'main:favourite_add' article.slug %}" class="btn-buy">Retirer</a>
                     {%else %}
                     <a href="{% url 'main:favourite_add' article.slug %}" class="btn-buy">Favoris</a>
@@ -269,24 +282,24 @@
 
 <script>
 
-  const sendData = function(){
-  $.ajax({
-    type: 'POST',
-    url: '/submit_review/',
-    data: {
-      'csrfmiddlewaretoken': csrf[0].value,
+  const sendData = function () {
+    $.ajax({
+      type: 'POST',
+      url: '/submit_review/',
+      data: {
+        'csrfmiddlewaretoken': csrf[0].value,
 
 
-    },
-    success: function (response) {
-      console.log(response)
-      confirmBox.innerHTML = `<h1>Successfully rated with ${response.rate}</h1>`
-    },
-    error: function (error) {
-      console.log(error)
-      confirmBox.innerHTML = '<h1>Ups... something went wrong</h1>'
-    }
-  })
+      },
+      success: function (response) {
+        console.log(response)
+        confirmBox.innerHTML = `<h1>Successfully rated with ${response.rate}</h1>`
+      },
+      error: function (error) {
+        console.log(error)
+        confirmBox.innerHTML = '<h1>Ups... something went wrong</h1>'
+      }
+    })
   }
 
 

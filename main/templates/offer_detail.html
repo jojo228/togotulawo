@@ -1,4 +1,5 @@
 {% extends 'main_base.html' %}
+{% load hosts %}
 {% load article_custom_tags %}
 {% load humanize %}
 
@@ -15,7 +16,7 @@
     <div class="container">
 
         <ol>
-            <li><a href="{% url 'main:accueil' %}">Accueil</a></li>
+            <li><a href="{% host_url 'accueil' host 'main' %}">Accueil</a></li>
             <li>Détails de l'offre</li>
         </ol>
 
@@ -30,7 +31,8 @@
             <div class="col-lg-8 entries">
 
                 <div class="blog-author d-flex align-items-center">
-                    <img src="{% if prob.entreprise.image %} {{prob.entreprise.image.url}} {%endif%}" class="rounded-circle float-left" alt="">
+                    <img src="{% if prob.entreprise.image %} {{prob.entreprise.image.url}} {%endif%}"
+                        class="rounded-circle float-left" alt="">
                     <div>
                         <h4>{{prob.entreprise.raison_social}}</h4>
                         <div class="social-links">
@@ -59,9 +61,9 @@
                     <div class="entry-meta">
                         <ul>
                             <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                                    href="blog-single.html"><time
-                                        datetime="2020-01-01">{{prob.publish_date}}</time></a></li>
-                            
+                                    href="blog-single.html"><time datetime="2020-01-01">{{prob.publish_date}}</time></a>
+                            </li>
+
                         </ul>
                     </div>
 
@@ -93,9 +95,9 @@
                 </div>
                 {% endif %}
 
-                
 
-                
+
+
 
             </div><!-- End blog entries list -->
 
@@ -109,7 +111,7 @@
                         <li><strong>Domaine</strong>: {{prob.domaine}}</li>
                         <li><strong>Durée prévisionnelle</strong>: {{prob.duree_recherche}} mois</li>
                         <li><strong>Profil recherché</strong>:{{prob.profil_rechercher|safe}}</li>
-                        
+
                     </ul>
                     <a href="/offer_create/{{prob.id}}" class="btn btn-primary">Postuler</a>
                 </div><!-- End sidebar -->
