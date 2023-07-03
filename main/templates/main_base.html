@@ -305,7 +305,7 @@
           </div>
           {% endfor %}
           <div class="col-lg-6">
-            <form action="{% url host_url 'accueil' host 'main' %}" method="post">
+            <form action="{% host_url 'accueil' host 'main' %}" method="post">
               {% csrf_token %}
               <input type="email" name="email"><input type="submit" value="Souscrire">
             </form>
@@ -318,7 +318,7 @@
       <div class="container">
         <div class="row gy-4">
           <div class="col-lg-5 col-md-12 footer-info">
-            <a href="{% url host_url 'accueil' host 'main' %}" class="logo d-flex align-items-center">
+            <a href="{% host_url 'accueil' host 'main' %}" class="logo d-flex align-items-center">
               <img src="assets/img/logo.png" alt="">
               <span>Togotulawo</span>
             </a>
