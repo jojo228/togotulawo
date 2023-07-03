@@ -72,7 +72,7 @@
           <li class="dropdown"><a href="#"><span>Domaines</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               {% for cat in category %}
-              <li><a href="{% url 'main:categorie' cat.slug %}">{{cat.name}}</a></li>
+              <li><a href="{% host_url 'categorie' cat.slug host 'main' %}">{{cat.name}}</a></li>
               {% endfor %}
             </ul>
           </li>
@@ -98,7 +98,7 @@
           {%else%}
 
           <li><a class="getstarted scrollto"
-              href="{% if user.auteur %}  {% url 'dashboard:tableau' %} {%else%} {% url 'entreprise:home' %} {% endif %}">Tableau
+              href="{% if user.auteur %}  {% host_url 'tableau' host 'dashboard' %} {%else%} {% host_url 'home' host 'entreprise' %} {% endif %}">Tableau
               de bord</a></li>
 
           {% endif %}
@@ -127,34 +127,7 @@
       </ol>
 
     </div>
-  </section><!-- End Breadcrumbs -->
-
-
-  <!-- <section id="hero" class="hero d-flex align-items-center">
-
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6 d-flex flex-column justify-content-center">
-        <h1 data-aos="fade-up">We offer modern solutions for growing your business</h1>
-        <h2 data-aos="fade-up" data-aos-delay="400">We are team of talented designers making websites with Bootstrap
-        </h2>
-        <div data-aos="fade-up" data-aos-delay="600">
-          <div class="text-center text-lg-start">
-            <a href="#about"
-              class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
-              <span>Get Started</span>
-              <i class="bi bi-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
-        <img src="{% static 'main/assets/img/hero-img.png' %}" class="img-fluid" alt="">
-      </div>
-    </div>
-  </div>
-
-</section>End Hero -->
+  </section>
 
   <main id="main">
 
@@ -261,7 +234,7 @@
                 <ul>
                   {% for cat in category %}
                   <li><a
-                      href="{% url 'main:categorie' cat.slug %}">{{cat.name}}<span>({{cat.article_set.all.count}})</span></a>
+                      href="{% host_url 'categorie' cat.slug host 'main' %}">{{cat.name}}<span>({{cat.article_set.all.count}})</span></a>
                   </li>
                   {% endfor %}
 
@@ -295,7 +268,7 @@
                 <ul>
                   {% for cat in category %}
                   <li><a
-                      href="{% url 'main:problematique' cat.slug %}">{{cat.name}}<span>({{cat.problematique_set.all.count}})</span></a>
+                      href="{% host_url 'problematique' cat.slug host 'main' %}">{{cat.name}}<span>({{cat.problematique_set.all.count}})</span></a>
                   </li>
                   {% endfor %}
 
@@ -373,11 +346,11 @@
 
 
 
-              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'main:faq' %}">F.A.Q</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{% host_url 'faq' host 'main' %}">F.A.Q</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Blog</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'main:terms_conditions' %}">Terms et
+              <li><i class="bi bi-chevron-right"></i> <a href="{% host_url 'terms_conditions' 'main' %}">Terms et
                   conditions</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'main:police_privee' %}">Police privée</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{% host_url 'police_privee' 'main' %}">Police privée</a></li>
             </ul>
           </div>
 
