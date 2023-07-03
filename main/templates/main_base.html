@@ -72,7 +72,7 @@
           <li class="dropdown"><a href="#"><span>Domaines</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               {% for cat in category %}
-              <li><a href="{% 'main:categorie' cat.slug %}">{{cat.name}}</a></li>
+              <li><a href="{% url 'main:categorie' cat.slug %}">{{cat.name}}</a></li>
               {% endfor %}
             </ul>
           </li>
