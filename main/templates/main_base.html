@@ -152,7 +152,7 @@
               </div>
 
               <h2 class="entry-title">
-                <a href="/gedus/article/{{a.slug}}">{{a.title}}</a>
+                <a href="{% host_url 'article' a.slug host 'main' %}">{{a.title}}</a>
               </h2>
 
               <div class="entry-meta">
