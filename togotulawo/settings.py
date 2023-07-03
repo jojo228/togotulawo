@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'captcha',
     'ckeditor',
     'ckeditor_uploader',
+    'django_hosts',
 
 ]
 
@@ -211,6 +212,10 @@ SESSION_TIMEOUT_REDIRECT = 'main:accueil'
  
 
 ROOT_URLCONF = 'togotulawo.urls'
+ROOT_HOSTCONF = 'togotulawo.hosts'
+DEFAULT_HOST= 'www'
+PARENT_HOST = 'togotulawo.com'
+
 
 TEMPLATES = [
     {
@@ -344,6 +349,3 @@ EMAIL_HOST_PASSWORD = os.getenv("EMAIL_PASSWORD")
 DEFAULT_FROM_EMAIL = os.getenv("EMAIL")
 
 PASSWORD_RESET_TIMEOUT = 14400
-
-ROOT_HOSTCONF = 'togotulawo.hosts'
-DEFAULT_HOST= ' '

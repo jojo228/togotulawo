@@ -42,7 +42,7 @@ sitemaps = {
 
 urlpatterns = [
     path('', include("landing.urls")),
-    path('ged/', include("main.urls")),
+    path('gedus/', include("main.urls")),
     path('account/', include('account.urls')),
     path('dashboard/', include('dashboard.urls')),
     path('entreprise/', include('entreprise.urls')),

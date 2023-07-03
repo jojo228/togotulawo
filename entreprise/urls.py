@@ -21,7 +21,7 @@ from entreprise.views import (
 from django.conf import settings
 from django.conf.urls.static import static
 
-app_name = "entreprise"
+#app_name = "entreprise"
 
 
 urlpatterns = [
