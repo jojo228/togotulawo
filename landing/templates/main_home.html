@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load hosts %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -178,7 +178,7 @@
                 </span>
                 <div class="app-card__subtext">Publiez vos travaux de recherches (Mémoires, Thèses, Articles etc..)</div>
                 <div class="app-card-buttons">
-                  <a href="{% url 'main:accueil' %}">
+                  <a href="{% host_url 'accueil' host 'main' %}">
                     <button class="content-button">visiter</button>
                   </a>
                 </div>
