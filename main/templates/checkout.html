@@ -50,7 +50,7 @@
                     <ul>
                         <li><strong>Titre</strong>: {{article.title}}</li>
                         <br>
-                        <form action="/gedus/checkout/{{article.slug}}" method="POST">
+                        <form action="{% url 'checkout' article.slug %}" method="POST">
                             {% csrf_token %}
                             <li>Choisissez le réseau:</li>
                             <li>

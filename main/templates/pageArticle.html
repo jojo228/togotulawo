@@ -225,7 +225,7 @@
 
                     </ul>
                     {% if article.price %}
-                    <a href="/ged/checkout/{{article.slug}}" class="btn-buy">Acheter</a>
+                    <a href="{% url 'checkout' article.slug %}" class="btn-buy">Acheter</a>
                     {% else %}
 
                     {% if fav %}
