@@ -304,9 +304,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # login
-LOGIN_URL = 'account:connexion'
-LOGIN_REDIRECT_URL = 'landing:home'
-LOGOUT_REDIRECT_URL = 'account:connexion'
+LOGIN_URL = 'https://account.togotulawo.com/login'
+LOGIN_REDIRECT_URL = 'accueil'
+LOGOUT_REDIRECT_URL = 'https://account.togotulawo.com/login'
 
 
 # Default primary key field type
