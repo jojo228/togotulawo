@@ -27,7 +27,7 @@
   <div class="container">
 
     <ol>
-      <li><a href="{% url 'main:accueil' %}">Accueil</a></li>
+      <li><a href="{% url 'accueil' %}">Accueil</a></li>
       <li>Détails sur document</li>
     </ol>
     <h2>{{article.title}}</h2>
@@ -118,7 +118,7 @@
             </div>
             {% endfor %}
           
-            <form action="{% url 'main:submit_review' article.id %}" method="POST">
+            <form action="{% url 'submit_review' article.id %}" method="POST">
               {% csrf_token %}
               <div class="row">
                 <div class="rate col-md-6 form-group">
@@ -230,9 +230,9 @@
 
                     {% if fav %}
                    
-                    <a href="{% url 'main:favourite_add' article.slug %}" class="btn-buy">Retirer</a>
+                    <a href="{% url 'favourite_add' article.slug %}" class="btn-buy">Retirer</a>
                     {%else %}
-                    <a href="{% url 'main:favourite_add' article.slug %}" class="btn-buy">Favoris</a>
+                    <a href="{% url 'favourite_add' article.slug %}" class="btn-buy">Favoris</a>
                     {% endif %}
                     {% endif %}
                   </div>
