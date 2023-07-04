@@ -1,4 +1,3 @@
-
 from django.urls import path
 from account.signup_views import auteur_signup, client_signup, signup_choice, ense_signup, activate
 from account.views import client_profil, connexion, password_reset_request, signout

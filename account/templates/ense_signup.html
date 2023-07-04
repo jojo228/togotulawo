@@ -24,8 +24,8 @@
                     <div class="card-body">
                         {% for message in messages %}
                         <div class="alert alert-success d-flex align-items-center" role="alert">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2"
-                                viewBox="0 0 16 16" role="img" aria-label="Success:">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Success:">
                                 <path
                                     d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                             </svg>
@@ -33,69 +33,74 @@
                                 {{message}}
                             </div>
                         </div>
-                        
+
                         {% endfor %}
                         <h4 class="mb-3 f-w-400">Créez votre compte entreprise</h4>
 
-                        <form action="{% url 'account:ense_signup' %}" method="POST">
+                        <form action="{% url 'ense_signup' %}" method="POST">
                             {% csrf_token %}
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="feather icon-user"></i></span>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="feather icon-user"></i></span>
+                                </div>
+                                <input type="text" name="username" class="form-control" placeholder="Nom d'utilisateur">
                             </div>
-                            <input type="text" name="username" class="form-control" placeholder="Nom d'utilisateur">
-                        </div>
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="feather icon-home"></i></span>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="feather icon-home"></i></span>
+                                </div>
+                                <input type="text" name="raison_social" class="form-control"
+                                    placeholder="Raison sociale">
                             </div>
-                            <input type="text" name="raison_social" class="form-control" placeholder="Raison sociale">
-                        </div>
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="feather icon-activity"></i></span>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="feather icon-activity"></i></span>
+                                </div>
+                                <input type="text" name="objet_social" class="form-control"
+                                    placeholder="Objet social(Decrivez nous votre activité)">
                             </div>
-                            <input type="text" name="objet_social" class="form-control" placeholder="Objet social(Decrivez nous votre activité)">
-                        </div>
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="feather icon-mail"></i></span>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="feather icon-mail"></i></span>
+                                </div>
+                                <input type="email" name="email" class="form-control" placeholder="Email address">
                             </div>
-                            <input type="email" name="email" class="form-control" placeholder="Email address">
-                        </div>
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="feather icon-map-pin"></i></span>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="feather icon-map-pin"></i></span>
+                                </div>
+                                <input type="text" name="adresse" class="form-control" placeholder="Adresse">
                             </div>
-                            <input type="text" name="adresse" class="form-control" placeholder="Adresse">
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="feather icon-lock"></i></span>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="feather icon-lock"></i></span>
+                                </div>
+                                <input type="password" name="password1" class="form-control" placeholder="Mot de passe">
                             </div>
-                            <input type="password" name="password1" class="form-control" placeholder="Mot de passe">
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="feather icon-lock"></i></span>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="feather icon-lock"></i></span>
+                                </div>
+                                <input type="password" name="password2" class="form-control"
+                                    placeholder="Confirmez Mot de passe">
                             </div>
-                            <input type="password" name="password2" class="form-control" placeholder="Confirmez Mot de passe">
-                        </div>
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="feather icon-camera"></i></span>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="feather icon-camera"></i></span>
+                                </div>
+                                <input type="file" name="image" class="form-control" placeholder="Photo de profil">
                             </div>
-                            <input type="file" name="image" class="form-control" placeholder="Photo de profil">
-                        </div>
-                        <div class="form-group text-left mt-2">
-                            <div class="checkbox checkbox-primary d-inline">
-                                <input type="checkbox" name="checkbox-fill-2" id="checkbox-fill-2">
-                                <label for="checkbox-fill-2" class="cr">Send me the <a href="#!"> Newsletter</a> weekly.</label>
+                            <div class="form-group text-left mt-2">
+                                <div class="checkbox checkbox-primary d-inline">
+                                    <input type="checkbox" name="checkbox-fill-2" id="checkbox-fill-2">
+                                    <label for="checkbox-fill-2" class="cr">Send me the <a href="#!"> Newsletter</a>
+                                        weekly.</label>
+                                </div>
                             </div>
-                        </div>
-                        <button class="btn btn-primary mb-4">Sign up</button>
+                            <button class="btn btn-primary mb-4">Sign up</button>
                         </form>
-                        <p class="mb-2">Vous avez déjà un compte ? <a href="{% url 'account:connexion' %}" class="f-w-400">Connectez-vous</a>
+                        <p class="mb-2">Vous avez déjà un compte ? <a href="{% url 'connexion' %}"
+                                class="f-w-400">Connectez-vous</a>
                     </div>
                 </div>
                 <div class="col-md-6 d-none d-md-block">
