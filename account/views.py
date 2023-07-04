@@ -33,7 +33,7 @@ def signout(request):
     return redirect("main:accueil")
 
 
-@login_required(login_url='/account/login')
+@login_required(login_url='account.togotulawo.com/login')
 def client_profil(request):
 
    user = request.user

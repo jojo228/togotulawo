@@ -16,7 +16,7 @@ import requests
 
 
 #@api_view(('GET', 'POST'))
-@login_required(login_url='https://account.togotulawo.com/login')
+@login_required(login_url='account.togotulawo.com/login')
 def checkout(request, slug,): 
     article = Article.objects.get(slug=slug)
     user = request.user
@@ -157,7 +157,7 @@ def checkout(request, slug,):
     return render(request, template_name="checkout.html", context=context)
 
 
-@login_required(login_url='/account/login')
+@login_required(login_url='account.togotulawo.com/login')
 @csrf_exempt
 def verify_payment(request):
     if request.method == "POST":
