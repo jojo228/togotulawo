@@ -16,7 +16,7 @@ import requests
 
 
 #@api_view(('GET', 'POST'))
-@login_required(login_url='/account/login')
+@login_required(login_url='https://account.togotulawo.com/login')
 def checkout(request, slug,): 
     article = Article.objects.get(slug=slug)
     user = request.user
