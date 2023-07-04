@@ -150,7 +150,7 @@
               </div>
 
               <h2 class="entry-title">
-                <a href="{% url 'article' a.slug host 'main' %}">{{a.title}}</a>
+                <a href="{% url 'article' a.slug  %}">{{a.title}}</a>
               </h2>
 
               <div class="entry-meta">
@@ -191,7 +191,7 @@
                   {{a.contenu|truncatechars_html:300|safe}}
                 </p>
                 <div class="read-more">
-                  <a href="{% url 'article' a.slug host 'main' %}">Plus de détails</a>
+                  <a href="{% url 'article' a.slug  %}">Plus de détails</a>
                 </div>
               </div>
 
