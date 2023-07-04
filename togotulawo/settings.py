@@ -305,7 +305,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # login
 LOGIN_URL = 'https://account.togotulawo.com/login'
-LOGIN_REDIRECT_URL = " host_url 'accueil' host 'main' "
+LOGIN_REDIRECT_URL = 'https://gedus.togotulawo.com/'
 LOGOUT_REDIRECT_URL = 'https://account.togotulawo.com/login'
 
 
