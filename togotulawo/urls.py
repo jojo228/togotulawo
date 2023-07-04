@@ -43,7 +43,7 @@ sitemaps = {
 urlpatterns = [
     path('', include("landing.urls")),
     path('gedus/', include("main.urls")),
-    path('account/', include('account.urls'), namespace='account'),
+    path('account/', include('account.urls')),
     path('dashboard/', include('dashboard.urls')),
     path('entreprise/', include('entreprise.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
