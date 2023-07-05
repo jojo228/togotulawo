@@ -7,8 +7,6 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, renderer_classes
 from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
-from django_hosts.resolvers import reverse
-
 
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
@@ -18,7 +16,8 @@ from time import time
 import requests
 
 
-@login_required(login_url=reverse('connexion', host='main'))
+# @api_view(('GET', 'POST'))
+@login_required(login_url="https://account.togotulawo.com/login")
 def checkout(
     request,
     slug,
