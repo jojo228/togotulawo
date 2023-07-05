@@ -4,7 +4,7 @@ from account.views import client_profil, connexion, password_reset_request, sign
 from django.conf import settings
 from django.conf.urls.static import static
 
-#app_name="account"
+app_name="account"
 
 urlpatterns = [
 

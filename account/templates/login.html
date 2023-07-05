@@ -1,6 +1,4 @@
 {%load static%}
-{% load hosts %}
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +35,7 @@
                         <img src="{% static 'dashboard/assets/images/logo-dar.png' %}" alt="" class="img-fluid mb-4">
                         <h4 class="mb-3 f-w-400">Connectez vous à votre compte</h4>
 
-                        <form action="{% host_url 'connexion' host 'account' %}" method="POST">
+                        <form action="{% url 'connexion' %}" method="POST">
                             {% csrf_token %}
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
@@ -51,7 +49,10 @@
                             </div>
                             <input type="password" name="password" class="form-control" placeholder="Mot de passe">
                         </div>
-                        
+                        <div class="input-group mb-3">
+                            {{form.captcha}}
+
+                        </div>
                         
                         <!-- <div class="form-group text-left mt-2">
                             <div class="checkbox checkbox-primary d-inline">
