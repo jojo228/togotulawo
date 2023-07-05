@@ -20,7 +20,7 @@ urlpatterns = [
     path(
         "login/",
         auth_views.LoginView.as_view(
-            template_name="account/login.html",
+            template_name="login.html",
             authentication_form=AuthenticationFormWithEmail,
             next_page=reverse_lazy("main:accueil"),
         ),
