@@ -206,7 +206,7 @@ SESSION_EXPIRE_SECONDS = 3600  # 1 hour
 
 SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
 
-SESSION_TIMEOUT_REDIRECT = 'main:accueil'
+SESSION_TIMEOUT_REDIRECT = 'accueil'
 
 
  
@@ -304,9 +304,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # login
-LOGIN_URL = 'https://account.togotulawo.com/login'
+LOGIN_URL = 'connexion'
 LOGIN_REDIRECT_URL = 'https://gedus.togotulawo.com/'
-LOGOUT_REDIRECT_URL = 'https://account.togotulawo.com/login'
+LOGOUT_REDIRECT_URL = 'connexion'
 
 
 # Default primary key field type
