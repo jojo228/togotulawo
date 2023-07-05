@@ -4,7 +4,7 @@ from account.views import client_profil, password_reset_request, signout
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
-from .forms import AuthenticationFormWithEmail
+from .form import AuthenticationFormWithEmail
 from django.urls import reverse_lazy
 
 
