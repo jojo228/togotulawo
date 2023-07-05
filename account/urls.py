@@ -22,7 +22,7 @@ urlpatterns = [
         auth_views.LoginView.as_view(
             template_name="login.html",
             authentication_form=AuthenticationFormWithEmail,
-            next_page=reverse_lazy("https://gedus.togotulawo.com"),
+            next_page=reverse_lazy("accueil"),
         ),
         name="connexion"),
     path('logout', signout , name = 'logout'),
