@@ -33,7 +33,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
-DEBUG = os.getenv('DEBUG', 'False') == 'False'
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 if not DEBUG:
     DEBUG_PROPAGATE_EXCEPTIONS = True
@@ -305,7 +305,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # login
-LOGIN_URL = reverse('connexion', host='main')
+LOGIN_URL = 'https://account.togotulawo.com/login'
 LOGIN_REDIRECT_URL = 'https://gedus.togotulawo.com/'
 LOGOUT_REDIRECT_URL = 'https://account.togotulawo.com/login'
 
