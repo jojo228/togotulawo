@@ -1,15 +1,30 @@
 from django.urls import path
 from account.signup_views import auteur_signup, client_signup, signup_choice, ense_signup, activate
-from account.views import client_profil, connexion, password_reset_request, signout
+from account.views import client_profil, password_reset_request, signout
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
+from .forms import AuthenticationFormWithEmail
+from django.urls import reverse_lazy
+
+
+
 
 app_name="account"
 
 urlpatterns = [
 
     #Authentication urls
-    path('login', connexion , name = 'connexion'),
+    #path('login', connexion , name = 'connexion'),
+    # login
+    path(
+        "login/",
+        auth_views.LoginView.as_view(
+            template_name="account/login.html",
+            authentication_form=AuthenticationFormWithEmail,
+            next_page=reverse_lazy("main:accueil"),
+        ),
+        name="connexion"),
     path('logout', signout , name = 'logout'),
 
     path('password_reset', password_reset_request, name='password_reset'),
