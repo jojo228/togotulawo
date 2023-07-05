@@ -15,6 +15,7 @@ from pathlib import Path
 import dj_database_url
 from django.conf.global_settings import LANGUAGES as DJANGO_LANGUAGES
 from django.core.management.utils import get_random_secret_key
+from django_hosts.resolvers import reverse
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -304,7 +305,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # login
-LOGIN_URL = 'https://account.togotulawo.com/login'
+LOGIN_URL = reverse('connexion', host='main')
 LOGIN_REDIRECT_URL = 'https://gedus.togotulawo.com/'
 LOGOUT_REDIRECT_URL = 'https://account.togotulawo.com/login'
 
