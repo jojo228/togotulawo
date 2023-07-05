@@ -105,11 +105,7 @@ def connexion(request):
             else:
                 return redirect(settings.LOGIN_REDIRECT_URL)
         else:
-            """for key, error in list(form.errors.items()):
-
-            if key == 'captcha' and error[0] == 'This field is required.':
-                    messages.error(request, "Desolé, vous devez absolument passer le test de Recaptcha")
-                    continue"""
+            
 
             messages.error(
                 request, "Email/Nom d'utilisateur ou mot de passe incorrect !"
