@@ -35,7 +35,7 @@
                         <img src="{% static 'dashboard/assets/images/logo-dar.png' %}" alt="" class="img-fluid mb-4">
                         <h4 class="mb-3 f-w-400">Connectez vous à votre compte</h4>
 
-                        <form action="{% url 'connexion' %}" method="POST">
+                        <form action="{% host_url 'connexion' host 'account' %}" method="POST">
                             {% csrf_token %}
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
