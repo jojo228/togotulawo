@@ -8,23 +8,23 @@
 
 {% block dashboard %}
 
-<h3 class="text-center">Mes Brouillons</h3> <br/>
-    <div class="row">
-        <div class="col">
-            <div class="card card-body">
+<h3 class="text-center">Mes Brouillons</h3> <br />
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
 
-                <form method="get">
-										{{myfilter.form}}
+			<form method="get">
+				{{myfilter.form}}
 
-                    <button class="btn btn-primary btn-sm" type="submit">Rechercher</button>
-                </form>
+				<button class="btn btn-primary btn-sm" type="submit">Rechercher</button>
+			</form>
 
-            </div>
-        </div>
+		</div>
+	</div>
 
-    </div>
+</div>
 
-	<br>
+<br>
 
 <!-- [ Main Content ] start -->
 <table class="table table-hover">
@@ -34,7 +34,7 @@
 			<th scope="col">Titre</th>
 			<th scope="col">Date de création</th>
 			<th scope="col">Action</th>
-			
+
 		</tr>
 	</thead>
 	<tbody>
@@ -43,10 +43,10 @@
 			<th scope="row">{{forloop.counter}}</th>
 			<td>{{i.title}}</td>
 			<td>{{i.date_created}}</td>
-            <td>
-				<a class="btn btn-sm btn-info" href="{% url 'dashboard:article_update' i.slug %}">Modifier</a>
-				<a class="btn btn-sm btn-danger" href="{% url 'dashboard:article_delete' i.id %}">Supprimer</a>
-			</td>			
+			<td>
+				<a class="btn btn-sm btn-info" href="{% url 'article_update' i.slug %}">Modifier</a>
+				<a class="btn btn-sm btn-danger" href="{% url 'article_delete' i.id %}">Supprimer</a>
+			</td>
 		</tr>
 		{% endfor %}
 	</tbody>
