@@ -216,6 +216,9 @@ ROOT_HOSTCONF = 'togotulawo.hosts'
 DEFAULT_HOST= 'www'
 PARENT_HOST = 'togotulawo.com'
 
+SESSION_COOKIE_DOMAIN = ".togotulawo.com"
+DOMAIN_NAME = "togotulawo.com"
+
 
 TEMPLATES = [
     {
