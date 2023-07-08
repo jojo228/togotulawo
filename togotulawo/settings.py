@@ -58,9 +58,9 @@ INSTALLED_APPS = [
     'dashboard',
     'entreprise',
     'landing',
+    'numerisation',
 
 
-    'froala_editor',
     'chartjs',
     "rest_framework",
     'django.contrib.sitemaps',
@@ -320,6 +320,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CkEditor config
 CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 
 CKEDITOR_CONFIGS = {
     'default': {

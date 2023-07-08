@@ -1,13 +1,11 @@
 from django.db import models
-from froala_editor.fields import FroalaField
 from main.helpers import generate_slug
 from account.models import Entreprise
 from main.models.article import Categorie
-from ckeditor_uploader.fields import  RichTextUploadingField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 # Create your models here.
-
 
 
 class Problematique(models.Model):
@@ -25,7 +23,7 @@ class Problematique(models.Model):
     def __str__(self):
         return self.titre
 
-    def save(self , *args, **kwargs): 
+    def save(self, *args, **kwargs):
         self.slug = generate_slug(self.titre)
         super(Problematique, self).save(*args, **kwargs)
 
@@ -43,7 +41,6 @@ class Postuler(models.Model):
         return self.nom_du_candidat
 
 
-
 class Livre(models.Model):
     entreprise = models.ForeignKey(Entreprise, on_delete=models.CASCADE)
     titre = models.CharField(max_length=200)
@@ -55,8 +52,6 @@ class Livre(models.Model):
     def __str__(self):
         return self.titre
 
-    def save(self , *args, **kwargs): 
+    def save(self, *args, **kwargs):
         self.slug = generate_slug(self.titre)
         super(Livre, self).save(*args, **kwargs)
-
-    

@@ -29,6 +29,7 @@ urlpatterns = [
     path('account/', include('account.urls', namespace='account')),
     path('dashboard/', include('dashboard.urls')),
     path('entreprise/', include('entreprise.urls')),
+    path('numerisation/', include('numerisation.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path("i18n/", include("django.conf.urls.i18n")),
     #REST-API urls
