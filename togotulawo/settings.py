@@ -198,6 +198,7 @@ MIDDLEWARE = [
 #ECAPTCHA_PRIVATE_KEY = os.getenv('RECAPTCHA_PRIVATE_KEY')
 #SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 #RECAPTCHA_DOMAIN = 'www.recaptcha.net'
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
 
 #Session timeout config
