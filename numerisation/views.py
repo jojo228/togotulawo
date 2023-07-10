@@ -3,6 +3,8 @@ from django.shortcuts import render
 from numerisation.forms import ContactForm
 from django.core.mail import send_mail
 from django.contrib import messages
+from django.http import JsonResponse
+
 
 
 
@@ -18,13 +20,15 @@ def home(request):
             send_mail(
                 'Formulaire de contact',
                 f'Nom: {name}\nEmail: {email}\nMessage: {message}',
-                'togotulawo@gmail.com',  # Replace with your email address
+                'email',  # Replace with your email address
                 [settings.EMAIL_HOST_USER],  # Replace with recipient email address(es)
                 fail_silently=False,
             )
-            messages.success(request, "Profil mis à jour avec succès")
-    else:
-        form = ContactForm()
+            return JsonResponse({'message': 'success'})
+        else:
+            return JsonResponse({'message': 'error', 'errors': form.errors}, status=400)
+        
+    form = ContactForm()
     
     return render(request, "numerisation.html", {'form': form})
 
