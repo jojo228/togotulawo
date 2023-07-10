@@ -652,7 +652,7 @@
                               </fieldset>
                             </div>
                           </div>
-                        <!-- Bouton envoyer -->
+                        <!-- Submit Button -->
                         <div class="col-lg-12">
                             <fieldset>
                                 <button type="submit" id="submit-btn" class="main-button">Envoyer</button>
@@ -701,7 +701,7 @@
             // Send the AJAX request
             $.ajax({
                 type: 'POST',
-                url: '{% url "home" %}',
+                url: '{% url "contact" %}',
                 data: formData,
                 success: function (response) {
                     // Handle the success response
@@ -713,14 +713,11 @@
                     console.log(xhr.status + ': ' + xhr.responseText);
                 }
             });
+
+            return false; // Prevent the form from submitting normally
         });
     });
 </script>
-
-<div id="success-message" style="display: none;">
-    <h2>Merci!</h2>
-    <p>Votre message a été envoyé avec succès.</p>
-</div>
     
     <!-- jQuery -->
     <!-- <script src="{% static 'numerisation/assets/js/jquery-2.1.0.min.js' %}"></script> -->
