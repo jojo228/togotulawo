@@ -9,4 +9,5 @@ host_patterns = patterns('',
     host(r'dashboard', 'dashboard.urls', name='dashboard'),
     host(r'entreprise', 'entreprise.urls', name='entreprise'),
     host(r'numerisation', 'numerisation.urls', name='numerisation'),
+    host(r'ckeditor_uploader', 'ckeditor_uploader.urls', name='ckeditor_uploader'),
 )
