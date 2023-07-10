@@ -630,10 +630,17 @@
                     <div class="contact-form">
                         <form id="contact-form" action="" method="post">
                             {% csrf_token %}
-                            <div id="success-message" style="display: none;">
-                                <h2>Merci!</h2>
-                                <p>Votre message a été envoyé avec succès.</p>
+
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div id="success-message" class="alert alert-success d-flex align-items-center" role="alert">
+                                <div style="margin-left: 2%;">
+                                    {{message}}
+                                </div>
                             </div>
+                            
+                            {% endfor %}
+                            {% endif %}
 
                           <div class="row">
                             <div class="col-lg-6 col-md-12 col-sm-12">
@@ -652,7 +659,7 @@
                               </fieldset>
                             </div>
                           </div>
-                        <!-- Submit Button -->
+                        <!-- Bouton envoyer -->
                         <div class="col-lg-12">
                             <fieldset>
                                 <button type="submit" id="submit-btn" class="main-button">Envoyer</button>
@@ -713,8 +720,6 @@
                     console.log(xhr.status + ': ' + xhr.responseText);
                 }
             });
-
-            return false; // Prevent the form from submitting normally
         });
     });
 </script>

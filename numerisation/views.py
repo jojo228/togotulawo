@@ -24,9 +24,9 @@ def home(request):
                 [settings.EMAIL_HOST_USER],  # Replace with recipient email address(es)
                 fail_silently=False,
             )
-            return JsonResponse({'message': 'success'})
+            messages.success(request, "Message envoyé avec succès")
         else:
-            return JsonResponse({'message': 'error', 'errors': form.errors}, status=400)
+            messages.error(request, "Echèc d'envoi")
         
     form = ContactForm()
     
