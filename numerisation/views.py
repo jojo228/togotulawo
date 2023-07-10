@@ -2,6 +2,8 @@ from django.conf import settings
 from django.shortcuts import render
 from numerisation.forms import ContactForm
 from django.core.mail import send_mail
+from django.contrib import messages
+
 
 
 # Create your views here.
@@ -16,11 +18,11 @@ def home(request):
             send_mail(
                 'Formulaire de contact',
                 f'Nom: {name}\nEmail: {email}\nMessage: {message}',
-                email,  # Replace with your email address
+                'togotulawo@gmail.com',  # Replace with your email address
                 [settings.EMAIL_HOST_USER],  # Replace with recipient email address(es)
                 fail_silently=False,
             )
-            return render(request, 'success.html')  # Create success.html template
+            messages.success(request, "Profil mis à jour avec succès")
     else:
         form = ContactForm()
     

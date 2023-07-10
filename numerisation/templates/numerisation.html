@@ -630,6 +630,18 @@
                     <div class="contact-form">
                         <form id="contact" action="{% url 'home' %}" method="post">
                             {% csrf_token %}
+
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-success d-flex align-items-center" role="alert">
+                                <div style="margin-left: 2%;">
+                                    {{message}}
+                                </div>
+                            </div>
+                            
+                            {% endfor %}
+                            {% endif %}
+
                           <div class="row">
                             <div class="col-lg-6 col-md-12 col-sm-12">
                               <fieldset>
