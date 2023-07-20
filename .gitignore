@@ -270,7 +270,7 @@ migrations/
 
 # Directory
 */files/
-*settings.py
+*/settings.py
 
 # Json
 *.json
