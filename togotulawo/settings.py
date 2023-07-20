@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'entreprise',
     'landing',
     'numerisation',
+    'tdm',
 
 
     'chartjs',
@@ -217,7 +218,7 @@ ROOT_HOSTCONF = 'togotulawo.hosts'
 DEFAULT_HOST= 'www'
 PARENT_HOST = 'togotulawo.com'
 
-SESSION_COOKIE_DOMAIN = ".togotulawo.com"
+#SESSION_COOKIE_DOMAIN = ".togotulawo.com"
 DOMAIN_NAME = "togotulawo.com"
 
 
@@ -308,9 +309,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # login
-LOGIN_URL = 'https://account.togotulawo.com/login'
-LOGIN_REDIRECT_URL = 'https://gedus.togotulawo.com/'
-LOGOUT_REDIRECT_URL = 'https://account.togotulawo.com/login'
+LOGIN_URL = 'main:accueil'
+LOGIN_REDIRECT_URL = 'main:accueil'
+LOGOUT_REDIRECT_URL = 'main:accueil'
 
 
 # Default primary key field type
