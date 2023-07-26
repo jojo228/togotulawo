@@ -43,6 +43,11 @@ figure, header, nav, section, article, aside, footer, figcaption {
   outline: 0;
 }
 
+.features{
+  width: 50px; 
+  height: 50px;
+}
+
 .clearfix:after {
   content: ".";
   display: block;
@@ -146,8 +151,8 @@ body {
 }
 
 .left-heading .section-title {
-  font-weight: 500;
-  font-size: 24px;
+  font-weight: 600;
+  font-size: 34px;
   line-height: 42px;
   color: #1e1e1e;
   letter-spacing: 0.25px;
@@ -751,6 +756,12 @@ welcome
 features
 --------------------------------------------- 
 */
+.features2{
+  width: 35px; 
+  height: 35px;
+}
+
+
 .features-small-item {
   cursor: pointer;
   display: block;
@@ -767,6 +778,7 @@ features
   transition: all 0.3s ease 0s;
   position: relative;
   margin-bottom: 30px;
+  height: 350px;
 }
 
 .features-small-item:hover .icon {
@@ -892,8 +904,8 @@ parallax & home seperator
 
 .mini .mini-content .info h1 {
   color: #fff;
-  font-weight: 500;
-  font-size: 28px;
+  font-weight: 400px;
+  font-size: 30px;
   letter-spacing: 0.25px;
   margin-bottom: 30px;
 }
@@ -1178,7 +1190,7 @@ team
   display: block;
   font-weight: 400;
   font-size: 15px;
-  color: #ff589e;
+  color: #777777;
   letter-spacing: 0.25px;
 }
 
@@ -1316,6 +1328,12 @@ pricing
 blog
 --------------------------------------------- 
 */
+
+.example{
+  width: 200px; 
+  height: 200px;
+}
+
 .blog-post-thumb {
   text-align: center;
   margin-bottom: 30px;
