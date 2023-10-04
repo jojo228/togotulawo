@@ -27,7 +27,7 @@
   <div class="container">
 
     <ol>
-      <li><a href="{% url 'accueil' %}">Accueil</a></li>
+      <li><a href="{% url 'main:accueil' %}">Accueil</a></li>
       <li>Détails sur document</li>
     </ol>
     <h2>{{article.title}}</h2>
@@ -118,7 +118,7 @@
             </div>
             {% endfor %}
           
-            <form action="{% url 'submit_review' article.id %}" method="POST">
+            <form action="{% url 'main:submit_review' article.id %}" method="POST">
               {% csrf_token %}
               <div class="row">
                 <div class="rate col-md-6 form-group">
@@ -225,7 +225,7 @@
 
                     </ul>
                     {% if article.price %}
-                    <a href="{% url 'checkout' article.slug %}" class="btn-buy">Acheter</a>
+                    <a href="{% url 'main:checkout' article.slug %}" class="btn-buy">Acheter</a>
                     {% else %}
 
                     {% if fav %}

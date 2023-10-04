@@ -4,12 +4,10 @@ from entreprise.models import Livre, Postuler, Problematique
 from django.contrib.auth.decorators import login_required
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
 def home_page(request):
     return render(request, template_name="ense_index.html")
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
 def app_print(request, id):
     context = {}
 
@@ -26,12 +24,10 @@ def app_print(request, id):
     return render(request, "application_print.html", context)
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
 def premium_request(request):
     return render(request, template_name="premium_request.html")
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
 def entreprise_profil(request):
     user = request.user.entreprise
     form = EntrepriseForm(instance=user)
@@ -49,7 +45,6 @@ def entreprise_profil(request):
 ###-----------------------PROBLEMATIQUE------------------------###
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
 def problematique_create(request):
     context = {"form": ProblematiqueForm}
     try:
@@ -87,7 +82,6 @@ def problematique_create(request):
     return render(request, "prob_create.html", context)
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
 def problematique_read(request, slug):
     context = {}
     try:
@@ -98,7 +92,6 @@ def problematique_read(request, slug):
     return render(request, "prob_read.html", context)
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
 def problematique_update(request, slug):
     context = {}
     try:
@@ -123,7 +116,6 @@ def problematique_update(request, slug):
     return render(request, "prob_update.html", context)
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
 def problematique_delete(request, id):
     try:
         problematique = Problematique.objects.get(id=id)
@@ -137,7 +129,6 @@ def problematique_delete(request, id):
     return redirect("/entreprise/prob-list/")
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
 def problematique_list(request):
     context = {}
 
@@ -153,7 +144,6 @@ def problematique_list(request):
     return render(request, "prob_list.html", context)
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
 def problematique_draft(request):
     context = {}
 
@@ -175,7 +165,6 @@ def problematique_draft(request):
 ###-----------------------LIVRES------------------------###
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
 def doc_create(request):
     context = {"form": LivreForm}
     try:
@@ -195,7 +184,6 @@ def doc_create(request):
     return render(request, "book_create.html", context)
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
 def doc_read(request, slug):
     livre = Livre.objects.get(slug=slug)
     context = {"livre": livre}
@@ -203,7 +191,6 @@ def doc_read(request, slug):
     return render(request, "book_read.html", context=context)
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
 def doc_update(request, id):
     context = {}
     try:
@@ -228,7 +215,6 @@ def doc_update(request, id):
     return render(request, "book_update.html", context)
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
 def doc_delete(request, id):
     try:
         livre = Livre.objects.get(id=id)
@@ -242,7 +228,6 @@ def doc_delete(request, id):
     return redirect("/entreprise/doc-list/")
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
 def doc_list(request):
     context = {}
 
@@ -267,7 +252,6 @@ def doc_list(request):
 ###-----------------------POSTULER A UNE PROBLEMATIQUE------------------------###
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
 def postule_list(request):
     context = {}
 
@@ -283,7 +267,6 @@ def postule_list(request):
     return render(request, "postule_list.html", context)
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
 def postule_read(request, id):
     context = {}
 

@@ -26,7 +26,7 @@ def offer_detail(request, slug):
     return render(request, template_name="offer_detail.html", context=context)
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
+@login_required(login_url="account:connexion")
 def offer_create(request, id):
     prob = Problematique.objects.get(id=id)
     context = {"form": PostuleForm, "prob": prob}
@@ -46,7 +46,7 @@ def offer_create(request, id):
                 data.problematique_id = id
                 data.save()
 
-            return redirect("/success-message/")
+            return redirect("/gedus/success-message/")
 
     except Exception as e:
         print(e)
@@ -54,6 +54,6 @@ def offer_create(request, id):
     return render(request, "offer_create.html", context)
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
+@login_required(login_url="account:connexion")
 def success_message(request):
     return render(request, template_name="succes_message.html")

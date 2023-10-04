@@ -38,7 +38,7 @@
                         <img src="{% static 'assets/images/logo-dark.png' %}" alt="" class="img-fluid mb-4">
                         <h4 class="mb-3 f-w-400">Créez votre compte auteur</h4>
 
-                        <form action="{% url 'auteur_signup' %}" method="POST">
+                        <form action="{% url 'account:auteur_signup' %}" method="POST">
                             {% csrf_token %}
                             <div class="input-group mb-2">
                                 <div class="input-group-prepend">
@@ -88,7 +88,7 @@
                             </div>
                             <button class="btn btn-primary mb-4">Sign up</button>
                         </form>
-                        <p class="mb-2">Vous avez déjà un compte ? <a href="{% url 'connexion' %}"
+                        <p class="mb-2">Vous avez déjà un compte ? <a href="{% url 'account:connexion' %}"
                                 class="f-w-400">Connectez-vous</a>
                         </p>
                     </div>

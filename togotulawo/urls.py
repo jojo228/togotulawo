@@ -25,10 +25,11 @@ sitemaps = {
 
 urlpatterns = [
     path('', include("landing.urls")),
-    path('gedus/', include("main.urls")),
+    path('gedus/', include("gedus.urls")),
     path('account/', include('account.urls', namespace='account')),
     path('dashboard/', include('dashboard.urls')),
     path('entreprise/', include('entreprise.urls')),
+    path('tdm/', include('tdm.urls')),
     path('numerisation/', include('numerisation.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path("i18n/", include("django.conf.urls.i18n")),

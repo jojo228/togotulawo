@@ -12,7 +12,7 @@ from main.views.newsletter import mail_letter
 
 from main.views.offers import OfferList, offer_detail, offer_create, success_message
 
-#app_name = 'main'
+app_name = 'main'
 
 urlpatterns = [
     #HomePage urls

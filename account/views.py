@@ -29,7 +29,7 @@ def signout(request):
     return redirect("main:accueil")
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
+@login_required(login_url="account:login")
 def client_profil(request):
     user = request.user
     client = request.user.client
@@ -105,8 +105,6 @@ def connexion(request):
             else:
                 return redirect(settings.LOGIN_REDIRECT_URL)
         else:
-            
-
             messages.error(
                 request, "Email/Nom d'utilisateur ou mot de passe incorrect !"
             )

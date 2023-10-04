@@ -6,12 +6,12 @@ from main.models.user_article import UserArticle
 from django.contrib.auth.decorators import login_required
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
+@login_required(login_url="account:login")
 def home_page(request):
     return render(request, template_name="index.html")
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
+@login_required(login_url="account:login")
 def sale(request):
     order = Payment.objects.filter(
         article__auteur=request.user.auteur,
@@ -21,7 +21,7 @@ def sale(request):
     return render(request, "ventes.html", locals())
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
+@login_required(login_url="account:login")
 def author_profil(request):
     user = request.user.auteur
     form = ProfilForm(instance=user)
@@ -36,7 +36,7 @@ def author_profil(request):
     return render(request, "profil.html", context)
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
+@login_required(login_url="account:login")
 def article_read(request, slug):
     context = {}
     try:
@@ -47,7 +47,7 @@ def article_read(request, slug):
     return render(request, "article_detail.html", context)
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
+@login_required(login_url="account:login")
 def article_list(request):
     context = {}
 
@@ -61,7 +61,7 @@ def article_list(request):
     return render(request, "publications.html", context)
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
+@login_required(login_url="account:login")
 def article_create(request):
     context = {"form": ArticleForm}
     try:
@@ -80,7 +80,7 @@ def article_create(request):
     return render(request, "publier.html", context)
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
+@login_required(login_url="account:login")
 def article_draft(request):
     context = {}
 
@@ -94,7 +94,7 @@ def article_draft(request):
     return render(request, "brouillons.html", context)
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
+@login_required(login_url="account:login")
 def article_update(request, slug):
     context = {}
     try:
@@ -118,7 +118,7 @@ def article_update(request, slug):
     return render(request, "article_update.html", context)
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
+@login_required(login_url="account:login")
 def article_delete(request, id):
     try:
         article = Article.objects.get(id=id)

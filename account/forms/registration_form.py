@@ -62,4 +62,3 @@ class EntrepriseForm(forms.ModelForm):
     class Meta:
         model = Entreprise
         exclude = ("user",)
-

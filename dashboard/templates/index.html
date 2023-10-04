@@ -60,7 +60,7 @@
 	<nav class="pcoded-navbar menupos-fixed menu-light brand-blue ">
 		<div class="navbar-wrapper ">
 			<div class="navbar-brand header-logo">
-				<a href="{% host_url 'accueil' host 'main' %}" class="b-brand" style=" margin-top: 10px;">
+				<a href="{% url 'main:accueil' %}" class="b-brand" style=" margin-top: 10px;">
 					<h3 style="color: rgb(255, 255, 255);">GEDuS</h3>
 
 					<!-- <img src="../recouvrement/static/assets/images/Edouka.png" alt="" class="logo images" width="120">
@@ -72,7 +72,7 @@
 				<ul class="nav pcoded-inner-navbar">
 
 
-					<li class="nav-item"><a href="{% url 'ventes' %}" class="nav-link"><span
+					<li class="nav-item"><a href="{% url 'dashboard:ventes' %}" class="nav-link"><span
 								class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span
 								class="pcoded-mtext">Mes Ventes</span></a>
 					</li>
@@ -82,8 +82,8 @@
 									class="feather icon-folder"></i></span><span class="pcoded-mtext">Gestion des
 								Publications</span></a>
 						<ul class="pcoded-submenu">
-							<li class=""><a href="{% url 'publier' %}" class="">Publier</a></li>
-							<li class=""><a href="{% url 'liste_article' %}" class="">Mes Publications</a>
+							<li class=""><a href="{% url 'dashboard:publier' %}" class="">Publier</a></li>
+							<li class=""><a href="{% url 'dashboard:liste_article' %}" class="">Mes Publications</a>
 							</li>
 						</ul>
 					</li>
@@ -93,12 +93,12 @@
 									class="feather icon-book"></i></span><span class="pcoded-mtext">Ma
 								Bibliothèque</span></a>
 					</li>
-					<li class="nav-item"><a href="{% url 'brouillon' %}" class="nav-link"><span
+					<li class="nav-item"><a href="{% url 'dashboard:brouillon' %}" class="nav-link"><span
 								class="pcoded-micon"><i class="feather icon-trash-2"></i></span><span
 								class="pcoded-mtext">Mes Brouillons</span></a>
 					</li>
 
-					<li class="nav-item"><a href="{% url 'profil' %}" class="nav-link"><span
+					<li class="nav-item"><a href="{% url 'dashboard:profil' %}" class="nav-link"><span
 								class="pcoded-micon"><i class="feather icon-user"></i></span><span
 								class="pcoded-mtext">Mon Profil</span></a>
 					</li>
@@ -233,7 +233,7 @@
 					<div class="dropdown drp-user">
 						<div class="pro-head">
 
-							<a href="{% host_url 'logout' host 'account' %}" class="dud-logout" title="Logout">
+							<a href="{% url 'account:logout' %}" class="dud-logout" title="Logout">
 								<i class="feather icon-log-out"></i>
 							</a>
 						</div>
