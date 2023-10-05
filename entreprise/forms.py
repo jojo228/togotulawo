@@ -4,7 +4,6 @@ from entreprise.models import Livre, Problematique
 from main.models.article import Categorie
 
 
-
 # option= Categorie.objects.all().values_list('name', 'name').order_by('name')
 
 # choice_list = []

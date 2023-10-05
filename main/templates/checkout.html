@@ -17,7 +17,7 @@
     <div class="container">
 
         <ol>
-            <li><a href="{% host_url 'accueil' host 'main' %}">Accueil</a></li>
+            <li><a href="{% url 'main:accueil' %}">Accueil</a></li>
             <li>Confirmation de l'achat</li>
         </ol>
         <h2>Confirmation de l'achat</h2>
@@ -50,7 +50,7 @@
                     <ul>
                         <li><strong>Titre</strong>: {{article.title}}</li>
                         <br>
-                        <form action="{% url 'checkout' article.slug %}" method="POST">
+                        <form action="{% url 'main:checkout' article.slug %}" method="POST">
                             {% csrf_token %}
                             <li>Choisissez le réseau:</li>
                             <li>
@@ -89,18 +89,15 @@
                                     You Have Got {{coupon.discount}}% Discount
                                 </p>
                                 <br>
-                                <p class="display-5">Montant : <b>{% cal_sellprice article.price coupon.discount as
-                                        value %}
-                                        {{value|intcomma|cfa}}</b></p>
+                                <p class="display-5">Montant : 
+                                    <b>{% cal_sellprice article.price coupon.discount as value %} {{value|intcomma|cfa}}</b></p>
 
                                 <a class="btn btn-primary border"
                                     href="?action=create_payment&couponcode={{coupon.code}}">Acheter
                                 </a>
 
                                 {%else%}
-                                <p class="display-7">Montant : <b>{% cal_sellprice article.price article.discount as
-                                        value %}
-                                        {{value|intcomma|cfa}}</b></p>
+                                <p class="display-7">Montant : <b>{% cal_sellprice article.price article.discount as value %} {{value|intcomma|cfa}}</b></p>
 
 
                                 <button class="btn btn-info" id="just_load_please">Payer</button>

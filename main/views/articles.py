@@ -84,7 +84,7 @@ def article_page(request, slug):
     return render(request, template_name="pageArticle.html", context=context)
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
+@login_required(login_url="account:login")
 def comment(request, id):
     url = request.META.get("HTTP_REFERER")
 
@@ -176,7 +176,7 @@ class Bibliotheque(LoginRequiredMixin, ListView):
         return context
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
+@login_required(login_url="account:login")
 def favourite_add(request, slug):
     post = get_object_or_404(Article, slug=slug)
     if post.favourites.filter(id=request.user.id).exists():

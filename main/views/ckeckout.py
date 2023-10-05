@@ -17,7 +17,7 @@ import requests
 
 
 # @api_view(('GET', 'POST'))
-@login_required(login_url="https://account.togotulawo.com/login")
+@login_required(login_url="account:connexion")
 def checkout(
     request,
     slug,
@@ -103,6 +103,7 @@ def checkout(
                 "tx_reference": paygate_tx_reference,
             }
 
+
             # iniatiate a request to PayGate
             # to retrieve the status of confirmation
             # of the transaction confirmation
@@ -139,6 +140,7 @@ def checkout(
             payment.save()
 
             return redirect("main:bibliotheque")
+         
             # return Response(data, status=status.HTTP_200_OK)
 
             # return HttpResponse("Détails de paiement invalides")
@@ -157,7 +159,7 @@ def checkout(
     return render(request, template_name="checkout.html", context=context)
 
 
-@login_required(login_url="https://account.togotulawo.com/login")
+@login_required(login_url="account:connexion")
 @csrf_exempt
 def verify_payment(request):
     if request.method == "POST":

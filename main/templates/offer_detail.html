@@ -15,7 +15,7 @@
     <div class="container">
 
         <ol>
-            <li><a href="{% host_url 'accueil' host 'main' %}">Accueil</a></li>
+            <li><a href="{% url 'main:accueil'  %}">Accueil</a></li>
             <li>Détails de l'offre</li>
         </ol>
 
@@ -60,7 +60,7 @@
                     <div class="entry-meta">
                         <ul>
                             <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                                    href="blog-single.html"><time datetime="2020-01-01">{{prob.publish_date}}</time></a>
+                                    href=""><time datetime="2020-01-01">{{prob.publish_date}}</time></a>
                             </li>
 
                         </ul>
@@ -112,7 +112,7 @@
                         <li><strong>Profil recherché</strong>:{{prob.profil_rechercher|safe}}</li>
 
                     </ul>
-                    <a href="/offer_create/{{prob.id}}" class="btn btn-primary">Postuler</a>
+                    <a href="/gedus/offer_create/{{prob.id}}" class="btn btn-primary">Postuler</a>
                 </div><!-- End sidebar -->
 
             </div><!-- End blog sidebar -->

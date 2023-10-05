@@ -29,7 +29,7 @@
                     <div class="post-img"><img src="{{art.article.couverture.url}}" class="img-fluid" alt=""></div>
                     <span class="post-date">{{art.article.publish_date}}</span>
                     <h3 class="post-title">{{art.article.title}}</h3>
-                    <a href="{% url 'article' art.article.slug  %}" class="readmore stretched-link mt-auto"><span>Lire
+                    <a href="{% url 'main:article' art.article.slug  %}" class="readmore stretched-link mt-auto"><span>Lire
                             Plus</span><i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                     <div class="post-img"><img src="{{art.article.couverture.url}}" class="img-fluid" alt=""></div>
                     <span class="post-date">{{fav.publish_date}}</span>
                     <h3 class="post-title">{{fav.title}}</h3>
-                    <a href="{% url 'article' fav.slug  %}" class="readmore stretched-link mt-auto"><span>Lire
+                    <a href="{% url 'main:article' fav.slug  %}" class="readmore stretched-link mt-auto"><span>Lire
                             Plus</span><i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>

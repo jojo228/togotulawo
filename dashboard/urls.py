@@ -3,7 +3,7 @@ from dashboard.views import home_page, article_create, article_delete, article_l
 from django.conf import settings
 from django.conf.urls.static import static
 
-#app_name = 'dashboard'
+app_name = 'dashboard'
 
 urlpatterns = [
     #HomePage urls
