@@ -26,7 +26,7 @@ urlpatterns = [
     #REST-API urls
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     #path('sitemap.xml', sitemap, {'sitemaps':sitemaps}, name='django.contrib.sitemaps.views.sitemap')
-    path("ckeditor/", include("ckeditor_uploader.urls")),
+    path("ckeditor/", include("ckeditor_uploader.urls", namespace='ckeditor_uploader')),
 ]
 
 urlpatterns += i18n_patterns(path("admin/", admin.site.urls))
