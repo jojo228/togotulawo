@@ -1,20 +1,62 @@
-from django.shortcuts import redirect
+from django.contrib.auth import REDIRECT_FIELD_NAME
+from django.contrib.auth.decorators import user_passes_test
 
-def user_not_authenticated(function=None, redirect_url='/'):
-    """
-    Decorator for views that checks that the user is NOT logged in, redirecting
-    to the homepage if necessary by default.
-    """
-    def decorator(view_func):
-        def _wrapped_view(request, *args, **kwargs):
-            if request.user.is_authenticated:
-                return redirect(redirect_url)
-                
-            return view_func(request, *args, **kwargs)
 
-        return _wrapped_view
-
+def author_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url='login'):
+    '''
+    Decorator for views that checks that the logged in user is an author,
+    redirects to the log-in page if necessary.
+    '''
+    actual_decorator = user_passes_test(
+        lambda u: u.is_active and u.is_author,
+        login_url=login_url,
+        redirect_field_name=redirect_field_name
+    )
     if function:
-        return decorator(function)
+        return actual_decorator(function)
+    return actual_decorator
 
-    return decorator
+
+def reviewer_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url='login'):
+    '''
+    Decorator for views that checks that the logged in user is a reviewer,
+    redirects to the log-in page if necessary.
+    '''
+    actual_decorator = user_passes_test(
+        lambda u: u.is_active and u.is_reviewer,
+        login_url=login_url,
+        redirect_field_name=redirect_field_name
+    )
+    if function:
+        return actual_decorator(function)
+    return actual_decorator
+
+
+def reader_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url='login'):
+    '''
+    Decorator for views that checks that the logged in user is a reader,
+    redirects to the log-in page if necessary.
+    '''
+    actual_decorator = user_passes_test(
+        lambda u: u.is_active and u.is_reader,
+        login_url=login_url,
+        redirect_field_name=redirect_field_name
+    )
+    if function:
+        return actual_decorator(function)
+    return actual_decorator
+
+
+def editor_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url='login'):
+    '''
+    Decorator for views that checks that the logged in user is an editor,
+    redirects to the log-in page if necessary.
+    '''
+    actual_decorator = user_passes_test(
+        lambda u: u.is_active and u.is_editor,
+        login_url=login_url,
+        redirect_field_name=redirect_field_name
+    )
+    if function:
+        return actual_decorator(function)
+    return actual_decorator
