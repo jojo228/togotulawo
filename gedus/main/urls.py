@@ -7,8 +7,8 @@ from django.conf.urls.static import static
 app_name = 'gedus'
 
 urlpatterns = [
-    path('', home, name='home'),
-    path('coming-soon', coming_soon, name='coming_soon'),
+    path('home', home, name='home'),
+    path('', coming_soon, name='coming_soon'),
 
 ]
 

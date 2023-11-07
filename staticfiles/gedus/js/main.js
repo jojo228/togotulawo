@@ -200,7 +200,7 @@ jQuery(document).on('ready', function() {
 			NEXT EVENT COUNTER
 	-------------------------------------- */
 	var _sj_upcomingeventcounter = jQuery('#sj-comingsooncounter');
-	_sj_upcomingeventcounter.countdown('2023/10/30', function(event) {
+	_sj_upcomingeventcounter.countdown('2023/11/30', function(event) {
 		var $this = jQuery(this).html(event.strftime(''
 			+ '<div class="sj-counterholder"><div class="sj-eventcounter"><span>%-D</span><span> Days</span></div></div>'
 			+ '<div class="sj-counterholder"><div class="sj-eventcounter"><span>%H</span><span>Hours</span></div></div>'
