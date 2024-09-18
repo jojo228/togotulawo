@@ -1,7 +1,6 @@
 import os
 from typing import Any, Dict
 from pathlib import Path
-import dj_database_url
 from django.conf.global_settings import LANGUAGES as DJANGO_LANGUAGES
 from django.core.management.utils import get_random_secret_key
 
@@ -33,7 +32,6 @@ DEVELOPMENT_MODE = os.getenv('DEVELOPMENT_MODE', 'False') == 'True'
 # Application definition
 
 INSTALLED_APPS = [
-    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,171 +40,23 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
 
-    
-    'landing',
-    'numerisation',
-    'tdm',
-    'gedus',
-
-
-    'chartjs',
-    "rest_framework",
-    'django.contrib.sitemaps',
-    'captcha',
-    'ckeditor',
-    'ckeditor_uploader',
-    'django_hosts',
+    'main',
 
 ]
 
-
-
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
-}
-
-
-JAZZMIN_SETTINGS: Dict[str, Any] = {
-    # title of the window (Will default to current_admin_site.site_title if absent or None)
-    "site_title": "Togotulawo",
-    # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_header": "Togotulawo",
-    "site_brand": "Togotulawo",
-    "copyright": "Togotulawo Sarl U",
-    "welcome_sign": "Bienvenu sur Togotulawo",
-    
-    # Logo to use for your site, must be present in static files, used for brand on top left
-    "site_logo": "main/assets/img/logo-jazzmin.png",
-
-    # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
-    "login_logo": None,
-
-    # Logo to use for login form in dark themes (defaults to login_logo)
-    "login_logo_dark": None,
-    # The model admin to search from the search bar, search bar omitted if excluded
-    "search_model": "auth.User",
-    # Additional links to include in the user menu on the top right ("app" url type is not allowed)
-    "usermenu_links": [
-        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
-        {"model": "auth.user"}
-    ],
-
-
-    "topmenu_links": [
-
-        # Url that gets reversed (Permissions can be added)
-        {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
-
-        # external url that opens in a new window (Permissions can be added)
-        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
-
-        # model admin to link to (Permissions checked against model)
-        {"model": "auth.User"},
-
-        # App with dropdown menu to all its models pages (Permissions checked against models)
-        {"app": "gedus",},
-    ],
-
-    "icons": {
-        "auth": "fas fa-users-cog",
-        "auth.user": "fas fa-user",
-        "auth.Group": "fas fa-users",
-        "admin.LogEntry": "fas fa-file",
-        "gedus.authentication.Author": "fas fa-user-tie",
-        "gedus.authentication.Reviewer": "fas fa-users",
-        "gedus.authentication.Reader": "fas fa-building",
-        "main.Article": "fas fa-book",
-        "main.Payment": "fas fa-dollar-sign",
-        "main.Video": "fas fa-photo-video",
-        "main.UserArticle": "fas fa-book-open",
-        "main.Comment": "fas fa-comment",
-        "main.CouponCode": "fas fa-tag",
-        "main.Categorie": "fas fa-filter",
-    },
-
-    "language_chooser": True,
-    "show_ui_builder": True,
-}
-
-
-JAZZMIN_UI_TWEAKS = {
-    "navbar_small_text": False,
-    "footer_small_text": False,
-    "body_small_text": False,
-    "brand_small_text": False,
-    "brand_colour": False,
-    "accent": "accent-primary",
-    "navbar": "navbar-white navbar-light",
-    "no_navbar_border": False,
-    "navbar_fixed": False,
-    "layout_boxed": False,
-    "footer_fixed": False,
-    "sidebar_fixed": False,
-    "sidebar": "sidebar-dark-primary",
-    "sidebar_nav_small_text": False,
-    "sidebar_disable_expand": False,
-    "sidebar_nav_child_indent": False,
-    "sidebar_nav_compact_style": False,
-    "sidebar_nav_legacy_style": False,
-    "sidebar_nav_flat_style": False,
-    "theme": "default",
-    "dark_mode_theme": "",
-    "button_classes": {
-        "primary": "btn-outline-primary",
-        "secondary": "btn-outline-secondary",
-        "info": "btn-outline-info",
-        "warning": "btn-outline-warning",
-        "danger": "btn-outline-danger",
-        "success": "btn-outline-success",
-    },
-}
 
 MIDDLEWARE = [
-    'django_hosts.middleware.HostsRequestMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django_session_timeout.middleware.SessionTimeoutMiddleware',
-    "django.middleware.locale.LocaleMiddleware",
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    "django.contrib.admindocs.middleware.XViewMiddleware",
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_hosts.middleware.HostsResponseMiddleware'
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-
-
-#Google Captcha
-#RECAPTCHA_PUBLIC_KEY = os.getenv('RECAPTCHA_PUBLIC_KEY')
-#ECAPTCHA_PRIVATE_KEY = os.getenv('RECAPTCHA_PRIVATE_KEY')
-#SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
-#RECAPTCHA_DOMAIN = 'www.recaptcha.net'
-SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
-
-
-#Session timeout config
-
-SESSION_EXPIRE_SECONDS = 3600  # 1 hour
-
-SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
-
-SESSION_TIMEOUT_REDIRECT = 'gedus:accueil'
-
-
  
 
 ROOT_URLCONF = 'togotulawo.urls'
-ROOT_HOSTCONF = 'togotulawo.hosts'
-DEFAULT_HOST= 'www'
-PARENT_HOST = 'togotulawo.com'
-
-#SESSION_COOKIE_DOMAIN = ".togotulawo.com"
-DOMAIN_NAME = "togotulawo.com"
 
 
 TEMPLATES = [
@@ -214,11 +64,6 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [  # This lign add the templates/ folder to the root of the projet
             os.path.join(BASE_DIR, "templates"),
-            # Subfolders of the apps
-            os.path.join(BASE_DIR, 'gedus/templates'),
-            os.path.join(BASE_DIR, 'landing/templates'),
-            os.path.join(BASE_DIR, 'numerisation/templates'),
-            os.path.join(BASE_DIR, 'tdm/templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -238,15 +83,22 @@ WSGI_APPLICATION = 'togotulawo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#         'default': {
+#             'ENGINE': os.getenv('DB_ENGINE'),
+#             'NAME': os.getenv('DB_NAME'),
+#             'USER': os.getenv('DB_USER'),
+#             'PASSWORD': os.getenv('DB_PASSWORD'),
+#             'HOST': os.getenv('DB_HOST'),
+#             'PORT': os.getenv('DB_PORT'),
+#         }
+# }
+
 DATABASES = {
-        'default': {
-            'ENGINE': os.getenv('DB_ENGINE'),
-            'NAME': os.getenv('DB_NAME'),
-            'USER': os.getenv('DB_USER'),
-            'PASSWORD': os.getenv('DB_PASSWORD'),
-            'HOST': os.getenv('DB_HOST'),
-            'PORT': os.getenv('DB_PORT'),
-        }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR , 'db.sqlite3'),
+    }
 }
 
 
@@ -303,9 +155,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # login
-LOGIN_URL = 'gedus:login'
-LOGIN_REDIRECT_URL = 'gedus:home'
-LOGOUT_REDIRECT_URL = 'gedus:login'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'login'
 
 
 # Default primary key field type
@@ -314,31 +166,9 @@ LOGOUT_REDIRECT_URL = 'gedus:login'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# CkEditor config
-CKEDITOR_UPLOAD_PATH = 'uploads/'
-CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 
-CKEDITOR_CONFIGS = {
-    'default': {
-        'skin': 'moono',
-        'codeSnippet_theme': 'monokai',
-        'toolbar': 'all',
-        'extraPlugins': ','.join(
-            [
-                'codesnippet',
-                'widget',
-                'dialog'
-            ]
-        ),
-    }
-}
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-AUTHENTICATION_BACKENDS = [
-     'gedus.authentication.backends.EmailBackend',
-]
-
-AUTH_USER_MODEL = 'gedus.User'
 
 # SMTP Configuration (Its working fine, just add the mail and its password)
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
